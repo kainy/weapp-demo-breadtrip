@@ -1,6 +1,6 @@
 <view class="trip">
   <view class="trip-top" wx:if="{{ trip != null }}">
-    <image class="trip-user" src="{{ trip.user.avatar_l }}" data-id="{{ trip.user.id }}" bindtap="gotoUser"></image>
+    <image class="trip-user" src="{{ trip.user.avatar_m }}" data-id="{{ trip.user.id }}" bindtap="gotoUser"></image>
     <view class="trip-info">
       <view class="h1">{{ trip.name }}</view>
       <view class="detail"><text>{{ trip.first_day }}</text><text>{{ trip.recommendations }}人喜欢</text><text>{{ trip.view_count }}浏览</text></view>
