@@ -54,6 +54,16 @@ Page({
           pois,
         });
         wx.hideToast();
+      } else if (state === 'fail') {
+        wx.showModal({
+          title: '提示',
+          content: '数据加载失败，请稍后重试',
+          success: function(res) {
+            if (res.confirm) {
+              wx.navigateBack()
+            }
+          }
+        })
       }
     });
   },
