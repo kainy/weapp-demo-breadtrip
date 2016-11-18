@@ -1,5 +1,5 @@
 <view class="destination">
-  <block wx:for="{{ elements }}" wx:for-item="e" wx:key="e.index">
+  <block wx:for="{{ elements }}" wx:for-item="e" wx:key="e.index" wx:if="{{e.title!=='周末去哪儿'}}">
     <view class="title">{{ e.title }}</view>
     <view class="list">
       <view class="poi" data-type="{{ poi.type }}" data-id="{{ poi.id }}" data-name="{{ poi.name }}" bindtap="viewPOI" wx:for="{{ e.data }}" wx:for-item="poi" wx:key="poi.id">
