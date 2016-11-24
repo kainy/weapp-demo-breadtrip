@@ -14,6 +14,12 @@ Page({
     windowWidth: App.systemInfo.windowWidth,
     windowHeight: App.systemInfo.windowHeight,
   },
+  onReady() {
+    const self = this;
+    wx.setNavigationBarTitle({
+      title: self.data.title,
+    });
+  },
   onLoad(options) {
     const type = options.type;
     const id = options.id;
@@ -89,6 +95,6 @@ Page({
     self.setData({
       poiType,
     });
-    this.getPOIList(self.data.type, self.data.id, 'all', true);
+    this.getPOIList(self.data.type, self.data.id, poiType, true);
   },
 });
