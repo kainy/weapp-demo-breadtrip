@@ -19,10 +19,7 @@ Page({
     //   url: '../logs/logs'
     // })
   },
-  onLoad: function () {
-    console.log('onLoad')
-    // 获得当前登录用户
-    const user = AV.User.current();
+  syncUserInfo: function (user) {
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){
@@ -30,14 +27,12 @@ Page({
       user.set(userInfo).save().then(user => {
         // 成功，此时可在控制台中看到更新后的用户信息
         //that.globalData.user = user.toJSON();
-        console.log(user.toJSON())
       }).catch(console.error);
       //更新数据
       that.setData({
         userInfo:userInfo
       })
       app.aldstat.debug(userInfo.nickName)
-      console.log(userInfo.nickName)
     })
     // new app.AV.Query('Todo')
     //   .descending('createdAt')
@@ -52,6 +47,7 @@ Page({
       user ? user : AV.User.loginWithWeapp()
     ).then((user) => {
       console.log('uid', user.id);
+      this.syncUserInfo(user)
       return new AV.Query(Todo)
         .equalTo('user', AV.Object.createWithoutData('User', user.id))
         .descending('createdAt')

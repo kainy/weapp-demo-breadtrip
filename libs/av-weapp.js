@@ -8069,7 +8069,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         // All internal configuration items
         AV._config = AV._config || {};
-        // AV._config.APIServerURL = 'https://kainy.cn/api/leancloud'
+        AV._config.APIServerURL = 'https://kainy.cn/api/leancloud'
         var AVConfig = AV._config;
 
         _.extend(AVConfig, {
