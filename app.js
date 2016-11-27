@@ -1,7 +1,9 @@
 require("./utils/ald-stat.js");
+const AV = require('./libs/av-weapp.js');
 
 App({
   systemInfo: null,
+  AV: AV,
   onLaunch() {
     const self = this;
     self.aldstat.debug('launched');
@@ -48,3 +50,8 @@ App({
 
 var app= getApp()
 app.aldstat.debug('app.js')
+
+AV.init({ 
+ appId: '8RLDamMl5A27EOhFH2fU7AN0-gzGzoHsz', //{{appid}}
+ appKey: 'gVpxIyNY3brM8JXwCTGSNeG3', 
+});
