@@ -18,6 +18,13 @@ Page({
   onPullDownRefresh() {
     this.loadMore(null, true);
   },
+  onShareAppMessage: function () {
+    return {
+      title: '跨时空 ✈️ 旅行日志小程序',
+      desc: '一个合格可口的小程序。',
+      path: '/'
+    }
+  },
   loadMore(e, needRefresh) {
     const self = this;
     const loading = self.data.loading;
