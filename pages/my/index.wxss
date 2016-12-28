@@ -33,6 +33,7 @@ page{
 
 .new-todo {
   flex: 1;
+  float: left;
   font-size: 18px;
   box-sizing: border-box;
   border-top: 1px solid #eee;
@@ -43,6 +44,7 @@ page{
 }
 .add {
   color: #FFF;
+  float: right;
   background-color: #1aad19;
   font-size: 16px;
   line-height: 53px;

@@ -22,7 +22,7 @@ Page({
     return {
       title: '跨时空 ✈️ 旅行日志小程序',
       desc: '一个合格可口的小程序。',
-      path: '/'
+      path: '/pages/index/index'
     }
   },
   loadMore(e, needRefresh) {
