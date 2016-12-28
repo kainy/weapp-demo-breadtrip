@@ -1,8 +1,5 @@
 const App = getApp();
 const api = require('../../utils/api.js');
-const util = require('../../utils/util.js');
-
-const formatTime = util.formatTime;
 
 Page({
   data: {
@@ -34,27 +31,36 @@ Page({
   },
   getPlaceInfo(type, id) {
     const self = this;
-    api.destination.place(type, id, (state, res) => {
-      if (state === 'success') {
+    api.getPlaceInfoByID({
+      query: {
+        type,
+        id,
+      },
+      success: (res) => {
         const data = res.data;
         self.setData({
           info: data,
         });
         self.getPOI(type, id);
-      }
+      },
     });
   },
   getPOI(type, id) {
     const self = this;
-    const data = {};
-    api.destination.poi(type, id, '', data, (state, res) => {
-      if (state === 'success') {
+    api.getPlacePOIByID({
+      query: {
+        type,
+        id,
+        poiType: 'all',
+      },
+      success: (res) => {
         const pois = res.data.items;
         self.setData({
           pois,
         });
         wx.hideToast();
-      } else if (state === 'fail') {
+      },
+      fail: (res) => {
         wx.showModal({
           title: '提示',
           content: '数据加载失败，请稍后重试',
@@ -65,6 +71,18 @@ Page({
           }
         })
       }
+    });
+  },
+  viewPOIList() {
+    const self = this;
+    wx.navigateTo({
+      url: `../poi_list/poi_list?type=${self.data.info.type}&id=${self.data.info.id}&name=${self.data.title}`,
+    });
+  },
+  viewTripList() {
+    const self = this;
+    wx.navigateTo({
+      url: `../trip_list/trip_list?type=${self.data.info.type}&id=${self.data.info.id}&name=${self.data.title}`,
     });
   },
 });
