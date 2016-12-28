@@ -32,8 +32,8 @@
       "text": "发现"
     }, {
       "pagePath": "pages/my/index",
-      "iconPath": "images/index_normal.png",
-      "selectedIconPath": "images/index_pressed.png",
+      "iconPath": "images/my_normal.png",
+      "selectedIconPath": "images/my_pressed.png",
       "text": "我的"
     }]
   },
