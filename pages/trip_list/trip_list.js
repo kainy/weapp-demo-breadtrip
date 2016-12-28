@@ -1,13 +1,15 @@
 const App = getApp();
 const api = require('../../utils/api.js');
+const util = require('../../utils/util.js');
+
+const formatTime = util.formatTime;
 
 Page({
   data: {
     title: '',
     type: null,
     id: null,
-    pois: null,
-    poiType: 'all',
+    trips: [],
     start: 0,
     loading: false,
     hasMore: true,
@@ -21,6 +23,7 @@ Page({
     });
   },
   onLoad(options) {
+    const self = this;
     const type = options.type;
     const id = options.id;
     const name = options.name;
@@ -37,36 +40,42 @@ Page({
     wx.setNavigationBarTitle({
       title: name,
     });
-    this.getPOIList(type, id, 'all', true);
+    wx.getSystemInfo({
+      success(res) {
+        self.setData({
+          windowHeight: res.windowHeight,
+        });
+      },
+    });
+    this.getTrips(type, id);
   },
-  getPOIList(type, id, poiType, needRefresh) {
+  getTrips(type, id) {
     const self = this;
     const loading = self.data.loading;
     const hasMore = self.data.hasMore;
-    if (loading || (!hasMore && !needRefresh)) {
+    if (loading || !hasMore) {
       return;
     }
     self.setData({
       loading: true,
     });
-    if (needRefresh) {
-      self.setData({
-        pois: [],
-        start: 0,
-        hasMore: true,
-      });
-    }
     const data = {
       start: self.data.start,
     };
-    api.destination.poi(type, id, poiType, data, (state, res) => {
-      if (state === 'success') {
+    api.getPlaceTripByID({
+      data,
+      query: {
+        type,
+        id,
+      },
+      success: (res) => {
         let newList = res.data.items;
-        if (needRefresh) {
-          console.log('needRefresh');
-        } else {
-          newList = self.data.pois.concat(newList);
-        }
+        newList.map((trip) => {
+          const item = trip;
+          item.date_added = formatTime(new Date(item.date_added * 1000), 1);
+          return item;
+        });
+        newList = self.data.trips.concat(newList);
         const nextStart = res.data.next_start;
         if (nextStart) {
           self.setData({
@@ -78,23 +87,21 @@ Page({
           });
         }
         self.setData({
-          pois: newList,
+          trips: newList,
           loading: false,
         });
         wx.hideToast();
-      }
+      },
     });
   },
   loadMore() {
     const self = this;
-    this.getPOIList(self.data.type, self.data.id, self.data.poiType, false);
+    this.getTrips(self.data.type, self.data.id);
   },
-  changePOIType(e) {
-    const self = this;
-    const poiType = e.currentTarget.dataset.type;
-    self.setData({
-      poiType,
+  viewTrip(e) {
+    const ds = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `../trip/trip?id=${ds.id}&name=${ds.name}`,
     });
-    this.getPOIList(self.data.type, self.data.id, poiType, true);
   },
 });
