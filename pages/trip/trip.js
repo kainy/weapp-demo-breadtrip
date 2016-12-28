@@ -35,6 +35,15 @@ Page({
       }
     });
   },
+  onShareAppMessage: function () {
+    const opt = {
+      title: this.data.options.name,
+      desc: this.data.trip.days[0].waypoints[0].text,
+      path: `/pages/trip/trip?id=${this.data.options.id}&name=${this.data.options.name}`
+    }
+    // console.log(opt)
+    return opt
+  },
   viewWaypoint(e) {
     const self = this;
     const ds = e.currentTarget.dataset;
