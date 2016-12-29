@@ -6,6 +6,7 @@ Page({
     title: '',
     pois: null,
     info: null,
+    options: null,
     windowWidth: App.systemInfo.windowWidth,
     windowHeight: App.systemInfo.windowHeight,
   },
@@ -26,8 +27,18 @@ Page({
     });
     this.setData({
       title: name,
+      options
     });
     this.getPlaceInfo(type, id);
+  },
+  onShareAppMessage: function () {
+    const opt = {
+      title: this.data.title,
+      desc: `查看${this.data.title}的热门地点`,
+      path: `/pages/destination/destination?id=${this.data.options.id}&name=${this.data.title}`
+    }
+    console.log(opt)
+    return opt
   },
   getPlaceInfo(type, id) {
     const self = this;

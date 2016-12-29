@@ -44,7 +44,7 @@ Page({
       desc: this.data.trip.days[0].waypoints[0].text,
       path: `/pages/trip/trip?id=${this.data.options.id}&name=${this.data.options.name}`
     }
-    // console.log(opt)
+    console.log(opt)
     return opt
   },
   viewWaypoint(e) {

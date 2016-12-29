@@ -25,6 +25,15 @@ Page({
       },
     });
   },
+  onShareAppMessage: function () {
+    const opt = {
+      title: '发现 ✈️ 跨时空小程序',
+      desc: '发现最佳旅行地、热门地点、欧美国家、港澳台、亚洲国家…',
+      path: `/pages/explore/explore`
+    }
+    console.log(opt)
+    return opt
+  },
   viewPOI(e) {
     const data = e.currentTarget.dataset;
     wx.navigateTo({

@@ -49,6 +49,15 @@ Page({
     });
     this.getTrips(type, id);
   },
+  onShareAppMessage: function () {
+    const opt = {
+      title: this.data.title,
+      desc: `查看${this.data.title}的精品游记`,
+      path: `/pages/trip_list/trip_list?id=${this.data.id}&name=${this.data.title}`
+    }
+    console.log(opt)
+    return opt
+  },
   getTrips(type, id) {
     const self = this;
     const loading = self.data.loading;

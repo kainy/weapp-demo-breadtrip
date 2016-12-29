@@ -36,6 +36,15 @@ Page({
       },
     });
   },
+  onShareAppMessage: function () {
+    const opt = {
+      title: this.data.user_info.name,
+      desc: `查看用户 ${this.data.user_info.name} 的旅行日志`,
+      path: `/pages/users/users?id=${this.data.user_info.id}`
+    }
+    console.log(opt)
+    return opt
+  },
   viewTrip(e) {
     const ds = e.currentTarget.dataset;
     wx.navigateTo({
