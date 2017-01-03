@@ -21,7 +21,7 @@ Page({
       windowWidth: app.systemInfo.windowWidth,
     });
     wx.showToast({
-      title: '正在加载',
+      title: '传送门开启中',
       icon: 'loading',
       duration: 10000,
     });
