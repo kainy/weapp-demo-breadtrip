@@ -35,7 +35,7 @@ Page({
     const opt = {
       title: this.data.title,
       desc: `查看${this.data.title}的热门地点`,
-      path: `/pages/destination/destination?id=${this.data.options.id}&name=${this.data.title}`
+      path: `/pages/destination/destination?type=${this.data.options.type}&id=${this.data.options.id}&name=${this.data.title}`
     }
     console.log(opt)
     return opt
