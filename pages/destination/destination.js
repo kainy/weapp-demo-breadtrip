@@ -40,6 +40,12 @@ Page({
     console.log(opt)
     return opt
   },
+  onTheWay() {
+    wx.showModal({
+      title: '提示',
+      content: '功能开发中，敬请期待…'
+    })
+  },
   getPlaceInfo(type, id) {
     const self = this;
     api.getPlaceInfoByID({

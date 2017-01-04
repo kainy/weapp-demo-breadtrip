@@ -122,4 +122,10 @@ Page({
     });
     this.getPOIList(self.data.type, self.data.id, poiType, true);
   },
+  viewTrip(e) {
+    wx.showModal({
+      title: '提示',
+      content: '功能开发中，敬请期待…'
+    })
+  },
 });
