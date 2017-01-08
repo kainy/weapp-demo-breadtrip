@@ -1,182 +1,202 @@
-! function() {
-  var t = "1.0",
+! function () {
+  var t = "1.3",
     n = "log",
-    e = require("./ald-stat-conf.js");
+    o = require("./ald-stat-conf.js");
 
-  function o(t, n, e) {
+  function e(t, n, o) {
     if (t[n]) {
-      var o = t[n];
-      t[n] = function(t) {
-        e.call(this, t, n), o.call(this, t)
+      var e = t[n];
+      t[n] = function (t) {
+        o.call(this, t, n), e.call(this, t)
       }
-    } else t[n] = function(t) {
-      e.call(this, t, n)
+    } else t[n] = function (t) {
+      o.call(this, t, n)
     }
   }
-  var a = function(t) {
-      var e = 0,
-        o = function() {
+  var a = function (t) {
+      var o = 0,
+        e = function () {
           wx.request({
             "url": "https://" + n + ".aldwx.com/d.php",
             "data": t,
             "method": "GET",
-            "fail": function() {
-              e < 2 && (e++, o())
+            "fail": function () {
+              o < 2 && (o++, e())
             }
           })
         };
-      o()
+      e()
     },
-    i = function(n, o, i) {
-      var u = getApp();
-      if (u) {
-        var c = {
-          "ak": e.app_key,
-          "uu": u.a,
-          "at": u.b,
-          "ts": Date.now(),
-          "tp": o,
-          "ev": n,
-          "v": t
-        };
-        i && (c["ct"] = i), a(c)
-      }
-    },
-    u = {};
-  u["debug"] = function(t) {
-    i("debug", 0, t)
-  }, u["warn"] = function(t) {
-    i("debug", 1, t)
-  }, u["error"] = function(t) {
-    i("debug", 2, t)
-  }, u["reportRegsiterSuccess"] = function() {
-    i("event", "reg")
-  }, u["reportPurchaseSuccess"] = function() {
-    i("event", "buy")
+    i = function (n, e, i, s) {
+      var u = {
+        "ak": o["app_key"],
+        "uu": n.a,
+        "at": n.b,
+        "ts": Date.now(),
+        "tp": i,
+        "ev": e,
+        "nt": n.c,
+        "pm": n.d,
+        "pr": n.e,
+        "ww": n.f,
+        "wh": n.g,
+        "lang": n.h,
+        "wv": n.i,
+        "lat": n.j,
+        "lng": n.k,
+        "spd": n.l,
+        "v": t
+      };
+      s && (u["ct"] = s), n.m && (u["ln"] = n.m), n.n && (u["sr"] = n.n), a(u)
+    };
+
+  function s(t) {
+    this.o = t
+  }
+  s.prototype["debug"] = function (t) {
+    i(this.o, "debug", 0, t)
+  }, s.prototype["warn"] = function (t) {
+    i(this.o, "debug", 1, t)
+  }, s.prototype["error"] = function (t) {
+    i(this.o, "debug", 2, t)
+  }, s.prototype["sendEvent"] = function (t, n) {
+    h(n) ? i(this.o, "event", t) : i(this.o, "event", t, JSON.stringify(n))
   };
-  var c = function() {
-      this["aldstat"] = u
-    },
-    s = function() {
-      this.c = Date.now();
+  var u = function () {
+      this["aldstat"] = new s(this), this.n = Math.ceil(4 * Math.random());
       var t = wx.getStorageSync("aldstat_uuid");
-      t || (t = "" + Date.now() + Math.floor(1e7 * Math.random()), wx.setStorageSync("aldstat_uuid", t), this.d = !0), this.a = t, this.b = "" + Date.now() + Math.floor(1e7 * Math.random());
+      t || (t = "" + Date.now() + Math.floor(1e7 * Math.random()), wx.setStorageSync("aldstat_uuid", t), this.p = !0), this.a = t, this.q = Date.now(), this.r = Date.now(), this.s = 0, this.b = "" + Date.now() + Math.floor(1e7 * Math.random());
       var e = this;
-      e.e = 0, e.f = 0, e.g = 0, e.h = "";
-      var o = function() {
+      e.t = 0, e.u = 0, e.v = 0;
+      var a = function () {
           wx.getNetworkType({
-            "success": function(t) {
-              e.i = t["networkType"]
-            },
-            "complete": a
-          })
-        },
-        a = function() {
-          wx.getSystemInfo({
-            "success": function(t) {
-              e.j = t["model"], e.k = t["pixelRatio"], e.l = t["windowWidth"], e.m = t["windowHeight"], e.n = t["language"], e.o = t["version"]
+            "success": function (t) {
+              e.c = t["networkType"]
             },
             "complete": i
           })
         },
-        i = function() {
-          wx.getLocation({
-            "type": "wgs84",
-            "success": function(t) {
-              e.p = t["latitude"], e.q = t["longitude"], e.r = t["speed"]
+        i = function () {
+          wx.getSystemInfo({
+            "success": function (t) {
+              e.d = t["model"], e.e = t["pixelRatio"], e.f = t["windowWidth"], e.g = t["windowHeight"], e.h = t["language"], e.i = t["version"]
             },
-            "complete": u
+            "complete": function () {
+              o.getLocation && u()
+            }
           })
         },
-        u = function() {
+        u = function () {
+          wx.getLocation({
+            "type": "wgs84",
+            "success": function (t) {
+              e.j = t["latitude"], e.k = t["longitude"], e.l = t["speed"]
+            },
+            "complete": c
+          })
+        },
+        c = function () {
           wx.request({
             "url": "https://" + n + ".aldwx.com/l.php",
             "data": {
-              "lat": e.p,
-              "lng": e.q
+              "lat": e.j,
+              "lng": e.k
             },
             "method": "GET",
-            "success": function(t) {
-              t["data"]["success"] && (e.s = t["data"]["country"] + ":" + t["data"]["province"] + ":" + t["data"]["city"])
+            "success": function (t) {
+              t["data"]["success"] && (e.m = t["data"]["country"] + ":" + t["data"]["province"] + ":" + t["data"]["city"])
             }
           })
         };
-      o()
+      a()
     },
-    p = function(n, o) {
-      var i = getApp(),
-        u = {
-          "ak": e.app_key,
-          "uu": i.a,
-          "at": i.b,
-          "st": i.c,
-          "dr": Date.now() - i.c,
-          "pc": i.g,
-          "fp": i.h,
-          "lp": i.t,
-          "rc": i.e,
-          "bc": i.f,
-          "nt": i.i,
-          "pm": i.j,
-          "pr": i.k,
-          "ww": i.l,
-          "wh": i.m,
-          "lang": i.n,
-          "wv": i.o,
-          "lat": i.p,
-          "lng": i.q,
-          "spd": i.r,
-          "v": t,
-          "ev": "app"
-        };
-      i.d && (u["ifo"] = "true"), i.s && (u["ln"] = i.s), a(u)
+    c = function () {
+      this.r = Date.now()
     },
-    r = App;
-  App = function(t) {
-    o(t, "onLaunch", c), o(t, "onShow", s), o(t, "onHide", p), r(t)
+    r = function (n, e) {
+      var i = this;
+      i.s += Date.now() - i.r;
+      var s = {
+        "ak": o["app_key"],
+        "uu": i.a,
+        "at": i.b,
+        "st": i.q,
+        "dr": i.s,
+        "et": Date.now(),
+        "pc": i.v,
+        "fp": i.w,
+        "lp": i.x,
+        "rc": i.t,
+        "bc": i.u,
+        "nt": i.c,
+        "pm": i.d,
+        "pr": i.e,
+        "ww": i.f,
+        "wh": i.g,
+        "lang": i.h,
+        "wv": i.i,
+        "lat": i.j,
+        "lng": i.k,
+        "spd": i.l,
+        "v": t,
+        "ev": "app"
+      };
+      i.p && (s["ifo"] = "true"), i.m && (s["ln"] = i.m), i.n && (s["sr"] = i.n), a(s)
+    },
+    p = App;
+  App = function (t) {
+    e(t, "onLaunch", u), e(t, "onShow", c), e(t, "onHide", r), p(t)
   };
-  var f = function(n, o) {
+
+  function h(t) {
+    for (var n in t) return !1;
+    return !0
+  }
+  var l = function (n, e) {
       var i = getApp(),
-        u = this,
-        c = {
+        s = this,
+        u = {
           "uu": i.a,
           "at": i.b,
           "v": t,
-          "ak": e.app_key,
+          "ak": o["app_key"],
           "ev": "page",
-          "st": u.u,
-          "dr": Date.now() - u.u,
-          "rc": u.e,
-          "bc": u.f,
-          "pp": u["__route__"],
-          "nt": i.i,
-          "pm": i.j,
-          "pr": i.k,
-          "ww": i.l,
-          "wh": i.m,
-          "lang": i.n,
-          "wv": i.o,
-          "lat": i.p,
-          "lng": i.q,
-          "spd": i.r,
+          "st": s.y,
+          "dr": Date.now() - s.y,
+          "rc": s.t,
+          "bc": s.u,
+          "pp": s["__route__"],
+          "nt": i.c,
+          "pm": i.d,
+          "pr": i.e,
+          "ww": i.f,
+          "wh": i.g,
+          "lang": i.h,
+          "wv": i.i,
+          "lat": i.j,
+          "lng": i.k,
+          "spd": i.l,
           "v": t
         };
-      i.v && (c["lp"] = i.v), i.s && (c["ln"] = i.s), a(c), i.v = u["__route__"]
+      s.z && (u["ifp"] = "true"), i.A && (u["lp"] = i.A), i.m && (u["ln"] = i.m), s.B && (u["ag"] = s.B), i.n && (u["sr"] = i.n), a(u), i.A = s["__route__"]
     },
-    l = function(t, n) {
-      var e = getApp();
-      this.u = Date.now(), this.e = 0, this.f = 0, e.g ? e.g++ : e.g = 1, e.h || (e.h = this["__route__"]), e.t = this["__route__"]
+    f = function (t, n) {
+      h(t) || (this.B = JSON.stringify(t))
     },
-    h = function(t, n) {
-      var e = getApp();
-      this.e++, e.e++
+    w = function (t, n) {
+      var o = getApp();
+      this.y = Date.now(), this.t = 0, this.u = 0, o.v ? o.v++ : o.v = 1, o.w || (o.w = this["__route__"], this.z = !0), o.x = this["__route__"]
     },
-    d = function(t, n) {
-      var e = getApp();
-      this.f++, e.f++
+    d = function (t, n) {
+      var o = getApp();
+      this.t++, o.t++
     },
-    g = Page;
-  Page = function(t) {
-    o(t, "onUnload", f), o(t, "onShow", l), o(t, "onHide", f), o(t, "onPullDownRefresh", h), o(t, "onReachBottom", d), g(t)
+    g = function (t, n) {
+      var o = getApp();
+      this.u++, o.u++
+    },
+    v = Page;
+  Page = function (t) {
+    e(t, "onLoad", f), e(t, "onUnload", l), e(t, "onShow", w), e(t, "onHide", l), e(t, "onPullDownRefresh", d), e(t, "onReachBottom", g), v(t)
   }
 }();
