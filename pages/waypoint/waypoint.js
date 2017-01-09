@@ -30,6 +30,15 @@ Page({
     });
     this.getWaypointDetail(tripId, waypointId);
   },
+  onShareAppMessage: function () {
+    const opt = {
+      title: this.data.title,
+      desc: this.data.waypoint.text,
+      path: `/pages/waypoint/waypoint?waypointId=${this.data.waypoint.id}&tripId=${this.data.waypoint.trip_id}`
+    }
+    console.log(opt)
+    return opt
+  },
   getWaypointDetail(tripId, waypointId) {
     const self = this;
     api.getWaypointInfoByID({

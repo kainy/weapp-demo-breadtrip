@@ -11,7 +11,7 @@ Page({
   onLoad() {
     const self = this;
     wx.showToast({
-      title: '正在加载',
+      title: '传送门开启中',
       icon: 'loading',
       duration: 10000,
     });
@@ -24,6 +24,15 @@ Page({
         wx.hideToast();
       },
     });
+  },
+  onShareAppMessage: function () {
+    const opt = {
+      title: '发现 ✈️ 跨时空小程序',
+      desc: '发现最佳旅行地、热门地点、欧美国家、港澳台、亚洲国家…',
+      path: `/pages/explore/explore`
+    }
+    console.log(opt)
+    return opt
   },
   viewPOI(e) {
     const data = e.currentTarget.dataset;

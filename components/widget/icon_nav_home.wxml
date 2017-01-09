@@ -1,0 +1,8 @@
+<template name="m-homenav">
+  <navigator url="/pages/index/index" open-type="switchTab" hover-class="none">
+    <view class="home-nav">
+      <image mode="scaleToFill" src="/images/tab_home_sel_30.png"></image>
+      <text>首页</text>
+    </view>
+  </navigator>
+</template>

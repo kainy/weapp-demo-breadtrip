@@ -15,7 +15,7 @@
     "navigationBarBackgroundColor": "#4abdcc",
     "navigationBarTitleText": "跨时空",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#b0b0b0",

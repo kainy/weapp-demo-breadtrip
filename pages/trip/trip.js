@@ -21,7 +21,7 @@ Page({
       windowWidth: app.systemInfo.windowWidth,
     });
     wx.showToast({
-      title: '正在加载',
+      title: '传送门开启中',
       icon: 'loading',
       duration: 10000,
     });
@@ -44,7 +44,7 @@ Page({
       desc: this.data.trip.days[0].waypoints[0].text,
       path: `/pages/trip/trip?id=${this.data.options.id}&name=${this.data.options.name}`
     }
-    // console.log(opt)
+    console.log(opt)
     return opt
   },
   viewWaypoint(e) {

@@ -6,6 +6,7 @@ Page({
     title: '',
     pois: null,
     info: null,
+    options: null,
     windowWidth: App.systemInfo.windowWidth,
     windowHeight: App.systemInfo.windowHeight,
   },
@@ -20,14 +21,30 @@ Page({
     const id = options.id;
     const name = options.name;
     wx.showToast({
-      title: '正在加载',
+      title: '传送门开启中',
       icon: 'loading',
       duration: 10000,
     });
     this.setData({
       title: name,
+      options
     });
     this.getPlaceInfo(type, id);
+  },
+  onShareAppMessage: function () {
+    const opt = {
+      title: this.data.title,
+      desc: `查看${this.data.title}的热门地点`,
+      path: `/pages/destination/destination?type=${this.data.options.type}&id=${this.data.options.id}&name=${this.data.title}`
+    }
+    console.log(opt)
+    return opt
+  },
+  onTheWay() {
+    wx.showModal({
+      title: '提示',
+      content: '功能开发中，敬请期待…'
+    })
   },
   getPlaceInfo(type, id) {
     const self = this;

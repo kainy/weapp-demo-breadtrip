@@ -28,7 +28,7 @@ Page({
     const id = options.id;
     const name = options.name;
     wx.showToast({
-      title: '正在加载',
+      title: '传送门开启中',
       icon: 'loading',
       duration: 10000,
     });
@@ -48,6 +48,15 @@ Page({
       },
     });
     this.getTrips(type, id);
+  },
+  onShareAppMessage: function () {
+    const opt = {
+      title: this.data.title,
+      desc: `查看${this.data.title}的精品游记`,
+      path: `/pages/trip_list/trip_list?type=${this.data.type}&id=${this.data.id}&name=${this.data.title}`
+    }
+    console.log(opt)
+    return opt
   },
   getTrips(type, id) {
     const self = this;

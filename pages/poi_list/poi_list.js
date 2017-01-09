@@ -27,7 +27,7 @@ Page({
     const id = options.id;
     const name = options.name;
     wx.showToast({
-      title: '正在加载',
+      title: '传送门开启中',
       icon: 'loading',
       duration: 10000,
     });
@@ -47,6 +47,15 @@ Page({
       },
     });
     this.getPOIList(type, id, 'all', true);
+  },
+  onShareAppMessage: function () {
+    const opt = {
+      title: this.data.title,
+      desc: `查看${this.data.title}的景点、住宿、餐厅… 地点信息`,
+      path: `/pages/poi_list/poi_list?id=${this.data.id}&name=${this.data.title}`
+    }
+    console.log(opt)
+    return opt
   },
   getPOIList(type, id, poiType, needRefresh) {
     const self = this;
@@ -112,5 +121,11 @@ Page({
       poiType,
     });
     this.getPOIList(self.data.type, self.data.id, poiType, true);
+  },
+  viewTrip(e) {
+    wx.showModal({
+      title: '提示',
+      content: '功能开发中，敬请期待…'
+    })
   },
 });

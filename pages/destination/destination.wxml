@@ -20,7 +20,7 @@
     <image src="../../images/destination/divide_r.png"></image>
   </view>
   <view class="list">
-    <view wx:for="{{ pois }}" wx:for-item="poi" class="poi" wx:key="poi.id">
+    <view wx:for="{{ pois }}" wx:for-item="poi" class="poi" wx:key="poi.id" bindtap="onTheWay">
       <image src="{{ poi.cover_s }}" mode="aspectFill"></image>
       <view class="info">
         <view class="title">{{ poi.name }}</view>
