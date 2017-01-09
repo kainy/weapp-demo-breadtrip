@@ -1,3 +1,4 @@
+<import src="../../components/widget/icon_nav_home.wxml"/>
 <view class="trip">
   <view class="trip-top" wx:if="{{ trip != null }}">
     <image class="trip-user" src="{{ trip.user.avatar_m }}" data-id="{{ trip.user.id }}" bindtap="gotoUser"></image>
@@ -32,4 +33,5 @@
       </view>
     </block>
   </view>
+  <template is="m-homenav"></template>
 </view>
