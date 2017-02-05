@@ -14,7 +14,7 @@ A [Wechat-App](https://mp.weixin.qq.com/debug/wxadoc/dev/index.html) demo based 
 
 ## Introduction
 
-[Traversing ——  a traveling Wechat miniapp](http://github.kainy.cn/blog/2017/01/%E3%80%8A%E8%B7%A8%E6%97%B6%E7%A9%BA%E3%80%8B%E6%97%85%E8%A1%8C%E6%97%A5%E8%AE%B0%E5%B0%8F%E7%A8%8B%E5%BA%8F/)
+[Traversing ——  a traveling Wechat mini program](http://github.kainy.cn/blog/2017/01/%E3%80%8A%E8%B7%A8%E6%97%B6%E7%A9%BA%E3%80%8B%E6%97%85%E8%A1%8C%E6%97%A5%E8%AE%B0%E5%B0%8F%E7%A8%8B%E5%BA%8F/)
 
 ## Usage
 
