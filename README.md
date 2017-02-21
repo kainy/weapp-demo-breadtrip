@@ -10,7 +10,7 @@ A [Wechat-App](https://mp.weixin.qq.com/debug/wxadoc/dev/index.html) demo based 
 
 ## Production
 
-  ![微信扫一扫，码上有小程序！](http://ww1.sinaimg.cn/large/4d6e3e3bgw1fbj9yz04isj209k0awdfw.jpg)
+  ![微信扫一扫，码上有小程序！](http://wx3.sinaimg.cn/mw690/4d6e3e3bgy1fcycs3zwehj20zu14uwi0.jpg)
 
 ## Introduction
 
