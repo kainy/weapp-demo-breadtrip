@@ -3,8 +3,12 @@ const api = require('../../utils/api.js');
 const App = getApp();
 Page({
   data: {
-    trip: {},
+    trip: {
+      waypoints: 17
+    },
     options: null,
+    arrShow: [],
+    idxShow: 3,
   },
   onReady() {
     const self = this;
@@ -18,7 +22,7 @@ Page({
     self.setData({
       options,
       windowWidth: App.systemInfo.windowWidth,
-      windowHeight: App.systemInfo.windowHeight + 57,
+      windowHeight: App.systemInfo.windowHeight + 57, //57 可能不准确，为避免底部留空
     });
     wx.showToast({
       title: '传送门开启中',
@@ -31,12 +35,26 @@ Page({
       },
       success: (res) => {
         const trip = res.data;
+        for( let day of trip.days) {
+          for( let wp of day.waypoints) {
+            self.data.arrShow.push(wp.id)
+            wp.idx = self.data.arrShow.length
+          }
+        }
         self.setData({
           trip,
         });
         wx.hideToast();
       },
     });
+  },
+  bindscroll: function (e) {
+    const height = e.detail.scrollHeight / this.data.trip.waypoints
+    const n= Math.round(e.detail.scrollTop / height) + 7 //7 非准确值，为提前加载图片数
+    this.setData({
+      idxShow: Math.max(n, this.data.idxShow)
+    })
+    // console.log(n, this.data.idxShow)
   },
   onShareAppMessage: function () {
     const opt = {
