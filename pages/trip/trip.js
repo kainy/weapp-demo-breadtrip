@@ -1,11 +1,10 @@
 const api = require('../../utils/api.js');
 
-const app = getApp();
+const App = getApp();
 Page({
   data: {
     trip: {},
     options: null,
-    windowWidth: 0,
   },
   onReady() {
     const self = this;
@@ -18,7 +17,8 @@ Page({
     const id = options.id;
     self.setData({
       options,
-      windowWidth: app.systemInfo.windowWidth,
+      windowWidth: App.systemInfo.windowWidth,
+      windowHeight: App.systemInfo.windowHeight + 57,
     });
     wx.showToast({
       title: '传送门开启中',

@@ -1,4 +1,5 @@
 <import src="../../components/widget/icon_nav_home.wxml"/>
+<scroll-view style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
 <view class="trip">
   <view class="trip-top" wx:if="{{ trip != null }}">
     <image class="trip-user" src="{{ trip.user.avatar_m }}" data-id="{{ trip.user.id }}" bindtap="gotoUser"></image>
@@ -35,3 +36,4 @@
   </view>
   <template is="m-homenav"></template>
 </view>
+</scroll-view>
