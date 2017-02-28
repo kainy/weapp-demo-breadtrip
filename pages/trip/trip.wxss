@@ -96,3 +96,19 @@ page{
   width: 24rpx;
   height: 24rpx;
 }
+@keyframes rotate {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.playing {
+  animation: rotate 4s linear infinite;
+}
+.audioCtrl {
+  float:right;
+  margin:22rpx;
+}

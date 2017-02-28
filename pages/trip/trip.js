@@ -8,7 +8,9 @@ Page({
     },
     options: null,
     arrShow: [],
-    idxShow: 3,
+    idxShow: 3, // 页面加载展示3张
+    bgPlaying: false,
+    bgMusic: {}
   },
   onReady() {
     const self = this;
@@ -45,8 +47,44 @@ Page({
           trip,
         });
         wx.hideToast();
+        // 初始化背景乐播放器
+        this.setData({
+          bgMusic: [{
+              poster: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000',
+              name: '此时此刻',
+              author: '许巍',
+              src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
+            },{
+              src: 'http://sc1.111ttt.com/2016/5/12/10/205101118503.mp3'
+            },{
+              src: 'http://sc1.111ttt.com/2016/5/12/10/205100814018.mp3'
+            },{
+              src: 'http://sc1.111ttt.com/2016/1/12/10/205100725028.mp3'
+            },{
+              src: 'http://sc1.111ttt.com/2016/1/12/10/205101123180.mp3'
+            }][this.data.options.id % 5]
+        })
+        // 使用 wx.createAudioContext 获取 audio 上下文 context
+        this.audioCtx = wx.createAudioContext('myAudio') // 
+        this.setData({'bgPlaying': true})
+        this.audioCtx.play()
       },
     });
+  },
+  onShow: function () {
+    // 图片组件会暂停音乐播放，返回后继续
+    if (this.data.bgPlaying) {
+      this.audioCtx.play()
+    }
+  },
+  audioCtrl: function () {
+    if (this.data.bgPlaying) {
+      this.setData({'bgPlaying': false})
+      this.audioCtx.pause()
+    } else {
+      this.setData({'bgPlaying': true})
+      this.audioCtx.play()
+    }
   },
   bindscroll: function (e) {
     const height = e.detail.scrollHeight / this.data.trip.waypoints
