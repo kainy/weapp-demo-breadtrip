@@ -1,6 +1,8 @@
 const api = require('../../utils/api.js');
+const util = require('../../utils/util.js');
 
 const App = getApp();
+const throttle = util.throttle;
 Page({
   data: {
     trip: {
@@ -85,14 +87,15 @@ Page({
       this.audioCtx.play()
     }
   },
-  bindscroll: function (e) {
+  bindscroll: throttle(function (e) {
+    if(!e) return
     const height = e.detail.scrollHeight / this.data.trip.waypoints
     const n= Math.round(e.detail.scrollTop / height) + 7 //7 非准确值，为提前加载图片数
     this.setData({
       idxShow: Math.max(n, this.data.idxShow)
     })
     // console.log(n, this.data.idxShow)
-  },
+  }, 777, 3777),
   onShareAppMessage: function () {
     const opt = {
       title: this.data.options.name,
