@@ -69,15 +69,21 @@ Page({
           author: '许巍',
           src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
         },{
-          src: 'http://sc1.111ttt.com/2016/5/12/10/205101118503.mp3'
+          src: 'http://sc1.111ttt.com/2016/1/12/07/205071505129.mp3'
         },{
           src: 'http://sc1.111ttt.com/2016/5/12/10/205100814018.mp3'
         },{
-          src: 'http://sc1.111ttt.com/2016/5/12/10/205101044092.mp3'
+          src: 'http://sc1.111ttt.com/2016/1/12/07/205071220035.mp3'
         },{
           src: 'http://sc1.111ttt.com/2016/1/12/10/205101123180.mp3'
         },{
           src: 'http://sc1.111ttt.com/2016/1/12/10/205100059540.mp3'
+        },{
+          src: 'http://sc1.111ttt.com/2016/1/12/09/205091041376.mp3'
+        },{
+          src: 'http://sc1.111ttt.com/2016/1/12/08/205081412096.mp3'
+        },{
+          src: 'http://sc1.111ttt.com/2016/5/12/08/205081206155.mp3'
         }][this.data.options.id % 6]
     })
     // 使用 wx.createAudioContext 获取 audio 上下文 context
