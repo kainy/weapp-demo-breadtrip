@@ -1,7 +1,7 @@
 <import src="../../components/widget/icon_nav_home.wxml"/>
 <scroll-view style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscroll="bindscroll">
-<view wx:if="{{ bgMusic.src }}" bindtap="audioCtrl" class="audioCtrl">
-  <audio src="{{bgMusic.src}}" id="myAudio" loop style="display:none"></audio>
+<view wx:if="{{ bgMusic }}" bindtap="audioCtrl" class="audioCtrl">
+  <audio src="{{bgMusic}}" id="myAudio" loop style="display:none"></audio>
   <image class="{{ bgPlaying ? 'playing' : '' }}" style="width:94rpx;height:94rpx;" mode="scaleToFill" src="https://image.flaticon.com/icons/svg/26/26805.svg"></image>
 </view>
 <view class="trip">
