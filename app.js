@@ -24,9 +24,16 @@ App({
         })
       },
     });
+    wx.getNetworkType({
+      success: function(res) {
+        // 返回网络类型, 有效值：
+        // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
+        self.globalData.networkType = res.networkType
+      }
+    })
   },
   getUserInfo:function(cb){
-    var that = this
+    var self = this
     if(this.globalData.userInfo){
       typeof cb == "function" && cb(this.globalData.userInfo)
     }else{
@@ -35,8 +42,8 @@ App({
         success: function () {
           wx.getUserInfo({
             success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
+              self.globalData.userInfo = res.userInfo
+              typeof cb == "function" && cb(self.globalData.userInfo)
             }
           })
         }
