@@ -12,6 +12,8 @@ Page({
     arrShow: [],
     idxShow: 3, // 页面加载展示3张
     bgPlaying: false,
+    windowWidth: App.systemInfo.windowWidth,
+    windowHeight: App.systemInfo.windowHeight,
     bgMusic: ''
   },
   onReady() {
@@ -25,9 +27,16 @@ Page({
     const id = options.id;
     self.setData({
       options,
-      windowWidth: App.systemInfo.windowWidth,
-      windowHeight: App.systemInfo.windowHeight,
     });
+    wx.getSystemInfo({
+      success(res){
+        if (App.systemInfo.windowHeight !== res.windowHeight) {
+          self.setData({
+            windowHeight: res.windowHeight,
+          })
+        }
+      }
+    })
     wx.showToast({
       title: '传送门开启中',
       icon: 'loading',
