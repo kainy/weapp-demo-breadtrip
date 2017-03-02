@@ -2,7 +2,7 @@
 <scroll-view style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscroll="bindscroll">
 <view wx:if="{{ bgMusic }}" bindtap="audioCtrl" class="audioCtrl">
   <audio src="{{bgMusic}}" id="myAudio" loop style="display:none"></audio>
-  <image class="{{ bgPlaying ? 'playing' : '' }}" style="width:94rpx;height:94rpx;" mode="scaleToFill" src="https://image.flaticon.com/icons/svg/26/26805.svg"></image>
+  <image class="{{ bgPlaying ? 'playing' : '' }}" style="width:94rpx;height:94rpx;" mode="scaleToFill" src="https://image.flaticon.com/icons/svg/26/26805.svg" art="music"></image>
 </view>
 <view class="trip">
   <view class="trip-top" wx:if="{{ trip != null }}">

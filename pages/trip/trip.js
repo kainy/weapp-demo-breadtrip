@@ -26,7 +26,7 @@ Page({
     self.setData({
       options,
       windowWidth: App.systemInfo.windowWidth,
-      windowHeight: App.systemInfo.windowHeight + 57, //57 可能不准确，为避免底部留空
+      windowHeight: App.systemInfo.windowHeight,
     });
     wx.showToast({
       title: '传送门开启中',
