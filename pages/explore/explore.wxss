@@ -1,3 +1,16 @@
+@import "../../components/wxSearch/wxSearch.wxss";
+.wxSearch-wraper{
+  position:fixed;
+  z-index:99;
+  width:100%;
+  margin-top:-20rpx;
+}
+/*.wxSearch{
+  z-index: 9999;
+}*/
+.wxSearchInner{
+  opacity: .9;
+}
 page{
   background-color: #f6f6f6;
 }

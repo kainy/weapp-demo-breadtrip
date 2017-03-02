@@ -1,4 +1,5 @@
 const api = require('../../utils/api.js');
+const WxSearch = require('../../components/wxSearch/wxSearch.js')
 
 const App = getApp();
 Page({
@@ -7,6 +8,8 @@ Page({
     windowWidth: App.systemInfo.windowWidth,
   },
   onReady() {
+    WxSearch.init(this,43,['weappdev','小程序','wxParse','wxSearch','wxNotification']);
+    WxSearch.initMindKeys(['weappdev.com','微信小程序开发','微信开发','微信小程序']);
   },
   onLoad() {
     const self = this;
@@ -40,4 +43,37 @@ Page({
       url: `../destination/destination?type=${data.type}&id=${data.id}&name=${data.name}`,
     });
   },
+  wxSearchFn: function(e){
+    var that = this
+    WxSearch.wxSearchAddHisKey(that);
+    
+  },
+  wxSearchInput: function(e){
+    var that = this
+    WxSearch.wxSearchInput(e,that);
+  },
+  wxSerchFocus: function(e){
+    var that = this
+    WxSearch.wxSearchFocus(e,that);
+  },
+  wxSearchBlur: function(e){
+    var that = this
+    WxSearch.wxSearchBlur(e,that);
+  },
+  wxSearchKeyTap:function(e){
+    var that = this
+    WxSearch.wxSearchKeyTap(e,that);
+  },
+  wxSearchDeleteKey: function(e){
+    var that = this
+    WxSearch.wxSearchDeleteKey(e,that);
+  },
+  wxSearchDeleteAll: function(e){
+    var that = this;
+    WxSearch.wxSearchDeleteAll(that);
+  },
+  wxSearchTap: function(e){
+    var that = this
+    WxSearch.wxSearchHiddenPancel(that);
+  }
 });
