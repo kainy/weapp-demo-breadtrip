@@ -73,8 +73,10 @@ Page({
         self.setData({bgMusic : src})
         // 使用 wx.createAudioContext 获取 audio 上下文 context
         self.audioCtx = wx.createAudioContext('myAudio')
-        self.setData({'bgPlaying': true})
-        self.audioCtx.play()
+        setTimeout(function() {
+          self.setData({'bgPlaying': true})
+          self.audioCtx.play()
+        } , 1077)
       }
     })
   },
