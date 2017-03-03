@@ -44,36 +44,49 @@ Page({
     });
   },
   wxSearchFn: function(e){
-    var that = this
-    WxSearch.wxSearchAddHisKey(that);
+    var self = this
+    api.search({
+      data: {
+        key: self.data.wxSearchData.value,
+        start: 0,
+        count: 20,
+        data_type: ''
+      },
+      success: (res) => {
+        const trips= res.data.data.trips
+        console.log(trips)
+      }
+    })
+    WxSearch.wxSearchAddHisKey(self);
     
   },
   wxSearchInput: function(e){
-    var that = this
-    WxSearch.wxSearchInput(e,that);
+    var self = this
+    WxSearch.wxSearchInput(e,self);
   },
   wxSerchFocus: function(e){
-    var that = this
-    WxSearch.wxSearchFocus(e,that);
+    var self = this
+    WxSearch.wxSearchFocus(e,self);
   },
   wxSearchBlur: function(e){
-    var that = this
-    WxSearch.wxSearchBlur(e,that);
+    var self = this
+    WxSearch.wxSearchBlur(e,self);
   },
   wxSearchKeyTap:function(e){
-    var that = this
-    WxSearch.wxSearchKeyTap(e,that);
+    var self = this
+    WxSearch.wxSearchKeyTap(e,self);
+    self.wxSearchFn();
   },
   wxSearchDeleteKey: function(e){
-    var that = this
-    WxSearch.wxSearchDeleteKey(e,that);
+    var self = this
+    WxSearch.wxSearchDeleteKey(e,self);
   },
   wxSearchDeleteAll: function(e){
-    var that = this;
-    WxSearch.wxSearchDeleteAll(that);
+    var self = this;
+    WxSearch.wxSearchDeleteAll(self);
   },
   wxSearchTap: function(e){
-    var that = this
-    WxSearch.wxSearchHiddenPancel(that);
+    var self = this
+    WxSearch.wxSearchHiddenPancel(self);
   }
 });

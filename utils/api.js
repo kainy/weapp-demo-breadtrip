@@ -54,6 +54,9 @@ const getWaypointInfoByID = (params) => {
 const getWaypointReplyByID = (params) => {
   wxRequest(params, `${apiURL}/trips/${params.query.tripId}/waypoints/${params.query.waypointId}/replies/`);
 };
+const search = (params) => {
+  wxRequest(params, `${apiURL}/v2/search/`);
+};
 
 module.exports = {
   getHotTripList,
@@ -65,4 +68,5 @@ module.exports = {
   getUserInfoByID,
   getWaypointInfoByID,
   getWaypointReplyByID,
+  search,
 };
