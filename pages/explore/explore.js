@@ -11,8 +11,8 @@ Page({
     },
   },
   onReady() {
-    WxSearch.init(this,67,['北京','英国','法国','哈尔滨','三亚']);
-    WxSearch.initMindKeys(['香港','澳门','泰国','德国']);
+    WxSearch.init(this,62,['蜜月','毕业','跨年','哈尔滨','浪漫']);
+    WxSearch.initMindKeys(['香港','澳门','泰国','德国','北京','英国','法国','哈尔滨','三亚']);
   },
   onLoad() {
     const self = this;
@@ -59,7 +59,7 @@ Page({
         key: self.data.wxSearchData.value,
         start: 0,
         count: 20,
-        data_type: ''
+        data_type: 'trip'
       },
       success: (res) => {
         self.setData({

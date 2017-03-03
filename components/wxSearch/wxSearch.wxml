@@ -24,10 +24,10 @@
                 <block wx:for="{{wxSearchData.his}}">
                     <view class="wxSearchHistoryItem">
                         <text class="wxSearchHistoryItemText" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</text> 
-                        <text class="wxSearchHistoryItemDel" bindtap="wxSearchDeleteKey" data-key="{{item}}" data-key="{{item}}">删除</text>
+                        <text class="wxSearchHistoryItemDel" catchtap="wxSearchDeleteKey" data-key="{{item}}" data-key="{{item}}">删除</text>
                     </view>
                 </block>
-                <view class="wxSearchDeleteAllBtn" bindtap="wxSearchDeleteAll">清除历史</view>
+                <view class="wxSearchDeleteAllBtn" catchtap="wxSearchDeleteAll">清除历史</view>
             </view>
             <view wx:else>
                 <view class="wxSearchHistoryEmpty">搜索历史为空</view>

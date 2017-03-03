@@ -8,9 +8,9 @@
   margin-top:-20rpx;
   opacity: .9;
 }
-/*.wxSearch{
-  z-index: 9999;
-}*/
+.wxSearch{
+  border: 0;
+}
 .wxSearch-section {
   padding:20rpx;
   margin-top:20rpx;
@@ -67,6 +67,6 @@ page{
   font-size: 40rpx;
   font-weight: bold;
 }
-.destination{
-  padding-top:107rpx;
+.destination, .search-result{
+  padding-top:127rpx;
 }
