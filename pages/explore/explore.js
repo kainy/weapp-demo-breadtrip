@@ -6,10 +6,13 @@ Page({
   data: {
     elements: [],
     windowWidth: App.systemInfo.windowWidth,
+    searchResult: {
+      trips: []
+    },
   },
   onReady() {
-    WxSearch.init(this,43,['weappdev','小程序','wxParse','wxSearch','wxNotification']);
-    WxSearch.initMindKeys(['weappdev.com','微信小程序开发','微信开发','微信小程序']);
+    WxSearch.init(this,67,['北京','英国','法国','哈尔滨','三亚']);
+    WxSearch.initMindKeys(['香港','澳门','泰国','德国']);
   },
   onLoad() {
     const self = this;
@@ -43,6 +46,12 @@ Page({
       url: `../destination/destination?type=${data.type}&id=${data.id}&name=${data.name}`,
     });
   },
+  viewTrip(e) {
+    const ds = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `../trip/trip?id=${ds.id}&name=${ds.name}`,
+    });
+  },
   wxSearchFn: function(e){
     var self = this
     api.search({
@@ -53,8 +62,12 @@ Page({
         data_type: ''
       },
       success: (res) => {
-        const trips= res.data.data.trips
-        console.log(trips)
+        self.setData({
+          searchResult: {
+            trips: res.data.data.trips
+          }
+        })
+        // console.log(trips)
       }
     })
     WxSearch.wxSearchAddHisKey(self);

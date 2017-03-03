@@ -1,4 +1,6 @@
 <import src="../../components/wxSearch/wxSearch.wxml"/>
+<import src="../../components/trip/trip.wxml"/>
+
 <view class="wxSearch-wraper">
   <view class="wxSearch-section">
     <view class="wxSearch-pancel">
@@ -9,6 +11,11 @@
   <template is="wxSearch" data="{{wxSearchData}}"/>
 </view>
 <view class="destination">
+  <view class="search-result">
+    <block wx:for="{{ searchResult.trips }}" wx:for-item="trip" wx:key="trip.id">
+      <template is="m-trip" wx:if="{{ trip.version === 1 }}" data="{{trip: trip, mode: 3}}" />
+    </block>
+  </view>
   <block wx:for="{{ elements }}" wx:for-item="e" wx:key="e.index" wx:if="{{e.title!=='周末去哪儿'}}">
     <view class="title">{{ e.title }}</view>
     <view class="list">
