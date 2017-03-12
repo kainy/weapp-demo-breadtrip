@@ -1,3 +1,26 @@
+@import "../../components/wxSearch/wxSearch.wxss";
+@import "../../components/trip/trip.wxss";
+
+.wxSearch-wraper{
+  position:fixed;
+  z-index:99;
+  width:100%;
+  margin-top:-20rpx;
+  opacity: .9;
+}
+.wxSearch{
+  border: 0;
+}
+.wxSearch-section {
+  padding:20rpx;
+  margin-top:20rpx;
+}
+.search-result{
+  padding: 20rpx;
+}
+.search-result .title{
+  color: #fff;
+}
 page{
   background-color: #f6f6f6;
 }
@@ -43,4 +66,7 @@ page{
   color: #fff;
   font-size: 40rpx;
   font-weight: bold;
+}
+.destination, .search-result{
+  padding-top:127rpx;
 }

@@ -1,4 +1,21 @@
-<view class="destination">
+<import src="../../components/wxSearch/wxSearch.wxml"/>
+<import src="../../components/trip/trip.wxml"/>
+
+<view class="wxSearch-wraper">
+  <view class="wxSearch-section">
+    <view class="wxSearch-pancel">
+      <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索游记" />
+      <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button>
+    </view>
+  </view>
+  <template is="wxSearch" data="{{wxSearchData}}"/>
+</view>
+<view class="search-result" wx:if="{{searchResult.trips.length}}">
+  <block wx:for="{{ searchResult.trips }}" wx:for-item="trip" wx:key="trip.id">
+    <template is="m-trip" wx:if="{{ trip.version === 1 }}" data="{{trip: trip, mode: 3}}" />
+  </block>
+</view>
+<view class="destination" wx:if="{{!searchResult.trips.length}}">
   <block wx:for="{{ elements }}" wx:for-item="e" wx:key="e.index" wx:if="{{e.title!=='周末去哪儿'}}">
     <view class="title">{{ e.title }}</view>
     <view class="list">
