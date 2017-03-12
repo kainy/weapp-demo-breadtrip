@@ -1,5 +1,5 @@
 ! function () {
-  var t = "1.5",
+  var t = "3.0",
     a = "log",
     s = require("./ald-stat-conf.js"),
     e = "";
@@ -181,7 +181,7 @@
         v: t,
         ev: "app"
       };
-      _.aldstat_is_first_open && (n.ifo = "true"), _.aldstat_location_name && (n.ln = _.aldstat_location_name), _.aldstat_src && (n.sr = _.aldstat_src), _.aldstat_qr && (n.qr = _.aldstat_qr), _.ald_share_src && (n.sc = _.ald_share_src), l(n)
+      _.aldstat_is_first_open && (n.ifo = "true"), _.aldstat_location_name && (n.ln = _.aldstat_location_name), _.aldstat_src && (n.sr = _.aldstat_src), _.aldstat_qr && (n.qr = _.aldstat_qr), _.ald_share_src && (n.usr = _.ald_share_src), l(n)
     },
     h = App;
   App = function (t) {
@@ -220,20 +220,20 @@
           spd: _.aldstat_speed,
           v: t
         };
-      n.aldstat_is_first_page && (o.ifp = "true"), _.aldstat_page_last_page && (o.lp = _.aldstat_page_last_page), _.aldstat_location_name && (o.ln = _.aldstat_location_name), n.aldstat_page_args && (o.ag = n.aldstat_page_args), _.aldstat_src && (o.sr = _.aldstat_src), _.aldstat_qr && (o.qr = _.aldstat_qr), l(o), _.aldstat_page_last_page = n.__route__
+      n.aldstat_is_first_page && (o.ifp = "true"), _.aldstat_page_last_page && (o.lp = _.aldstat_page_last_page), _.aldstat_location_name && (o.ln = _.aldstat_location_name), n.aldstat_page_args && (o.ag = n.aldstat_page_args), _.aldstat_src && (o.sr = _.aldstat_src), _.aldstat_qr && (o.qr = _.aldstat_qr), _.ald_share_src && (o.usr = _.ald_share_src), l(o), _.aldstat_page_last_page = n.__route__
     },
     w = function (t, a) {
       var s = wx.getStorageSync("aldstat_src"),
         e = getApp();
       if (s && (e.aldstat_src = s), !g(t)) {
-        "undefined" != typeof t.aldsrc && (s ? e.aldstat_qr = t.aldsrc : (wx.setStorageSync("aldstat_src", t.aldsrc), e.aldstat_src = t.aldsrc));
+        "undefined" != typeof t.aldsrc && (s ? (console.log(t.aldsrc), e.aldstat_qr = t.aldsrc) : (wx.setStorageSync("aldstat_src", t.aldsrc), e.aldstat_src = t.aldsrc));
         var _ = wx.getStorageSync("aldstat_uuid");
         if ("undefined" == typeof t.ald_share_src) e.ald_share_src = _;
         else {
           var n = t.ald_share_src.split(",");
           n.length >= 3 && (n.shift(), t.ald_share_src = n.toString());
-          for (var o = !1, l = 0; l < n.length; l++) n[l] == _ && (o = !0);
-          e.ald_share_src = o ? t.ald_share_src : t.ald_share_src + "," + _
+          for (var o = !1, l = 0; l < n.length; l++) n[l] === _ && (o = !0);
+          o || "undefined" == typeof t.ald_share_src ? e.ald_share_src = t.ald_share_src : (console.log(t.ald_share_src), e.ald_share_src = t.ald_share_src + "," + _)
         }
         this.aldstat_page_args = JSON.stringify(t)
       }
@@ -257,10 +257,10 @@
       if ("undefined" != typeof t) {
         var e = k(t[1].path),
           _ = wx.getStorageSync(this.__route__);
-        t[1].path += Object.keys(e).length > 0 ? "&ald_share_src=" + s.ald_share_src : "?ald_share_src=" + s.ald_share_src, "" === _ ? (wx.setStorageSync(this.__route__, 1), this.page_share_count += 1, s.page_share_count = this.page_share_count) : (this.page_share_count = parseInt(wx.getStorageSync(this.__route__)) + 1, wx.setStorageSync(this.__route__, this.page_share_count), s.page_share_count = this.page_share_count), o(function (t) {
+        return "undefined" !== s.ald_share_src && s.ald_share_src || (s.ald_share_src = wx.getStorageSync("aldstat_uuid")), console.log(s.ald_share_src), t[1].path += Object.keys(e).length > 0 ? "&ald_share_src=" + s.ald_share_src : "?ald_share_src=" + s.ald_share_src, "" === _ ? (wx.setStorageSync(this.__route__, 1), this.page_share_count += 1, s.page_share_count = this.page_share_count) : (this.page_share_count = parseInt(wx.getStorageSync(this.__route__)) + 1, wx.setStorageSync(this.__route__, this.page_share_count), s.page_share_count = this.page_share_count), o(function (t) {
           var a = wx.getStorageSync("aldstat_uuid");
           t.userInfo.uu = a, l(t.userInfo, "POST", "u.php")
-        })
+        }), t[1]
       }
     },
     k = function (t) {
