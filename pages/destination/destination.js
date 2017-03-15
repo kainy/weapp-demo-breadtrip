@@ -1,5 +1,6 @@
 const App = getApp();
 const api = require('../../utils/api.js');
+const util = require('../../utils/util.js');
 
 Page({
   data: {
@@ -41,10 +42,7 @@ Page({
     return opt
   },
   onTheWay() {
-    wx.showModal({
-      title: '提示',
-      content: '功能开发中，敬请期待…'
-    })
+    util.alert('功能开发中，敬请期待…')
   },
   getPlaceInfo(type, id) {
     const self = this;

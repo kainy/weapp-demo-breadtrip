@@ -1,5 +1,6 @@
 const App = getApp();
 const api = require('../../utils/api.js');
+const util = require('../../utils/util.js');
 
 Page({
   data: {
@@ -123,9 +124,6 @@ Page({
     this.getPOIList(self.data.type, self.data.id, poiType, true);
   },
   viewTrip(e) {
-    wx.showModal({
-      title: '提示',
-      content: '功能开发中，敬请期待…'
-    })
+    util.alert('功能开发中，敬请期待…')
   },
 });
