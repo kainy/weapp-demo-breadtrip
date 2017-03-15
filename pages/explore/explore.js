@@ -1,5 +1,6 @@
 const api = require('../../utils/api.js');
 const WxSearch = require('../../components/wxSearch/wxSearch.js')
+const util = require('../../utils/util.js');
 
 const App = getApp();
 Page({
@@ -10,17 +11,18 @@ Page({
       trips: []
     },
   },
-  onReady() {
-    WxSearch.init(this,62,['蜜月','毕业','跨年','哈尔滨','浪漫']);
-    WxSearch.initMindKeys(['香港','澳门','泰国','德国','北京','英国','法国','哈尔滨','三亚']);
-  },
-  onLoad() {
+  onLoad(options) {
     const self = this;
     wx.showToast({
       title: '传送门开启中',
       icon: 'loading',
       duration: 10000,
     });
+    WxSearch.init(this,62,['蜜月','毕业','跨年','哈尔滨','浪漫']);
+    WxSearch.initMindKeys(['香港','澳门','泰国','德国','北京','英国','法国','哈尔滨','三亚']);
+    if(options.keyword){
+      this.wxSearchFn(null, decodeURIComponent(options.keyword));
+    }
     api.getExplorePlaceList({
       success: (res) => {
         const dest = res.data;
@@ -32,10 +34,11 @@ Page({
     });
   },
   onShareAppMessage: function () {
+    var kw = this.data.wxSearchData.value || ''
     const opt = {
       title: '发现 ✈️ 跨时空小程序',
       desc: '发现最佳旅行地、热门地点、欧美国家、港澳台、亚洲国家…',
-      path: `/pages/explore/explore`
+      path: `/pages/explore/explore?keyword=${encodeURIComponent(kw)}`
     }
     console.log(opt)
     return opt
@@ -52,21 +55,36 @@ Page({
       url: `../trip/trip?id=${ds.id}&name=${ds.name}`,
     });
   },
-  wxSearchFn: function(e){
+  wxSearchFn: function(e, kw){
     var self = this
+    var temData = self.data.wxSearchData
+    kw = kw || temData.value;
+    if (!kw) {
+      util.alert('请输入搜索内容')
+      return
+    } else {
+      temData.value = kw
+      this.setData({
+        wxSearchData: temData
+      })
+    }
     api.search({
       data: {
-        key: self.data.wxSearchData.value,
+        key: kw,
         start: 0,
         count: 20,
         data_type: 'trip'
       },
       success: (res) => {
-        self.setData({
-          searchResult: {
-            trips: res.data.data.trips
-          }
-        })
+        if(res.data.status == 0){
+          self.setData({
+            searchResult: {
+              trips: res.data.data.trips
+            }
+          })
+        } else {
+          util.alert(res.data.message)
+        }
         // console.log(trips)
       }
     })

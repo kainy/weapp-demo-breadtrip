@@ -45,9 +45,16 @@ function throttle(func, wait, mustRun) {
     }
   };
 };
-
+function alert(msg) {
+  wx.showModal({
+    title: '',
+    content: msg,
+    showCancel: false,
+  })
+}
 module.exports = {
   formatNumber,
   formatTime,
   throttle,
+  alert,
 };
