@@ -110,3 +110,11 @@ page{
   position: absolute;
   left: 12px;
 }
+contact-button {
+  background:#4abdcc;
+  border-radius:77rpx;
+  padding:7px;
+  position:fixed;
+  right:67rpx;
+  bottom:57px;
+}

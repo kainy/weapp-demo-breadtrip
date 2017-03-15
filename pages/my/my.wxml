@@ -23,7 +23,12 @@
     class="new-todo"/>
   <text style="display: {{draft ? 'inline': 'none'}}" class="add tappable" ontap="addTodo">添加</text>
 </view>
-
+<contact-button 
+  type="default-light" 
+  size="27"
+  session-from="weapp"
+>
+</contact-button>
 <view class="todo-list">
 <block wx:for="{{todos}}" wx:for-item="todo" wx:key="objectId">
   <view class="flex-wrap todo">
