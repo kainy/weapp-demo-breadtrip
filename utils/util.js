@@ -47,7 +47,7 @@ function throttle(func, wait, mustRun) {
 };
 function alert(msg) {
   wx.showModal({
-    title: '',
+    title: '提示',
     content: msg,
     showCancel: false,
   })

@@ -36,8 +36,8 @@ Page({
   onShareAppMessage: function () {
     var kw = this.data.wxSearchData.value || ''
     const opt = {
-      title: '发现 ✈️ 跨时空小程序',
-      desc: '发现最佳旅行地、热门地点、欧美国家、港澳台、亚洲国家…',
+      title: `发现${kw} ✈️ 跨时空旅行日志`,
+      desc: '探索最佳旅行地、热门地点、欧美国家、港澳台、亚洲国家…',
       path: `/pages/explore/explore?keyword=${encodeURIComponent(kw)}`
     }
     console.log(opt)
