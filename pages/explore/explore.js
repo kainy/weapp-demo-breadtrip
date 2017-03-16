@@ -60,7 +60,12 @@ Page({
     var temData = self.data.wxSearchData
     kw = kw || temData.value;
     if (!kw) {
-      util.alert('请输入搜索内容')
+      this.setData({
+        searchResult: {
+          trips: []
+        }
+      })
+      WxSearch.wxSearchHiddenPancel(self);
       return
     } else {
       temData.value = kw
@@ -77,11 +82,15 @@ Page({
       },
       success: (res) => {
         if(res.data.status == 0){
-          self.setData({
-            searchResult: {
-              trips: res.data.data.trips
-            }
-          })
+          if(res.data.data.trips.length){
+            self.setData({
+              searchResult: {
+                trips: res.data.data.trips
+              }
+            })
+          } else {
+            util.alert('未找到相关内容，换个关键词试试 ？')
+          }
         } else {
           util.alert(res.data.message)
         }

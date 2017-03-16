@@ -162,6 +162,9 @@ function wxSearchAddHisKey(that) {
         if(value.indexOf(text) < 0){
             value.unshift(text);
         }
+        if(value.length >= 6) {
+            value.length = 6
+        }
         wx.setStorage({
             key:"wxSearchHisKeys",
             data:value,
