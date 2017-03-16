@@ -3,6 +3,7 @@ const WxSearch = require('../../components/wxSearch/wxSearch.js')
 const util = require('../../utils/util.js');
 
 const App = getApp();
+const pageSize = 17;
 Page({
   data: {
     elements: [],
@@ -10,6 +11,8 @@ Page({
     searchResult: {
       trips: []
     },
+    start: 0,
+    trips_more: false,
   },
   onLoad(options) {
     const self = this;
@@ -43,6 +46,11 @@ Page({
     console.log(opt)
     return opt
   },
+  onReachBottom: function () {
+    if(this.data.trips_more){
+      this.wxSearchFn(null, null , true)
+    }
+  },
   viewPOI(e) {
     const data = e.currentTarget.dataset;
     wx.navigateTo({
@@ -55,10 +63,20 @@ Page({
       url: `../trip/trip?id=${ds.id}&name=${ds.name}`,
     });
   },
-  wxSearchFn: function(e, kw){
+  wxSearchFn: function(e, kw, append){
     var self = this
     var temData = self.data.wxSearchData
     kw = kw || temData.value;
+    if (!append) {
+      // 搜索结果复位
+      this.setData({
+        start: 0,
+        trips_more: false,
+        searchResult: {
+          trips: []
+        }
+      })
+    }
     if (!kw) {
       this.setData({
         searchResult: {
@@ -76,17 +94,22 @@ Page({
     api.search({
       data: {
         key: kw,
-        start: 0,
-        count: 20,
+        start: self.data.start,
+        count: pageSize,
         data_type: 'trip'
       },
       success: (res) => {
         if(res.data.status == 0){
-          if(res.data.data.trips.length){
+          const len = res.data.data.trips.length
+          if(len){
             self.setData({
               searchResult: {
-                trips: res.data.data.trips
+                trips: self.data.searchResult.trips.concat(res.data.data.trips)
               }
+            })
+            self.setData({
+              start: self.data.start + len,
+              trips_more: res.data.data.trips_more
             })
           } else {
             util.alert('未找到相关内容，换个关键词试试 ？')
