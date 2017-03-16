@@ -13,6 +13,7 @@ Page({
     },
     start: 0,
     trips_more: false,
+    searching: false,
   },
   onLoad(options) {
     const self = this;
@@ -74,14 +75,16 @@ Page({
         trips_more: false,
         searchResult: {
           trips: []
-        }
+        },
+        searching: true,
       })
     }
     if (!kw) {
       this.setData({
         searchResult: {
           trips: []
-        }
+        },
+        searching: false,
       })
       WxSearch.wxSearchHiddenPancel(self);
       return
@@ -105,9 +108,8 @@ Page({
             self.setData({
               searchResult: {
                 trips: self.data.searchResult.trips.concat(res.data.data.trips)
-              }
-            })
-            self.setData({
+              },
+              searching: false,
               start: self.data.start + len,
               trips_more: res.data.data.trips_more
             })
