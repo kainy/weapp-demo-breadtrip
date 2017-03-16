@@ -14,6 +14,10 @@
   <block wx:for="{{ searchResult.trips }}" wx:for-item="trip" wx:key="trip.id">
     <template is="m-trip" wx:if="{{ trip.version === 1 }}" data="{{trip: trip, mode: 3}}" />
   </block>
+  <view class="loading" wx:if="{{trips_more}}">
+    加载中…
+  </view>
+  <!-- <image src="/images/loading.gif" class="loading-gif"></image> -->  
 </view>
 <view class="destination" wx:if="{{!searchResult.trips.length}}">
   <block wx:for="{{ elements }}" wx:for-item="e" wx:key="e.index" wx:if="{{e.title!=='周末去哪儿'}}">
