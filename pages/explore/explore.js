@@ -102,6 +102,9 @@ Page({
         data_type: 'trip'
       },
       success: (res) => {
+        self.setData({
+          searching: false,
+        })
         if(res.data.status == 0){
           const len = res.data.data.trips.length
           if(len){
@@ -109,7 +112,6 @@ Page({
               searchResult: {
                 trips: self.data.searchResult.trips.concat(res.data.data.trips)
               },
-              searching: false,
               start: self.data.start + len,
               trips_more: res.data.data.trips_more
             })
