@@ -1,6 +1,5 @@
 const app= getApp();
 const AV = app.AV;
-
 class Todo extends AV.Object {
   get done() {
     return this.get('done');
@@ -17,5 +16,5 @@ class Todo extends AV.Object {
   }
 }
 
-AV.Object.register(Todo);
+AV.Object.register(Todo, 'Todo');
 module.exports = Todo;

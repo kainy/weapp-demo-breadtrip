@@ -8,6 +8,9 @@
     "pages/waypoint/waypoint",
     "pages/user/user",
     "pages/my/my",
+    "pages/my-user/user",
+    "pages/my-pay/pay",
+    "pages/my-setting/setting",
     "pages/trip/trip"
   ],
   "window": {

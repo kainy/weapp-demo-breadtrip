@@ -69,21 +69,18 @@ page{
   border-radius: 3px;
 }
 .todo-icon {
-  margin-right: 7px;
+  margin-right: 12px;
 }
 .todo-text {
   white-space: nowrap;
   display: block;
-  width: 90%;
-  height: 17px;
-  float: right;
-  margin-top: -12px;
+  width: 100%;
+  height: 50px;
   line-height: 17px;
 }
 .todo-input {
   font-size: 18px;
-  float: right;
-  width: 90%;
+  width: 100%;
 }
 
 .footer {
@@ -101,15 +98,16 @@ page{
 .remove-done,
 .setting {
   color: #1aad19;
+  padding: 0 12px;
+  position: absolute;
 }
 .remove-done {
-  position: absolute;
-  right: 12px;
+  right: 0;
 }
 .setting {
-  position: absolute;
-  left: 12px;
+  left: 0;
 }
+/* 客服按钮 */
 contact-button {
   background:#4abdcc;
   border-radius:77rpx;
