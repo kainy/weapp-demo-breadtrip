@@ -5,6 +5,6 @@
     <template is="m-trip" wx:if="{{ trip.type === 4 }}" data="{{trip: trip.data[0], mode: 1}}" />
   </block>
   <view class="loading">
-    传送门开启中…
+    加载中…
   </view>
 </scroll-view>
