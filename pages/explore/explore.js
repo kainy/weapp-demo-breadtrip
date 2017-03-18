@@ -102,9 +102,6 @@ Page({
         data_type: 'trip'
       },
       success: (res) => {
-        self.setData({
-          searching: false,
-        })
         if(res.data.status == 0){
           const len = res.data.data.trips.length
           if(len){
@@ -121,6 +118,9 @@ Page({
         } else {
           util.alert(res.data.message)
         }
+        self.setData({
+          searching: false,
+        })
         // console.log(trips)
       }
     })
