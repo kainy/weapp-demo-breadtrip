@@ -105,7 +105,8 @@ page{
   right: 0;
 }
 .setting {
-  left: 0;
+  right:20rpx;
+  top:20rpx
 }
 /* 客服按钮 */
 contact-button {

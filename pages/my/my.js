@@ -46,9 +46,9 @@ Page({
     ).then(user =>
       user ? user : AV.User.loginWithWeapp()
     ).then((user) => {
-      console.log('uid', user.id);
+      console.log('uid:', user.id);
       this.syncUserInfo(user)
-      return new AV.Query(Todo)
+      return new AV.Query('Todo')
         .equalTo('user', AV.Object.createWithoutData('User', user.id))
         .descending('createdAt')
         .find()
@@ -57,7 +57,6 @@ Page({
     }).catch(error => console.error(error.message));
   },
   onReady: function() {
-    console.log('page ready');
     this.loginAndFetchTodos();
   },
   onPullDownRefresh: function () {
