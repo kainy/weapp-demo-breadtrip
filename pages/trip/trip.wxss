@@ -65,6 +65,9 @@ page{
 .day-content .photo-ctn{
   position: relative;
 }
+.photo-ctn{
+  background: #e7ddc6 url(/images/placeholder_img.png) no-repeat center center;
+}
 .day-content .cover{
   vertical-align: bottom;
 }
