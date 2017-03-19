@@ -4,8 +4,9 @@
 <view class="wxSearch-wraper">
   <view class="wxSearch-section">
     <view class="wxSearch-pancel">
-      <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索游记" />
-      <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button>
+      <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" bindconfirm="wxSearchFn" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索游记" />
+      <!-- <button class="wxSearch-button"  size="mini" plain="true">搜索</button> -->
+      <icon type="search" class="search-icon" bindtap="wxSearchFn" size="27" color="grey"/>
     </view>
   </view>
   <template is="wxSearch" data="{{wxSearchData}}"/>

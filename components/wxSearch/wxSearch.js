@@ -51,7 +51,7 @@ function init(that, barHeight, keys, isShowKey, isShowHis, callBack) {
     wx.getSystemInfo({
         success: function(res) {
             var wHeight = res.windowHeight;
-            view.seachHeight = wHeight-barHeight;
+            view.seachHeight = wHeight;
             temData.view = view;
             that.setData({
                 wxSearchData: temData
