@@ -52,7 +52,7 @@ page{
 }
 
 .todo-list {
-  padding: 4px 6px 4px;
+  padding: 8rpx 12rpx 94rpx;
 }
 .done {
   text-decoration: line-through;
