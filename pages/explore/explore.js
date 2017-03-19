@@ -48,7 +48,7 @@ Page({
     return opt
   },
   onReachBottom: function () {
-    if(this.data.trips_more){
+    if(this.data.trips_more && !this.fetching){
       this.wxSearchFn(null, null , true)
     }
   },
@@ -94,6 +94,7 @@ Page({
         wxSearchData: temData
       })
     }
+    self.fetching = true
     api.search({
       data: {
         key: kw,
@@ -118,6 +119,7 @@ Page({
         } else {
           util.alert(res.data.message)
         }
+        self.fetching = false
         self.setData({
           searching: false,
         })
