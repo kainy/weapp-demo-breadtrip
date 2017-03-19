@@ -17,16 +17,16 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 400rpx;
 }
 .nav {
-  margin-top: 26px;
+  margin-top: 52rpx;
 }
 page{
   background-color: #f6f6f6;
 }
 .header {
-  height: 54px;
+  height: 108rpx;
   align-items: center;
   background-color: #FFF;
 }
@@ -34,11 +34,11 @@ page{
 .new-todo {
   flex: 1;
   float: left;
-  font-size: 18px;
+  font-size: 36rpx;
   box-sizing: border-box;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  padding-left: 12px;
+  border-top: 2rpx solid #eee;
+  border-bottom: 2rpx solid #eee;
+  padding-left: 24rpx;
   line-height: 100%;
   height: 100%;
 }
@@ -46,9 +46,9 @@ page{
   color: #FFF;
   float: right;
   background-color: #1aad19;
-  font-size: 16px;
-  line-height: 53px;
-  padding: 0 16px;
+  font-size: 32rpx;
+  line-height: 106rpx;
+  padding: 0 32rpx;
 }
 
 .todo-list {
@@ -59,46 +59,46 @@ page{
   color: #ccc;
 }
 .todo {
-  font-size: 18px;
-  height: 30px;
-  padding: 10px 12px;
+  font-size: 36rpx;
+  height: 60rpx;
+  padding: 20rpx 24rpx;
   overflow: hidden;
   align-items: center;
   background-color: #fff;
-  margin: 1px 0;
-  border-radius: 3px;
+  margin: 2rpx 0;
+  border-radius: 6rpx;
 }
 .todo-icon {
-  margin-right: 12px;
+  margin-right: 24rpx;
 }
 .todo-text {
   white-space: nowrap;
   display: block;
   width: 100%;
-  height: 50px;
-  line-height: 17px;
+  height: 100rpx;
+  line-height: 34rpx;
 }
 .todo-input {
-  font-size: 18px;
+  font-size: 36rpx;
   width: 100%;
 }
 
 .footer {
   position: fixed;
   bottom: 0;
-  height: 44px;
+  height: 88rpx;
   width: 100%;
-  line-height: 44px;
+  line-height: 88rpx;
   color: #666;
-  border-top: 1px solid #eee;
+  border-top: 2rpx solid #eee;
   background: #fff;
-  font-size: 16px;
+  font-size: 32rpx;
   text-align: center;
 }
 .remove-done,
 .setting {
   color: #1aad19;
-  padding: 0 12px;
+  padding: 0 24rpx;
   position: absolute;
 }
 .remove-done {
@@ -112,8 +112,8 @@ page{
 contact-button {
   background:#4abdcc;
   border-radius:77rpx;
-  padding:7px;
+  padding:14rpx;
   position:fixed;
   right:67rpx;
-  bottom:57px;
+  bottom:114rpx;
 }
