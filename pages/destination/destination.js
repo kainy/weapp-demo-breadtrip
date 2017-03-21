@@ -35,7 +35,7 @@ Page({
   },
   onShareAppMessage() {
     const opt = {
-      title: this.data.title,
+      title: `查看${this.data.title}的热门地点和游记`,
       desc: `查看${this.data.title}的热门地点`,
       path: `/pages/destination/destination?type=${this.data.options.type}&id=${this.data.options.id}&name=${this.data.title}`
     }

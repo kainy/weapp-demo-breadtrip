@@ -51,7 +51,7 @@ Page({
   },
   onShareAppMessage() {
     const opt = {
-      title: this.data.title,
+      title: `查看${this.data.title}的景点、住宿、餐厅… 地点信息`,
       desc: `查看${this.data.title}的景点、住宿、餐厅… 地点信息`,
       path: `/pages/poi_list/poi_list?id=${this.data.id}&name=${this.data.title}`
     }

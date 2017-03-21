@@ -33,7 +33,7 @@ Page({
   },
   onShareAppMessage() {
     const opt = {
-      title: this.data.title,
+      title: this.data.waypoint.text,
       desc: this.data.waypoint.text,
       path: `/pages/waypoint/waypoint?waypointId=${this.data.waypoint.id}&tripId=${this.data.waypoint.trip_id}`,
     };

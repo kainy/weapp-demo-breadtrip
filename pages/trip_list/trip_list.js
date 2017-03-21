@@ -52,7 +52,7 @@ Page({
   },
   onShareAppMessage() {
     const opt = {
-      title: this.data.title,
+      title: `查看${this.data.title}的精品游记`,
       desc: `查看${this.data.title}的精品游记`,
       path: `/pages/trip_list/trip_list?type=${this.data.type}&id=${this.data.id}&name=${this.data.title}`
     }

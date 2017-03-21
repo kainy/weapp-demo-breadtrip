@@ -38,7 +38,7 @@ Page({
   },
   onShareAppMessage() {
     const opt = {
-      title: this.data.user_info.name,
+      title: `查看用户 ${this.data.user_info.name} 的旅行日志`,
       desc: `查看用户 ${this.data.user_info.name} 的旅行日志`,
       path: `/pages/users/users?id=${this.data.user_info.id}`
     }
