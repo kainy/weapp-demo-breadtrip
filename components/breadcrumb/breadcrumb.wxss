@@ -3,7 +3,7 @@
 	display: flex;
 	box-shadow: 0 0 7rpx 1rpx rgba(0, 0, 0, 0.2);
 	overflow: hidden;
-	border-radius: 5px;
+	border-radius: 10rpx;
 	counter-reset: flag;
   text-align: center;
   margin-bottom:30rpx;
@@ -16,24 +16,24 @@
 	flex-grow: 1;
 	text-decoration: none;
 	outline: none;
-	font-size: 12px;
-	line-height: 36px;
+	font-size: 24rpx;
+	line-height: 72rpx;
 	color: white;
-	padding: 0 10px 0 60px;
+	padding: 0 20rpx 0 120rpx;
 	background: #666;
 	background: linear-gradient(#666, #333);
 	position: relative;
 }
 .breadcrumb .a:first-child {
-	padding-left: 46px;
-	border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+	padding-left: 92rpx;
+	border-radius: 10rpx 0 0 10rpx; /*to match with the parent's radius*/
 }
 .breadcrumb .a:first-child:before {
-	left: 14px;
+	left: 28rpx;
 }
 .breadcrumb .a:last-child {
-	border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
-	padding-right: 20px;
+	border-radius: 0 10rpx 10rpx 0; /*this was to prevent glitches on hover*/
+	padding-right: 40rpx;
 }
 
 .breadcrumb .a.active, .breadcrumb .a:hover{
@@ -49,9 +49,9 @@
 	content: '';
 	position: absolute;
 	top: 0; 
-	right: -18px; /*half of square's length*/
-	width: 36px; 
-	height: 36px;
+	right: -36rpx; /*half of square's length*/
+	width: 72rpx; 
+	height: 72rpx;
 	transform: scale(0.707) rotate(45deg);
 	z-index: 1;
 	background: #666;
@@ -61,7 +61,7 @@
 		3rpx -3rpx 0 2rpx rgba(255, 255, 255, 0.1);
 	/*
 		50px - to prevent hover glitches on the border created using shadows*/
-	border-radius: 0 5px 0 50px;
+	border-radius: 0 10rpx 0 100rpx;
 }
 .breadcrumb .a:last-child:after {
 	content: none;
@@ -72,13 +72,13 @@
 	counter-increment: flag;
 	/*some styles now*/
 	border-radius: 100%;
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
+	width: 40rpx;
+	height: 40rpx;
+	line-height: 40rpx;
 	margin: 8px 0;
 	position: absolute;
 	top: 0;
-	left: 30px;
+	left: 60rpx;
 	background: #444;
 	background: linear-gradient(#444, #222);
 	font-weight: bold;
@@ -92,7 +92,7 @@
 }
 .flat .a:before {
 	background: white;
-	box-shadow: 0 0 0 1px #ccc;
+	box-shadow: 0 0 0 2rpx #ccc;
 }
 .flat .a:hover, .flat .a.active, 
 .flat .a:hover:after, .flat .a.active:after{
