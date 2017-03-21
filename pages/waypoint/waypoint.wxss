@@ -1,3 +1,5 @@
+@import "../../components/breadcrumb/breadcrumb.wxss";
+
 page{
   background-color: #fbf7ed;
   margin-bottom: 40px;
