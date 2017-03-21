@@ -7,16 +7,15 @@
 	counter-reset: flag;
   text-align: center;
   margin-bottom:30rpx;
-  height:72rpx;
+	max-height:77rpx;
   width:100%;
   background:white;
 }
 
 .breadcrumb .a {
+	flex-grow: 1;
 	text-decoration: none;
 	outline: none;
-	display: block;
-	float: left;
 	font-size: 12px;
 	line-height: 36px;
 	color: white;
