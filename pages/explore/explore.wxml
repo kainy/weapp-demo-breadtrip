@@ -17,7 +17,7 @@
       <template is="m-trip" wx:if="{{ trip.version === 1 }}" data="{{trip: trip, mode: 3}}" />
     </block>
     <view class="loading" wx:if="{{trips_more}}">
-      <icon class="weui-loading"></icon>
+      <icon></icon>
       <text>正在加载</text>
     </view>
     <!-- <image src="/images/loading.gif" class="loading-gif"></image> -->  
@@ -35,7 +35,7 @@
     </block>
   </view>
 </view>
-<view wx:else class="searching">
-  <icon class="weui-loading" type="loading"></icon>
+<view wx:else class="searching loading">
+  <icon></icon>
   <text>正在搜索</text>
 </view>
