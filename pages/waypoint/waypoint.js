@@ -31,7 +31,7 @@ Page({
     });
     this.getWaypointDetail(tripId, waypointId);
   },
-  onShareAppMessage: function () {
+  onShareAppMessage() {
     const opt = {
       title: this.data.title,
       desc: this.data.waypoint.text,

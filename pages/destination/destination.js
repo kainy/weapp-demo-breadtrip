@@ -32,7 +32,7 @@ Page({
     });
     this.getPlaceInfo(type, id);
   },
-  onShareAppMessage: function () {
+  onShareAppMessage() {
     const opt = {
       title: this.data.title,
       desc: `查看${this.data.title}的热门地点`,

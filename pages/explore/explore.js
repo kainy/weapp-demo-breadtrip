@@ -37,7 +37,7 @@ Page({
       },
     });
   },
-  onShareAppMessage: function () {
+  onShareAppMessage() {
     var kw = this.data.wxSearchData.value || ''
     const opt = {
       title: `发现${kw} ✈️ 跨时空旅行日志`,

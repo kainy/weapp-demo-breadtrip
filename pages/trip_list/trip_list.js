@@ -49,7 +49,7 @@ Page({
     });
     this.getTrips(type, id);
   },
-  onShareAppMessage: function () {
+  onShareAppMessage() {
     const opt = {
       title: this.data.title,
       desc: `查看${this.data.title}的精品游记`,

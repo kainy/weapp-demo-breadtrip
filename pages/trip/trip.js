@@ -107,7 +107,7 @@ Page({
     })
     // console.log(n, this.data.idxShow)
   }, 777, 3777),
-  onShareAppMessage: function () {
+  onShareAppMessage() {
     const opt = {
       title: this.data.options.name,
       desc: this.data.trip.days[0].waypoints[0].text,
