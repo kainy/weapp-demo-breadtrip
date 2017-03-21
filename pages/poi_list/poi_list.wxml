@@ -15,6 +15,7 @@
     <template is="m-poi" data="{{poi: poi}}" />
   </block>
   <view wx:if="{{ hasMore }}" class="loading">
-    传送门开启中…
+    <icon></icon>
+    <text>正在加载</text>
   </view>
 </scroll-view>

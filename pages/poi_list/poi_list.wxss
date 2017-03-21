@@ -40,8 +40,3 @@ page{
 .m-poi{
   margin: 20rpx;
 }
-.loading{
-  color: #999;
-  text-align: center;
-  margin: 20rpx 0;
-}
