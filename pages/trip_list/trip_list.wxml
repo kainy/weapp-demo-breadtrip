@@ -1,6 +1,9 @@
 <import src="../../components/trip/trip.wxml"/>
-
 <scroll-view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
+  <view class="breadcrumb flat" wx:if="{{ pageLength === 1 }}">
+    <navigator class="a" open-type="switchTab" url="/pages/explore/explore" hover-class="active">发现</navigator>
+    <navigator class="a" open-type="redirect" url="/pages/destination/destination?id={{id}}&name={{title}}&type={{type}}" hover-class="active">{{title}}的热门地点和游记</navigator>
+  </view>
   <block wx:for="{{ trips }}" wx:for-item="trip" wx:key="trip.id">
     <template is="m-trip" wx:if="{{ trip.version === 1 }}" data="{{trip: trip, mode: 3}}" />
   </block>

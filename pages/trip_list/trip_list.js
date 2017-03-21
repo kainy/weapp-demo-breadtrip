@@ -36,6 +36,7 @@ Page({
       title: name,
       type,
       id,
+      pageLength: getCurrentPages().length,
     });
     wx.setNavigationBarTitle({
       title: name,
