@@ -14,6 +14,7 @@ Page({
     },
     title: '',
     windowWidth: 0,
+    pageLength: 0, //页面层级，用于判断是否展示面包屑
   },
   onReady() {
     const self = this;
@@ -22,11 +23,11 @@ Page({
     });
   },
   onLoad(options) {
-    const self = this;
     const tripId = options.tripId;
     const waypointId = options.waypointId;
-    self.setData({
+    this.setData({
       windowWidth: app.systemInfo.windowWidth,
+      pageLength: getCurrentPages().length,
     });
     this.getWaypointDetail(tripId, waypointId);
   },
@@ -34,10 +35,10 @@ Page({
     const opt = {
       title: this.data.title,
       desc: this.data.waypoint.text,
-      path: `/pages/waypoint/waypoint?waypointId=${this.data.waypoint.id}&tripId=${this.data.waypoint.trip_id}`
-    }
-    console.log(opt)
-    return opt
+      path: `/pages/waypoint/waypoint?waypointId=${this.data.waypoint.id}&tripId=${this.data.waypoint.trip_id}`,
+    };
+    console.log(opt);
+    return opt;
   },
   getWaypointDetail(tripId, waypointId) {
     const self = this;

@@ -1,12 +1,15 @@
 .breadcrumb {
 	/*centering*/
-	display: inline-block;
+	display: flex;
 	box-shadow: 0 0 7rpx 1rpx rgba(0, 0, 0, 0.2);
 	overflow: hidden;
 	border-radius: 5px;
 	counter-reset: flag;
   text-align: center;
-  margin-bottom:17rpx;
+  margin-bottom:30rpx;
+  height:72rpx;
+  width:100%;
+  background:white;
 }
 
 .breadcrumb .a {
