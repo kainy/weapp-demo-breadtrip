@@ -27,6 +27,7 @@ Page({
     const id = options.id;
     self.setData({
       options,
+      pageLength: getCurrentPages().length,
     });
     wx.getSystemInfo({
       success(res){

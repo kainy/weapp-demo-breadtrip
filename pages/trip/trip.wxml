@@ -1,4 +1,5 @@
 <import src="../../components/widget/icon_nav_home.wxml"/>
+<template is="m-homenav" wx:if="{{ pageLength === 1 }}"></template>
 <scroll-view style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscroll="bindscroll">
 <view wx:if="{{ bgMusic }}" bindtap="audioCtrl" class="audioCtrl">
   <audio src="{{bgMusic}}" id="myAudio" loop style="display:none"></audio>
@@ -38,6 +39,6 @@
       </view>
     </block>
   </view>
-  <template is="m-homenav"></template>
+  
 </view>
 </scroll-view>
