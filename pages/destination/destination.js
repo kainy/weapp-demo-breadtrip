@@ -28,7 +28,8 @@ Page({
     });
     this.setData({
       title: name,
-      options
+      options,
+      pageLength: getCurrentPages().length,
     });
     this.getPlaceInfo(type, id);
   },

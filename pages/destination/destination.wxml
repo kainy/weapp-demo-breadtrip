@@ -1,5 +1,6 @@
 <import src="../../components/widget/rating.wxml"/>
-
+<import src="../../components/widget/icon_nav_home.wxml"/>
+<template is="m-homenav" wx:if="{{ pageLength === 1 }}"></template>
 <view class="header">
   <image style="width: {{ windowWidth }}px;" src="{{ info.hottest_places[0].photo }}" mode="aspectFill"></image>
   <view class="title">
