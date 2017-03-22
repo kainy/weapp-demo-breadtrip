@@ -1,5 +1,5 @@
 <template name="wxSearch">
-  <view class="wxSearch" bindtap="wxSearchTap"  style="display:{{wxSearchData.view.isShow ? 'block':'none'}};height:{{99+wxSearchData.view.seachHeight}}px;top:{{wxSearchData.view.barHeight * 2}}rpx;">
+  <view class="wxSearch" bindtap="wxSearchTap"  style="display:{{wxSearchData.view.isShow ? 'block':'none'}};height:{{99+wxSearchData.view.seachHeight}}px">
     <view  class="wxSearchInner">
 
         <view class="wxSearchMindKey">
