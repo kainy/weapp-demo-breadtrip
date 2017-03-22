@@ -2,10 +2,10 @@
 
 page{
   background-color: #fbf7ed;
-  margin-bottom: 40px;
+  margin-bottom: 80rpx;
 }
 .waypoint{
-  padding: 15px;
+  padding: 30rpx;
 }
 .waypoint .photo-ctn{
   position: relative;
@@ -15,40 +15,37 @@ page{
 }
 .waypoint .text{
   background-color: #fff;
-  padding: 5px 10px 0;
+  padding: 10rpx 20rpx 0;
   color: #5c5c5c;
   word-break: break-word;
 }
 .waypoint .wp-stats{
-  padding: 5px 9px 11px;
+  padding: 10rpx 18rpx 22rpx;
   background-color: #fff;
   overflow: hidden;
-  border-bottom: 3px solid #e7e7e7;
+  border-bottom: 6rpx solid #e7e7e7;
 }
 .waypoint .wp-stats .wp-time{
-  font-size: 12px;
+  font-size: 24rpx;
   float: left;
   color: #999;
-  height: 22px;
-  line-height: 22px;
+  height: 44rpx;
+  line-height: 44rpx;
 }
 .waypoint .wp-stats .icon-time{
   display: inline-block;
   vertical-align: middle;
-  margin-right: 5px;
+  margin-right: 10rpx;
   position: relative;
-  top: -1px;
-  width: 12px;
-  height: 12px;
-}
-.recommender,
-.comment{
+  top: -2rpx;
+  width: 24rpx;
+  height: 24rpx;
 }
 .recommender .title,
 .comment .title{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
   color: #a8915e;
   font-weight: bold;
 }
@@ -56,25 +53,25 @@ page{
   overflow: hidden;
 }
 .recommender_list .avatar{
-  width: 40px;
-  height: 40px;
-  border-radius: 40px;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
   float: left;
-  margin: 0 10px 10px 0;
+  margin: 0 20rpx 20rpx 0;
 }
 .comment .item{
-  margin-bottom: 15px;
+  margin-bottom: 30rpx;
   overflow: hidden;
 }
 .comment .info{
   overflow: hidden;
 }
 .comment .avatar{
-  width: 30px;
-  height: 30px;
-  border-radius: 30px;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
   float: left;
-  margin-right: 10px;
+  margin-right: 20rpx;
 }
 .comment .username{
   color: #4abdcc;

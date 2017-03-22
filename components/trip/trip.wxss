@@ -51,7 +51,7 @@
   font-size: 18rpx;
   line-height: 1;
   font-weight: bold;
-  text-shadow: 2rpx 4rpx 0px rgba(0,0,0,0.20);
+  text-shadow: 2rpx 4rpx 0 rgba(0,0,0,0.20);
 }
 .m-trip .detail view{
   margin-bottom: 6rpx;

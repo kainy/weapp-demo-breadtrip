@@ -1,5 +1,5 @@
 page{
-  font: 14px "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, STHeiti;
+  font: 28rpx "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, STHeiti;
   line-height: 1.5;
 }
 .clearfix:after{
@@ -19,19 +19,19 @@ page{
 }
 
 .container {
-  padding: 4px 12px;
+  padding: 8rpx 24rpx;
 }
 .form-wrap {
-  border-top: 1px solid #eee;
-  margin: 12px 0;
+  border-top: 2rpx solid #eee;
+  margin: 24rpx 0;
 }
 
 .hint,
 .error {
   display: block;
-  margin: 8px 0;
+  margin: 16rpx 0;
   color: #888;
-  font-size: 14px;
+  font-size: 28rpx;
 }
 .error {
   color: #e64240;

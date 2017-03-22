@@ -60,7 +60,7 @@ page{
   text-align: center;
 }
 .trips{
-  padding: 10px;
+  padding: 20rpx;
 }
 .trip-title{
   margin-bottom: 10rpx;
