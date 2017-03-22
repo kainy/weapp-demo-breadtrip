@@ -14,6 +14,7 @@
 .wxSearch-section {
   padding:20rpx;
   margin-top:20rpx;
+  box-shadow: 0 2rpx 4rpx rgba(150,150,150,.3);
 }
 .wxSearch-pancel {
   align-items:center;
