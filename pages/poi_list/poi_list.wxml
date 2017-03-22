@@ -10,7 +10,7 @@
     <view class="{{ poiType === 'mall' ? 'selected' : ''}}" data-type="mall" bindtap="changePOIType">购物</view>
   </view>
 </scroll-view>
-<scroll-view class="list" style="height: {{ windowHeight - 70 / pixelRatio }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
+<scroll-view class="list" style="height: {{ windowHeight - 70 / pixelRatio }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
   <block wx:for="{{ pois }}" wx:for-item="poi" wx:key="poi.id">
     <template is="m-poi" data="{{poi: poi}}" />
   </block>

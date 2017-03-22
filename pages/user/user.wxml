@@ -1,5 +1,6 @@
 <import src="../../components/trip/trip.wxml"/>
-
+<import src="../../components/widget/icon_nav_home.wxml"/>
+<template is="m-homenav" wx:if="{{ pageLength === 1 }}"></template>
 <view class="header">
   <image src="{{ user_info.cover }}" style="width: {{ windowWidth }}px; height: {{ windowWidth - 150 }}px;"></image>
   <view class="mask"></view>

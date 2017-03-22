@@ -79,7 +79,7 @@
 	left: 60rpx;
 	background: #444;
 	background: linear-gradient(#444, #222);
-	font-weight: bold;
+	font-weight: 100;
 }
 
 

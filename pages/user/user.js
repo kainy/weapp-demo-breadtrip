@@ -29,6 +29,7 @@ Page({
           trips,
           userId: res.data.userId,
           user_info: res.data.user_info,
+          pageLength: getCurrentPages().length,
         });
         wx.setNavigationBarTitle({
           title: res.data.user_info.name,

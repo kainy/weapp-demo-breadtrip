@@ -1,4 +1,5 @@
 @import "../../components/trip/trip.wxss";
+@import "../../components/widget/icon_nav_home.wxss";
 
 page{
   background-color: #fbf7ed;
