@@ -13,11 +13,12 @@ Page({
     draft: '',
     editDraft: null,
   },
-  //事件处理函数
-  bindViewTap: function() {
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
+  onLoad: function() {
+    wx.showToast({
+      title: '正在加载',
+      icon: 'loading',
+      duration: 10000,
+    });
   },
   syncUserInfo: function (user) {
     var that = this
@@ -68,6 +69,7 @@ Page({
       todos,
       activeTodos,
     });
+    wx.hideToast();
   },
   updateDraft: function ({
     detail: {
