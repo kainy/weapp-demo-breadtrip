@@ -81,4 +81,5 @@ page{
 }
 .searching{
   padding: 177rpx;
+  margin: 0;
 }
