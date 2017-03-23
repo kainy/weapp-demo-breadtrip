@@ -99,7 +99,7 @@ Page({
       this.audioCtx.play();
     }
   },
-  bindscroll: throttle(function (e) {
+  bindscroll: throttle(function scrollFn(e) {
     if (!e) return;
     const height = e.detail.scrollHeight / this.data.trip.waypoints;
     const n = Math.round(e.detail.scrollTop / height) + 7; // 7 非准确值，为提前加载图片数

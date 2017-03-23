@@ -41,10 +41,10 @@ Page({
     const opt = {
       title: `查看用户 ${this.data.user_info.name} 的旅行日志`,
       desc: `查看用户 ${this.data.user_info.name} 的旅行日志`,
-      path: `/pages/user/user?id=${this.data.user_info.id}`
-    }
-    console.log(opt)
-    return opt
+      path: `/pages/user/user?id=${this.data.user_info.id}`,
+    };
+    console.log(opt);
+    return opt;
   },
   viewTrip(e) {
     const ds = e.currentTarget.dataset;

@@ -43,9 +43,9 @@ Page({
   },
   loginAndFetchTodos() {
     return AV.Promise.resolve(AV.User.current()).then(user =>
-      (user ? (user.isAuthenticated().then(authed => (authed ? user : null))) : null)
+      (user ? (user.isAuthenticated().then(authed => (authed ? user : null))) : null),
     ).then(user =>
-      user || AV.User.loginWithWeapp()
+      user || AV.User.loginWithWeapp(),
     ).then((user) => {
       console.log('uid:', user.id);
       this.syncUserInfo(user);

@@ -54,10 +54,10 @@ Page({
     const opt = {
       title: `查看${this.data.title}的精品游记`,
       desc: `查看${this.data.title}的精品游记`,
-      path: `/pages/trip_list/trip_list?type=${this.data.type}&id=${this.data.id}&name=${this.data.title}`
-    }
-    console.log(opt)
-    return opt
+      path: `/pages/trip_list/trip_list?type=${this.data.type}&id=${this.data.id}&name=${this.data.title}`,
+    };
+    console.log(opt);
+    return opt;
   },
   getTrips(type, id) {
     const self = this;

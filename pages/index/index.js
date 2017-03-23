@@ -22,8 +22,8 @@ Page({
     return {
       title: '跨时空 ✈️ 旅行日志小程序',
       desc: '诗和远方 - 查看旅行日志，发现热门景点…',
-      path: '/pages/index/index'
-    }
+      path: '/pages/index/index',
+    };
   },
   loadMore(e, needRefresh) {
     const self = this;
