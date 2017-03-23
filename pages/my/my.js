@@ -1,6 +1,6 @@
 // index.js
 // 获取应用实例
-var app = getApp()
+const app = getApp();
 const AV = app.AV;
 const Todo = require('../../model/todo');
 
@@ -13,57 +13,58 @@ Page({
     draft: '',
     editDraft: null,
   },
-  onLoad: function() {
+  onLoad() {
     wx.showToast({
       title: '正在加载',
       icon: 'loading',
       duration: 10000,
     });
   },
-  syncUserInfo: function (user) {
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
+  syncUserInfo(user) {
+    const that = this;
+    // 调用应用实例的方法获取全局数据
+    app.getUserInfo((userInfo) => {
       // 更新当前用户的信息
-      user.set(userInfo).save().then(user => {
+      user.set(userInfo).save().then(() => {
         // 成功，此时可在控制台中看到更新后的用户信息
-        //that.globalData.user = user.toJSON();
+        // that.globalData.user = user.toJSON();
       }).catch(console.error);
-      //更新数据
+      // 更新数据
       that.setData({
-        userInfo:userInfo
-      })
-      app.aldstat.debug(userInfo.nickName)
-    })
+        userInfo,
+      });
+      app.aldstat.debug(userInfo.nickName);
+    });
     // new app.AV.Query('Todo')
     //   .descending('createdAt')
     //   .find()
     //   .then(todos => that.setData({ todos }))
     //   .catch(console.error);
   },
-  loginAndFetchTodos: function () {
+  loginAndFetchTodos() {
     return AV.Promise.resolve(AV.User.current()).then(user =>
-      user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
+      (user ? (user.isAuthenticated().then(authed => (authed ? user : null))) : null)
     ).then(user =>
-      user ? user : AV.User.loginWithWeapp()
+      user || AV.User.loginWithWeapp()
     ).then((user) => {
       console.log('uid:', user.id);
-      this.syncUserInfo(user)
+      this.syncUserInfo(user);
       return new AV.Query('Todo')
         .equalTo('user', AV.Object.createWithoutData('User', user.id))
         .descending('createdAt')
         .find()
         .then(this.setTodos)
         .catch(console.error);
-    }).catch(error => console.error(error.message));
+    })
+    .catch(error => console.error(error.message));
   },
-  onReady: function() {
+  onReady() {
     this.loginAndFetchTodos();
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh() {
     this.loginAndFetchTodos().then(wx.stopPullDownRefresh);
   },
-  setTodos: function (todos) {
+  setTodos(todos) {
     const activeTodos = todos.filter(todo => !todo.done);
     this.setData({
       todos,
@@ -71,21 +72,21 @@ Page({
     });
     wx.hideToast();
   },
-  updateDraft: function ({
+  updateDraft({
     detail: {
-      value
-    }
+      value,
+    },
   }) {
     this.setData({
-      draft: value
+      draft: value,
     });
   },
-  addTodo: function () {
-    var value = this.data.draft && this.data.draft.trim()
+  addTodo() {
+    const value = this.data.draft && this.data.draft.trim();
     if (!value) {
       return;
     }
-    var acl = new AV.ACL();
+    const acl = new AV.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
     acl.setReadAccess(AV.User.current(), true);
@@ -93,20 +94,21 @@ Page({
     new Todo({
       content: value,
       done: false,
-      user: AV.User.current()
+      user: AV.User.current(),
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
-    }).catch(console.error);
+    })
+    .catch(console.error);
     this.setData({
-      draft: ''
+      draft: '',
     });
   },
-  toggleDone: function ({
+  toggleDone({
     target: {
       dataset: {
-        id
-      }
-    }
+        id,
+      },
+    },
   }) {
     const { todos } = this.data;
     const currentTodo = todos.filter(todo => todo.id === id)[0];
@@ -115,33 +117,33 @@ Page({
       .then(() => this.setTodos(todos))
       .catch(console.error);
   },
-  editTodo: function ({
+  editTodo({
     target: {
       dataset: {
-        id
-      }
-    }
+        id,
+      },
+    },
   }) {
     this.setData({
       editDraft: null,
-      editedTodo: this.data.todos.filter(todo => todo.id === id)[0] || {}
+      editedTodo: this.data.todos.filter(todo => todo.id === id)[0] || {},
     });
   },
-  updateEditedContent: function ({
+  updateEditedContent({
     detail: {
-      value
-    }
+      value,
+    },
   }) {
     this.setData({
-      editDraft: value
+      editDraft: value,
     });
   },
-  doneEdit: function ({
+  doneEdit({
     target: {
       dataset: {
-        id
-      }
-    }
+        id,
+      },
+    },
   }) {
     const { todos, editDraft } = this.data;
     this.setData({
@@ -155,14 +157,14 @@ Page({
       this.setTodos(todos);
     }).catch(console.error);
   },
-  removeDone: function () {
+  removeDone() {
     AV.Object.destroyAll(this.data.todos.filter(todo => todo.done)).then(() => {
       this.setTodos(this.data.activeTodos);
     }).catch(console.error);
   },
-  setting: function () {
+  setting() {
     wx.navigateTo({
       url: '../setting/setting',
     });
   },
-})
+});

@@ -37,13 +37,13 @@ Page({
     const opt = {
       title: `查看${this.data.title}的热门地点和游记`,
       desc: `查看${this.data.title}的热门地点`,
-      path: `/pages/destination/destination?type=${this.data.options.type}&id=${this.data.options.id}&name=${this.data.title}`
-    }
-    console.log(opt)
-    return opt
+      path: `/pages/destination/destination?type=${this.data.options.type}&id=${this.data.options.id}&name=${this.data.title}`,
+    };
+    console.log(opt);
+    return opt;
   },
   onTheWay() {
-    util.alert('功能开发中，敬请期待…')
+    util.alert('功能开发中，敬请期待…');
   },
   getPlaceInfo(type, id) {
     const self = this;
@@ -76,17 +76,17 @@ Page({
         });
         wx.hideToast();
       },
-      fail: (res) => {
+      fail: () => {
         wx.showModal({
           title: '提示',
           content: '数据加载失败，请稍后重试',
-          success: function(res) {
+          success(res) {
             if (res.confirm) {
-              wx.navigateBack()
+              wx.navigateBack();
             }
-          }
-        })
-      }
+          },
+        });
+      },
     });
   },
   viewPOIList() {
