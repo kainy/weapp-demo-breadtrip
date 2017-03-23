@@ -1,4 +1,4 @@
-require('./utils/ald-stat.js');
+require('./libs/ald-stat.js');
 const AV = require('./libs/av-weapp.js');
 
 App({

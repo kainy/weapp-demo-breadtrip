@@ -26,13 +26,12 @@ function formatTime(date, type) {
 
 // 简单的节流函数
 function throttle(func, wait, mustRun) {
-  var timeout,
-    startTime = new Date();
+  let timeout;
+  let startTime = new Date();
 
-  return function () {
-    var context = this,
-      args = arguments,
-      curTime = new Date();
+  return function ret(...args) {
+    const context = this;
+    const curTime = new Date();
 
     clearTimeout(timeout);
     // 如果达到了规定的触发时间间隔，触发 handler
@@ -44,13 +43,13 @@ function throttle(func, wait, mustRun) {
       timeout = setTimeout(func, wait);
     }
   };
-};
+}
 function alert(msg) {
   wx.showModal({
     title: '提示',
     content: msg,
     showCancel: false,
-  })
+  });
 }
 module.exports = {
   formatNumber,
