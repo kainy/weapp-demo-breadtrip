@@ -167,4 +167,9 @@ Page({
       url: '../setting/setting',
     });
   },
+  tapAvatar() {
+    if (!this.data.userInfo.avatarUrl) {
+      this.loginAndFetchTodos();
+    }
+  },
 });
