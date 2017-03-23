@@ -1,4 +1,4 @@
-var app = getApp()
+const app = getApp();
 const { User } = app.AV;
 
 Page({
@@ -8,30 +8,30 @@ Page({
     password: '',
     error: null,
   },
-  onLoad: function() {
+  onLoad() {
     this.setData({
       user: User.current(),
     });
   },
-  updateUsername: function ({
+  updateUsername({
     detail: {
-      value
-    }
+      value,
+    },
   }) {
     this.setData({
-      username: value
+      username: value,
     });
   },
-  updatePassword: function ({
+  updatePassword({
     detail: {
-      value
-    }
+      value,
+    },
   }) {
     this.setData({
-      password: value
+      password: value,
     });
   },
-  save: function () {
+  save() {
     this.setData({
       error: null,
     });
@@ -44,10 +44,10 @@ Page({
         title: '更新成功',
         icon: 'success',
       });
-    }).catch(error => {
+    }).catch((error) => {
       this.setData({
         error: error.message,
       });
     });
-  }
+  },
 });
