@@ -49,12 +49,14 @@ Page({
       },
       success: (res) => {
         const trip = res.data;
+        /* eslint-disable */
         for (const day of trip.days) {
           for (const wp of day.waypoints) {
             arrShow.push(wp.id);
             wp.idx = arrShow.length;
           }
         }
+        /* eslint-disable */
         self.setData({
           trip,
         });

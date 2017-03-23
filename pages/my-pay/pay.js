@@ -34,8 +34,9 @@ Page({
       mask: true,
     });
     Cloud.run('order').then((data) => {
+      const payOpt = data;
       wx.hideToast();
-      data.success = () => {
+      payOpt.success = () => {
         wx.showToast({
           title: '支付成功',
           icon: 'success',
@@ -43,8 +44,8 @@ Page({
         });
         setTimeout(this.refreshOrders.bind(this), 1500);
       };
-      data.fail = ({ errMsg }) => this.setData({ error: errMsg });
-      wx.requestPayment(data);
+      payOpt.fail = ({ errMsg }) => this.setData({ error: errMsg });
+      wx.requestPayment(payOpt);
     }).catch((error) => {
       this.setData({ error: error.message });
       wx.hideToast();
