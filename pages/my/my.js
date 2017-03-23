@@ -3,11 +3,14 @@
 const app = getApp();
 const AV = app.AV;
 const Todo = require('../../model/todo');
+const util = require('../../utils/util.js');
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
+    userInfo: {
+      nickName: '游客（ 点击头像登录 ）',
+      avatarUrl: 'http://www.wxapp-union.com/uc_server/images/noavatar_small.gif',
+    },
     todos: [],
     editedTodo: {},
     draft: '',
@@ -20,7 +23,7 @@ Page({
       duration: 10000,
     });
   },
-  syncUserInfo(user) {
+  syncUserInfo(user, isShow) {
     const that = this;
     // 调用应用实例的方法获取全局数据
     app.getUserInfo((userInfo) => {
@@ -34,6 +37,11 @@ Page({
         userInfo,
       });
       app.aldstat.debug(userInfo.nickName);
+    }, () => {
+      // 失败
+      if (isShow) {
+        util.alert('获取用户信息失败，请删除“跨时空”小程序后重新搜索进入。');
+      }
     });
     // new app.AV.Query('Todo')
     //   .descending('createdAt')
@@ -43,20 +51,20 @@ Page({
   },
   loginAndFetchTodos() {
     return AV.Promise.resolve(AV.User.current()).then(user =>
-      (user ? (user.isAuthenticated().then(authed => (authed ? user : null))) : null) // eslint-disable-line
-    ).then(user =>
-      user || AV.User.loginWithWeapp() // eslint-disable-line
-    ).then((user) => {
-      console.log('uid:', user.id);
-      this.syncUserInfo(user);
-      return new AV.Query('Todo')
-        .equalTo('user', AV.Object.createWithoutData('User', user.id))
-        .descending('createdAt')
-        .find()
-        .then(this.setTodos)
-        .catch(console.error);
-    })
-    .catch(error => console.error(error.message));
+        (user ? (user.isAuthenticated().then(authed => (authed ? user : null))) : null) // eslint-disable-line
+      ).then(user =>
+        user || AV.User.loginWithWeapp() // eslint-disable-line
+      ).then((user) => {
+        console.log('uid:', user.id);
+        this.syncUserInfo(user);
+        return new AV.Query('Todo')
+          .equalTo('user', AV.Object.createWithoutData('User', user.id))
+          .descending('createdAt')
+          .find()
+          .then(this.setTodos)
+          .catch(console.error);
+      })
+      .catch(error => console.error(error.message));
   },
   onReady() {
     this.loginAndFetchTodos();
@@ -98,7 +106,7 @@ Page({
     }).setACL(acl).save().then((todo) => {
       this.setTodos([todo, ...this.data.todos]);
     })
-    .catch(console.error);
+      .catch(console.error);
     this.setData({
       draft: '',
     });
@@ -168,8 +176,14 @@ Page({
     });
   },
   tapAvatar() {
-    if (!this.data.userInfo.avatarUrl) {
-      this.loginAndFetchTodos();
-    }
+    // wx.checkSession({
+    //   fail() {
+    //     console.log(0, arguments);
+    //   },
+    //   success() {
+    //     console.log(1, arguments);
+    //   },
+    // });
+    this.syncUserInfo(AV.User.current(), true);
   },
 });

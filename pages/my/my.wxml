@@ -5,15 +5,6 @@
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     <navigator url="../my-setting/setting" class="setting">设置</navigator>
   </view>
-  <!--<view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>-->
-  <!-- pages/todos/todos.js -->
-  <!--<block wx:for="{{ todos }}" wx:for-item="todo" wx:key="objectId">
-    <text data-id="">
-      {{ todo.content }}
-    </text>
-  </block>-->
 </view>
 <view class="flex-wrap header">
   <input
