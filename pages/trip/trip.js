@@ -3,7 +3,6 @@ const util = require('../../utils/util.js');
 
 const App = getApp();
 const throttle = util.throttle;
-const arrShow = [];
 Page({
   data: {
     trip: {
@@ -25,6 +24,7 @@ Page({
   onLoad(options) {
     const self = this;
     const id = options.id;
+    this.arrShow = [];
     self.setData({
       options,
       pageLength: getCurrentPages().length,
@@ -52,8 +52,8 @@ Page({
         /* eslint-disable */
         for (const day of trip.days) {
           for (const wp of day.waypoints) {
-            arrShow.push(wp.id);
-            wp.idx = arrShow.length;
+            self.arrShow.push(wp.id);
+            wp.idx = self.arrShow.length;
           }
         }
         /* eslint-disable */
@@ -108,7 +108,7 @@ Page({
     this.setData({
       idxShow: Math.max(n, this.data.idxShow),
     });
-    // console.log(n, this.data.idxShow)
+    // console.log(arrShow, n, this.data.idxShow)
   }, 777, 3777),
   onShareAppMessage() {
     const opt = {
