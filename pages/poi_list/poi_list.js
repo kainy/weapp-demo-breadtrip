@@ -53,10 +53,10 @@ Page({
     const opt = {
       title: `查看${this.data.title}的景点、住宿、餐厅… 地点信息`,
       desc: `查看${this.data.title}的景点、住宿、餐厅… 地点信息`,
-      path: `/pages/poi_list/poi_list?id=${this.data.id}&name=${this.data.title}&type=${this.data.type}`
-    }
-    console.log(opt)
-    return opt
+      path: `/pages/poi_list/poi_list?id=${this.data.id}&name=${this.data.title}&type=${this.data.type}`,
+    };
+    console.log(opt);
+    return opt;
   },
   getPOIList(type, id, poiType, needRefresh) {
     const self = this;
@@ -123,7 +123,7 @@ Page({
     });
     this.getPOIList(self.data.type, self.data.id, poiType, true);
   },
-  viewTrip(e) {
-    util.alert('功能开发中，敬请期待…')
+  viewTrip() {
+    util.alert('功能开发中，敬请期待…');
   },
 });

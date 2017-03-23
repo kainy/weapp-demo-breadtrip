@@ -1,4 +1,4 @@
-var app = getApp()
+const app = getApp();
 const { User, Query, Cloud } = app.AV;
 const Order = require('../../model/order');
 
@@ -19,10 +19,10 @@ Page({
       .equalTo('status', 'SUCCESS')
       .descending('createdAt')
       .find()
-      .then(orders => this.setData({ 
+      .then(orders => this.setData({
         orders: orders.map(order => Object.assign(order.toJSON(), {
           paidAt: order.paidAt.toLocaleString(),
-        }))
+        })),
       }))
       .catch(console.error);
   },
@@ -32,7 +32,7 @@ Page({
       icon: 'loading',
       duration: 10000,
       mask: true,
-    })
+    });
     Cloud.run('order').then((data) => {
       wx.hideToast();
       data.success = () => {
@@ -42,12 +42,12 @@ Page({
           duration: 1500,
         });
         setTimeout(this.refreshOrders.bind(this), 1500);
-      }
-      data.fail = ({errMsg}) => this.setData({ error: errMsg });
+      };
+      data.fail = ({ errMsg }) => this.setData({ error: errMsg });
       wx.requestPayment(data);
-    }).catch(error => {
+    }).catch((error) => {
       this.setData({ error: error.message });
       wx.hideToast();
-    })
-  }
+    });
+  },
 });
