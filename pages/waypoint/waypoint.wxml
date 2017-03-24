@@ -5,7 +5,7 @@
   </view>
   <block wx:if="{{ waypoint.photo }}">
     <view class="photo-ctn">
-      <image bindtap="previewImage" data-src="{{ waypoint.photo }}" style="width: 100%; height: {{ waypoint.photo_info.h * (windowWidth - 30) / waypoint.photo_info.w }}px; background-color: #eeeeee;" class="cover" src="{{ waypoint.photo_webtrip }}"></image>
+      <image bindtap="previewImage" style="width: 100%; height: {{ waypoint.photo_info.h * (windowWidth - 30) / waypoint.photo_info.w }}px; background-color: #e7ddc6;" class="cover" src="{{ waypoint.photo_webtrip }}"></image>
     </view>
     <view wx:if="{{ waypoint.text }}" class="text">{{ waypoint.text }}</view>
     <view class="wp-stats">
