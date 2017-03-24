@@ -9,7 +9,6 @@ Page({
   data: {
     userInfo: {
       nickName: '游客（ 点击头像登录 ）',
-      avatarUrl: 'http://www.wxapp-union.com/uc_server/images/noavatar_small.gif',
     },
     todos: [],
     editedTodo: {},
