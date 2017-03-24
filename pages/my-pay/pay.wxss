@@ -24,7 +24,9 @@
   font-size: 140%;
   padding-top: 60px;
 }
-
+.description {
+  text-align: center;
+}
 .footer {
   position: fixed;
   bottom: 0;
