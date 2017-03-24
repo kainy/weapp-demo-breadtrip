@@ -99,7 +99,7 @@ Page({
     });
   },
   previewImage(e) {
-    const url = e.currentTarget.dataset.src.replace('w/960', 'w/1384/h/1384'); // 使用高清图（宽高<=1384）
+    const url = e.currentTarget.dataset.src;
     // console.log(url)
     wx.previewImage({
       current: url,
