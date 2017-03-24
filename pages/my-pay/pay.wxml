@@ -15,6 +15,6 @@
 </view>
 <view class="container footer">
   <text wx:if="{{error}}" class="error">{{error}}</text>
-  <button type="primary" bindtap="donate">支付 ￥0.01</button>
-  <text class="hint">仅供体验支付流程。</text>
+  <button type="primary" bindtap="donate">支付 ￥1</button>
+  <text class="hint">🍵 请郭老师喝碗茶。</text>
 </view>
