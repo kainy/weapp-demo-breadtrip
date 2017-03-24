@@ -14,6 +14,11 @@ Page({
   onLoad(options) {
     const self = this;
     const userId = options.id || self.data.userId;
+    wx.showToast({
+      title: '传送门开启中',
+      icon: 'loading',
+      duration: 10000,
+    });
     api.getUserInfoByID({
       query: {
         userId,
@@ -34,6 +39,7 @@ Page({
         wx.setNavigationBarTitle({
           title: res.data.user_info.name,
         });
+        wx.hideToast();
       },
     });
   },
