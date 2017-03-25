@@ -70,6 +70,17 @@ App({
   globalData: {
     userInfo: null,
   },
+  loginOrSignup() {
+    return AV.Promise.resolve(AV.User.current()).then(user =>
+        (user ? (user.isAuthenticated().then(authed => (authed ? user : null))) : null) // eslint-disable-line
+      ).then(user =>
+        user || AV.User.loginWithWeapp() // eslint-disable-line
+      ).then((user) => {
+        console.log('uid:', user.id);
+        return user;
+      })
+      .catch(error => console.error(error.message));
+  },
 });
 
 const app = getApp();

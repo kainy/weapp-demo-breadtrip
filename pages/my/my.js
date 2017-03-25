@@ -49,21 +49,21 @@ Page({
     //   .catch(console.error);
   },
   loginAndFetchTodos() {
-    return AV.Promise.resolve(AV.User.current()).then(user =>
-        (user ? (user.isAuthenticated().then(authed => (authed ? user : null))) : null) // eslint-disable-line
-      ).then(user =>
-        user || AV.User.loginWithWeapp() // eslint-disable-line
-      ).then((user) => {
-        console.log('uid:', user.id);
-        this.syncUserInfo(user);
-        return new AV.Query('Todo')
-          .equalTo('user', AV.Object.createWithoutData('User', user.id))
-          .descending('createdAt')
-          .find()
-          .then(this.setTodos)
-          .catch(console.error);
-      })
-      .catch(error => console.error(error.message));
+    app.loginOrSignup().then((user) => {
+      this.syncUserInfo(user);
+      this.setData({
+        userInfo: user,
+      });
+      this.fetchTodos(user);
+    });
+  },
+  fetchTodos(user) {
+    return new AV.Query('Todo')
+      .equalTo('user', AV.Object.createWithoutData('User', user.id))
+      .descending('createdAt')
+      .find()
+      .then(this.setTodos)
+      .catch(console.error);
   },
   onReady() {
     this.loginAndFetchTodos();

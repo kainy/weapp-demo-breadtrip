@@ -1,6 +1,7 @@
 const app = getApp();
 const { User, Query, Cloud } = app.AV;
 const Order = require('../../model/order');
+const util = require('../../utils/util.js');
 
 Page({
   data: {
@@ -8,12 +9,22 @@ Page({
     error: null,
   },
   onLoad() {
+    this.setData({
+      pageLength: getCurrentPages().length,
+    });
     return this.refreshOrders();
   },
   onPullDownRefresh() {
     return this.refreshOrders().then(wx.stopPullDownRefresh);
   },
   refreshOrders() {
+    if (!User.current()) {
+      app.loginOrSignup().then(this.queryOrders);
+    } else {
+      this.queryOrders();
+    }
+  },
+  queryOrders() {
     return new Query(Order)
       .equalTo('user', User.current())
       .equalTo('status', 'SUCCESS')
@@ -44,7 +55,9 @@ Page({
         });
         setTimeout(this.refreshOrders.bind(this), 1500);
       };
-      payOpt.fail = ({ errMsg }) => this.setData({ error: errMsg });
+      payOpt.fail = ({ errMsg }) => {
+        this.setData({ error: errMsg });
+      };
       wx.requestPayment(payOpt);
     }).catch((error) => {
       this.setData({ error: error.message });

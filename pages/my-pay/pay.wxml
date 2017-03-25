@@ -1,3 +1,6 @@
+<import src="../../components/trip/trip.wxml"/>
+<import src="../../components/widget/icon_nav_home.wxml"/>
+<template is="m-homenav" wx:if="{{ pageLength === 1 }}"></template>
 <view class="container">
   <view class="orders">
     <text class="hint">历史打赏</text>

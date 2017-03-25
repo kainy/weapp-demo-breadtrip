@@ -1,3 +1,4 @@
+@import "../../components/widget/icon_nav_home.wxss";
 .order {
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -34,4 +35,7 @@
   box-sizing: border-box;
   border-top: 1px solid #eee;
   background: white;
+}
+.home-nav {
+  bottom:97px;
 }
