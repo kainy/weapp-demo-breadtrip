@@ -19,10 +19,9 @@ Page({
   },
   refreshOrders() {
     if (!User.current()) {
-      app.loginOrSignup().then(this.queryOrders);
-    } else {
-      this.queryOrders();
+      return app.loginOrSignup().then(this.queryOrders);
     }
+    return this.queryOrders();
   },
   queryOrders() {
     return new Query(Order)

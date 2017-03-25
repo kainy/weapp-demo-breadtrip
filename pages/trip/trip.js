@@ -104,7 +104,7 @@ Page({
   bindscroll: throttle(function scrollFn(e) {
     if (!e) return;
     const height = e.detail.scrollHeight / this.data.trip.waypoints;
-    const n = Math.round(e.detail.scrollTop / height) + 7; // 7 非准确值，为提前加载图片数
+    const n = Math.round(e.detail.scrollTop / height) + 10; // 7 非准确值，为提前加载图片数
     this.setData({
       idxShow: Math.max(n, this.data.idxShow),
     });
