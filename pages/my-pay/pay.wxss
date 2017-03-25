@@ -1,4 +1,4 @@
-@import "../../components/widget/icon_nav_home.wxss";
+@import "../../components/breadcrumb/breadcrumb.wxss";
 .order {
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -36,6 +36,7 @@
   border-top: 1px solid #eee;
   background: white;
 }
-.home-nav {
-  bottom:97px;
+.container {
+  padding:24rpx;
+
 }

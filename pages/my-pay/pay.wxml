@@ -1,9 +1,12 @@
 <import src="../../components/trip/trip.wxml"/>
-<import src="../../components/widget/icon_nav_home.wxml"/>
-<template is="m-homenav" wx:if="{{ pageLength === 1 }}"></template>
 <view class="container">
+  <view class="breadcrumb flat" wx:if="{{ pageLength === 1 }}">
+    <navigator class="a" open-type="switchTab" url="/pages/index/index" hover-class="active">首页</navigator>
+    <navigator class="a" open-type="switchTab" url="/pages/my/my" hover-class="active">个人中心</navigator>
+    <navigator class="a" url="/pages/my-setting/setting" hover-class="active">设置</navigator>
+  </view>
   <view class="orders">
-    <text class="hint">历史打赏</text>
+    <text class="hint">打赏记录</text>
     <view class="form-wrap">
       <block wx:for="{{orders}}" wx:for-item="order" wx:key="objectId">
         <view class="order">
