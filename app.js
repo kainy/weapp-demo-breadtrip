@@ -32,41 +32,6 @@ App({
       },
     });
   },
-  getUserInfo(cb, failCB) {
-    const self = this;
-    if (this.globalData.userInfo) {
-      if (typeof cb === 'function') {
-        cb(this.globalData.userInfo);
-      }
-    } else {
-      // 调用登录接口
-      wx.login({
-        success(res) {
-          if (res.code) {
-            wx.getUserInfo({
-              success(info) {
-                self.globalData.userInfo = info.userInfo;
-                if (typeof cb === 'function') {
-                  cb(self.globalData.userInfo);
-                }
-              },
-              fail(info) {
-                if (typeof failCB === 'function') {
-                  failCB(info);
-                }
-                console.warn(`获取用户信息失败！${info.errMsg}`);
-              },
-            });
-          } else {
-            console.log(`获取用户登录态失败！${res.errMsg}`);
-          }
-        },
-        fail(res) {
-          console.warn(res);
-        },
-      });
-    }
-  },
   globalData: {
     userInfo: null,
   },

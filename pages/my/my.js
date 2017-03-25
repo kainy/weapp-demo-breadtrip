@@ -7,9 +7,7 @@ const util = require('../../utils/util.js');
 
 Page({
   data: {
-    userInfo: {
-      nickName: '游客（ 点击头像登录 ）',
-    },
+    userInfo: null,
     todos: [],
     editedTodo: {},
     draft: '',
@@ -22,39 +20,45 @@ Page({
       duration: 10000,
     });
   },
-  syncUserInfo(user, isShow) {
-    const that = this;
-    // 调用应用实例的方法获取全局数据
-    app.getUserInfo((userInfo) => {
-      // 更新当前用户的信息
-      user.set(userInfo).save().then(() => {
-        // 成功，此时可在控制台中看到更新后的用户信息
-        // that.globalData.user = user.toJSON();
-      }).catch(console.error);
-      // 更新数据
-      that.setData({
-        userInfo,
-      });
-      app.aldstat.debug(userInfo.nickName);
-    }, () => {
-      // 失败
-      if (isShow) {
-        util.alert('获取微信头像失败，请删除“跨时空”小程序后重新搜索进入并授权。');
-      }
+  syncUserInfo(user, failCB) {
+    const self = this;
+    wx.login({
+      success(res) {
+        if (res.code) {
+          wx.getUserInfo({
+            success({ userInfo }) {
+              // 更新当前用户的信息
+              user.set(userInfo).save().then(() => {
+                // 成功，此时可在控制台中看到更新后的用户信息
+              }).catch(console.error);
+              self.setData({
+                userInfo,
+              });
+              app.aldstat.debug(userInfo.nickName);
+            },
+            fail(info) {
+              console.warn(`获取用户信息失败！${info.errMsg}`);
+              if (failCB) {
+                failCB(info);
+              }
+            },
+          });
+        } else {
+          console.log(`获取用户登录态失败！${res.errMsg}`);
+        }
+      },
+      fail(res) {
+        console.warn(res);
+      },
     });
-    // new app.AV.Query('Todo')
-    //   .descending('createdAt')
-    //   .find()
-    //   .then(todos => that.setData({ todos }))
-    //   .catch(console.error);
   },
   loginAndFetchTodos() {
     app.loginOrSignup().then((user) => {
-      this.syncUserInfo(user);
       this.setData({
         userInfo: user,
       });
       this.fetchTodos(user);
+      this.syncUserInfo(user);
     });
   },
   fetchTodos(user) {
@@ -175,14 +179,8 @@ Page({
     });
   },
   tapAvatar() {
-    // wx.checkSession({
-    //   fail() {
-    //     console.log(0, arguments);
-    //   },
-    //   success() {
-    //     console.log(1, arguments);
-    //   },
-    // });
-    this.syncUserInfo(AV.User.current(), true);
+    this.syncUserInfo(AV.User.current(), () => {
+      util.alert('获取微信头像失败，请删除“跨时空”小程序后重新搜索进入并授权。');
+    });
   },
 });
