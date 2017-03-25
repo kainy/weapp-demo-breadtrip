@@ -53,7 +53,7 @@ Page({
     });
   },
   loginAndFetchTodos() {
-    app.loginOrSignup().then((user) => {
+    return app.loginOrSignup().then((user) => {
       this.setData({
         userInfo: user,
       });
