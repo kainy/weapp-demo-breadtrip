@@ -11,7 +11,7 @@
   </view>
 </scroll-view>
 <scroll-view class="list" style="height: {{ windowHeight - 70 / pixelRatio }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
-  <block wx:for="{{ pois }}" wx:for-item="poi" wx:key="poi.id">
+  <block wx:for="{{ pois }}" wx:for-item="poi" wx:key="poi.id" enable-back-to-top="true">
     <template is="m-poi" data="{{poi: poi}}" />
   </block>
   <view wx:if="{{ hasMore }}" class="loading">

@@ -1,5 +1,5 @@
 <import src="../../components/trip/trip.wxml"/>
-<scroll-view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
+<scroll-view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800" enable-back-to-top="true">
   <view class="breadcrumb flat" wx:if="{{ pageLength === 1 }}">
     <navigator class="a" open-type="switchTab" url="/pages/explore/explore" hover-class="active">发现</navigator>
     <navigator class="a" url="/pages/destination/destination?id={{id}}&name={{title}}&type={{type}}" hover-class="active">{{title}}的热门地点和游记</navigator>
