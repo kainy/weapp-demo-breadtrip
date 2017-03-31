@@ -25,9 +25,10 @@ Page({
     const self = this;
     const id = options.id;
     this.arrShow = [];
-    self.setData({
+    this.icon = getCurrentPages().length === 1 ? 'homenav' : 'donate';
+    this.setData({
       options,
-      pageLength: getCurrentPages().length,
+      icon: this.icon,
     });
     wx.getSystemInfo({
       success(res) {

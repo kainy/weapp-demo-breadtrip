@@ -1,8 +1,22 @@
 <template name="m-homenav">
   <navigator url="/pages/index/index" open-type="switchTab" hover-class="none">
     <view class="home-nav">
-      <image mode="scaleToFill" src="/images/tab_home_sel_30.png"></image>
+      <image mode="scaleToFill" src="http://kaidn-cdn.stor.sinaapp.com/ksk/home.svg"></image>
       <text>首页</text>
     </view>
   </navigator>
 </template>
+<template name="m-donate">
+  <navigator url="/pages/my-pay/pay" hover-class="none">
+    <view class="home-nav">
+      <image mode="scaleToFill" src="http://kaidn-cdn.stor.sinaapp.com/ksk/donate.svg"></image>
+      <text>打赏</text>
+    </view>
+  </navigator>
+</template>
+<!-- <template name="m-top">
+  <view class="home-nav">
+    <image mode="scaleToFill" src="https://image.flaticon.com/icons/svg/180/180015.svg"></image>
+    <text>顶部</text>
+  </view>
+</template> -->
