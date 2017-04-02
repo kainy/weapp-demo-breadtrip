@@ -30,6 +30,11 @@ Page({
       options,
       icon: this.icon,
     });
+    wx.showToast({
+      title: '正在加载',
+      icon: 'loading',
+      duration: 10000,
+    });
     wx.getSystemInfo({
       success(res) {
         if (App.systemInfo.windowHeight !== res.windowHeight) {
@@ -38,11 +43,6 @@ Page({
           });
         }
       },
-    });
-    wx.showToast({
-      title: '传送门开启中',
-      icon: 'loading',
-      duration: 10000,
     });
     api.getTripInfoByID({
       query: {
@@ -61,8 +61,8 @@ Page({
         self.setData({
           trip,
         });
-        wx.hideToast();
         this.audioInit();
+        wx.hideToast();
       },
     });
   },

@@ -9,6 +9,11 @@ Page({
     error: null,
   },
   onLoad() {
+    wx.showToast({
+      title: '传送门开启中',
+      icon: 'loading',
+      duration: 10000,
+    });
     this.setData({
       pageLength: getCurrentPages().length,
     });
@@ -29,12 +34,15 @@ Page({
       .equalTo('status', 'SUCCESS')
       .descending('createdAt')
       .find()
-      .then(orders => this.setData({
-        orders: orders.map(order => Object.assign(order.toJSON(), {
-          paidAt: order.paidAt.toLocaleString(),
-          queryString: (order.link && order.link.options) ? util.params(order.link.options) : '',
-        })),
-      }))
+      .then((orders) => {
+        this.setData({
+          orders: orders.map(order => Object.assign(order.toJSON(), {
+            paidAt: order.paidAt.toLocaleString(),
+            queryString: (order.link && order.link.options) ? util.params(order.link.options) : '',
+          })),
+        });
+        wx.hideToast();
+      })
       .catch(console.error);
   },
   genOrderParams() {
