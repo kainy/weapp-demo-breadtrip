@@ -10,6 +10,7 @@ App({
     wx.getSystemInfo({
       success(res) {
         self.systemInfo = res;
+        // console.log(res);
         const oldSys = JSON.stringify(wx.getStorageSync('sysInfo'));
         const newSys = JSON.stringify(res);
         if (oldSys !== newSys) {

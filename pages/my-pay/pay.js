@@ -36,6 +36,20 @@ Page({
       }))
       .catch(console.error);
   },
+  genOrderParams() {
+    const curPages = getCurrentPages();
+    const options = curPages[curPages.length - 2].data.options;
+    const ret = {
+      amount: (app.systemInfo.platform === 'devtools') ? 1 : 100,
+    };
+    if (options && options.id) {
+      ret.link = {
+        page: 'pages/trip/trip',
+        options,
+      };
+    }
+    return ret;
+  },
   donate() {
     wx.showToast({
       title: '正在创建订单',
@@ -43,7 +57,7 @@ Page({
       duration: 10000,
       mask: true,
     });
-    Cloud.run('order').then((data) => {
+    Cloud.run('order', this.genOrderParams()).then((data) => {
       const payOpt = data;
       wx.hideToast();
       payOpt.success = () => {
