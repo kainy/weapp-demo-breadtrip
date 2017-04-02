@@ -1,5 +1,5 @@
 <import src="../../components/widget/icon_nav_home.wxml"/>
-<template is="m-{{icon}}"></template>
+<template wx:if="{{ icon }}" is="m-{{icon}}"></template>
 <scroll-view style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscroll="bindscroll" enable-back-to-top="true">
 <view wx:if="{{ bgMusic }}" bindtap="audioCtrl" class="audioCtrl">
   <audio src="{{bgMusic}}" id="myAudio" loop style="display:none"></audio>
