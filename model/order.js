@@ -28,6 +28,9 @@ class Order extends AV.Object {
 
   get paidAt() { return this.get('paidAt'); }
   set paidAt(value) { this.set('paidAt', value); }
+
+  get link() { return this.get('link'); }
+  set link(value) { this.set('link', value); }
 } 
 AV.Object.register(Order, 'Order');
 

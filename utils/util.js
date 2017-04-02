@@ -51,9 +51,13 @@ function alert(msg) {
     showCancel: false,
   });
 }
+function params(qs) {
+  return Object.keys(qs).map(i => `${i}=${qs[i]}`).join('&');
+}
 module.exports = {
   formatNumber,
   formatTime,
   throttle,
   alert,
+  params,
 };

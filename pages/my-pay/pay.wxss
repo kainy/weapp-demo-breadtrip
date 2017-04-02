@@ -39,3 +39,7 @@
 .container {
   padding:24rpx;
 }
+.link {
+  clear:both;
+  font-size: 37rpx;
+}
