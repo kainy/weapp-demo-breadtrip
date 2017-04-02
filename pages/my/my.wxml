@@ -3,7 +3,7 @@
   <view class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="tapAvatar"></image>
     <text class="userinfo-nickname">{{userInfo.nickName || '游客（ 点击头像登录 ）'}}</text>
-    <navigator url="../my-setting/setting" class="setting">设置</navigator>
+    <navigator url="../my-setting/setting" class="setting" hover-class="none">设置</navigator>
   </view>
 </view>
 <view class="flex-wrap header">

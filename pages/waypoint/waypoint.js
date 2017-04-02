@@ -78,19 +78,6 @@ Page({
         });
       },
     });
-    api.waypoint.replies(tripId, waypointId, (state, res) => {
-      if (state === 'success') {
-        const replies = res.data;
-        replies.comments.map((reply) => {
-          const item = reply;
-          item.date_added = formatTime(new Date(item.date_added * 1000), 2);
-          return item;
-        });
-        self.setData({
-          replies,
-        });
-      }
-    });
   },
   gotoUser(e) {
     const userId = e.target.dataset.id;

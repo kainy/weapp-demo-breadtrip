@@ -42,4 +42,6 @@
 .link {
   clear:both;
   font-size: 37rpx;
+  text-align: center;
+  color: #1AAD16;
 }
