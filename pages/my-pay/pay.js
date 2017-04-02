@@ -39,15 +39,17 @@ Page({
   },
   genOrderParams() {
     const curPages = getCurrentPages();
-    const options = curPages[curPages.length - 2].data.options;
     const ret = {
       amount: (app.systemInfo.platform === 'devtools') ? 1 : 100,
     };
-    if (options && options.id) {
-      ret.link = {
-        page: 'pages/trip/trip',
-        options,
-      };
+    if (curPages[curPages.length - 2]) {
+      const options = curPages[curPages.length - 2].data.options;
+      if (options && options.id) {
+        ret.link = {
+          page: 'pages/trip/trip',
+          options,
+        };
+      }
     }
     return ret;
   },
