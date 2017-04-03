@@ -44,11 +44,16 @@ function throttle(func, wait, mustRun) {
     }
   };
 }
-function alert(msg) {
+function alert(msg, cb) {
   wx.showModal({
     title: '提示',
     content: msg,
     showCancel: false,
+    success() {
+      if (cb) {
+        cb();
+      }
+    },
   });
 }
 function params(qs) {

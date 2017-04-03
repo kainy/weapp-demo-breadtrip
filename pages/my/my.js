@@ -37,7 +37,9 @@ Page({
             },
             fail(info) {
               console.warn(`获取用户信息失败！${info.errMsg}`);
-              if (failCB) {
+              if (wx.openSetting) {
+                util.alert('同步微信头像失败，请在后续弹窗中勾选“用户信息”', wx.openSetting);
+              } else if (failCB) {
                 failCB(info);
               }
             },
