@@ -6,7 +6,6 @@ App({
   AV,
   onLaunch() {
     const self = this;
-    self.aldstat.debug('launched');
     wx.getSystemInfo({
       success(res) {
         self.systemInfo = res;
@@ -34,9 +33,11 @@ App({
     });
   },
   onError(error) {
-    const log = new AV.Object('Log');
-    log.set('jsError', error);
-    log.save();
+    if (this.systemInfo.platform !== 'devtools') {
+      const log = new AV.Object('Log');
+      log.set('jsError', error);
+      log.save();
+    }
   },
   globalData: {
     userInfo: null,
@@ -53,9 +54,6 @@ App({
       .catch(error => console.error(error.message));
   },
 });
-
-const app = getApp();
-app.aldstat.debug('app.js');
 
 AV.init({
   appId: '8RLDamMl5A27EOhFH2fU7AN0-gzGzoHsz', // {{appid}}

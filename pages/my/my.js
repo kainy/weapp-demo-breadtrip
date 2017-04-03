@@ -34,7 +34,6 @@ Page({
               self.setData({
                 userInfo,
               });
-              app.aldstat.debug(userInfo.nickName);
             },
             fail(info) {
               console.warn(`获取用户信息失败！${info.errMsg}`);
