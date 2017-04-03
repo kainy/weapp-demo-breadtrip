@@ -1,5 +1,7 @@
 require('./libs/ald-stat.js');
 const AV = require('./libs/av-weapp.js');
+const util = require('./utils/util.js');
+
 
 App({
   systemInfo: null,
@@ -28,6 +30,9 @@ App({
       success(res) {
         // 返回网络类型, 有效值：
         // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
+        if (res.networkType === 'none') {
+          util.alert('无法连接到网络 😢');
+        }
         self.globalData.networkType = res.networkType;
       },
     });
