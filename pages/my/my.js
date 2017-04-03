@@ -21,6 +21,7 @@ Page({
     });
   },
   syncUserInfo(user, failCB) {
+    if (!user) return;
     const self = this;
     wx.login({
       success(res) {

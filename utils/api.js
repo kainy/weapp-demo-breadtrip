@@ -1,4 +1,5 @@
 const apiURL = 'https://kainy.cn/api/trip';
+const util = require('./util.js');
 
 const wxRequest = (params, url) => {
   wx.request({
@@ -7,7 +8,6 @@ const wxRequest = (params, url) => {
     data: params.data || {},
     header: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
     },
     success(res) {
       if (params.success) {
@@ -15,9 +15,12 @@ const wxRequest = (params, url) => {
       }
     },
     fail(res) {
-      if (params.fail) {
-        params.fail(res);
-      }
+      wx.hideToast();
+      util.alert('数据加载失败，请确认网络连接顺畅或稍后重试', () => {
+        if (params.fail) {
+          params.fail(res);
+        }
+      });
     },
     complete(res) {
       if (params.complete) {

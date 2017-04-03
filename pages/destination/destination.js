@@ -59,6 +59,7 @@ Page({
         });
         self.getPOI(type, id);
       },
+      fail: wx.navigateBack,
     });
   },
   getPOI(type, id) {
@@ -76,17 +77,7 @@ Page({
         });
         wx.hideToast();
       },
-      fail: () => {
-        wx.showModal({
-          title: '提示',
-          content: '数据加载失败，请稍后重试',
-          success(res) {
-            if (res.confirm) {
-              wx.navigateBack();
-            }
-          },
-        });
-      },
+      fail: wx.navigateBack,
     });
   },
   viewPOIList() {
