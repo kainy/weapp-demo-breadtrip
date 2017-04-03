@@ -33,6 +33,11 @@ App({
       },
     });
   },
+  onError(error) {
+    const log = new AV.Object('Log');
+    log.set('jsError', error);
+    log.save();
+  },
   globalData: {
     userInfo: null,
   },
