@@ -113,7 +113,7 @@ Page({
   }, 777, 3777),
   onShareAppMessage() {
     const opt = {
-      title: this.data.options.name,
+      title: `「${this.data.options.name}」`,
       desc: this.data.trip.days[0].waypoints[0].text,
       path: `/pages/trip/trip?id=${this.data.options.id}&name=${this.data.options.name}`,
     };
