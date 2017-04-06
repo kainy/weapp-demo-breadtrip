@@ -115,8 +115,9 @@ contact-button {
   background:#4abdcc;
   box-shadow:0 0 10rpx gray;
   border-radius:77rpx;
-  padding:14rpx;
+  padding:10rpx;
   position:fixed;
   right:67rpx;
   bottom:114rpx;
+  border: solid 7rpx white
 }

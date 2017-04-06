@@ -9,6 +9,7 @@
   "keywords": ["breadtrip", "weapp"],
   "author": "romoo chen <romoochen@gmail.com>",
   "license": "Apache-2.0",
+  "AppID": "wxf8c8058dd4de52e5",
   "devDependencies": {
     "eslint": "^3.9.1",
     "eslint-config-airbnb-base": "^9.0.0",
