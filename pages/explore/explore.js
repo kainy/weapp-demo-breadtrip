@@ -143,8 +143,9 @@ Page({
   wxSerchFocus(e) {
     WxSearch.wxSearchFocus(e, this);
   },
-  wxSearchBlur(e) {
-    WxSearch.wxSearchBlur(e, this);
+  wxSearchBlur() {
+    // 微信 6.5.7 版本将blur 事件触发延后至 searchKeyTap 之后，导致搜索内容无法更新
+    // WxSearch.wxSearchBlur(e, this);
   },
   wxSearchKeyTap(e) {
     WxSearch.wxSearchKeyTap(e, this, this.wxSearchFn);
