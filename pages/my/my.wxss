@@ -113,11 +113,11 @@ page{
 /* 客服按钮 */
 contact-button {
   background:#4abdcc;
-  box-shadow:0 0 10rpx gray;
+  box-shadow:0 0 4rpx gray;
   border-radius:77rpx;
-  padding:10rpx;
+  padding:17rpx;
   position:fixed;
   right:67rpx;
   bottom:114rpx;
-  border: solid 7rpx white
+  border:solid 9rpx white;
 }

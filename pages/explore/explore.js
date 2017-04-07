@@ -141,9 +141,7 @@ Page({
     WxSearch.wxSearchBlur(e, self);
   },
   wxSearchKeyTap(e) {
-    const self = this;
-    WxSearch.wxSearchKeyTap(e, self);
-    self.wxSearchFn();
+    WxSearch.wxSearchKeyTap(e, this, this.wxSearchFn);
   },
   wxSearchDeleteKey(e) {
     const self = this;
