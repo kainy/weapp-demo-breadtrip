@@ -129,14 +129,12 @@ function wxSearchKeyTap(e, that, callBack) {
     //回调
     var temData = that.data.wxSearchData;
     temData.value = e.target.dataset.key;
-    setTimeout(() => {
-        that.setData({
-            wxSearchData: temData
-        });
-        if (typeof (callBack) == "function") {
-            callBack();
-        }
-    }, 77)
+    that.setData({
+        wxSearchData: temData
+    });
+    if (typeof (callBack) == "function") {
+        callBack();
+    }
 }
 function getHisKeys(that) {
     var value = [];
