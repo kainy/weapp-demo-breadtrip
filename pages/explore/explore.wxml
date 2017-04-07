@@ -4,7 +4,10 @@
 <view class="wxSearch-wraper">
   <view class="wxSearch-section">
     <view class="wxSearch-pancel">
-      <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" bindconfirm="wxSearchFn" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索游记" />
+      <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" bindconfirm="wxSearchFn" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索游记" focus="{{searchFocus}}"/>
+      <view class="weui-icon-clear" wx:if="{{wxSearchData.value.length > 0}}" catchtap="clearInput">
+          <icon type="clear" size="17"></icon>
+      </view>
       <!-- <button class="wxSearch-button"  size="mini" plain="true">搜索</button> -->
       <icon type="search" class="search-icon" bindtap="wxSearchFn" size="27" color="grey"/>
     </view>

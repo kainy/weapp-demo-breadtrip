@@ -14,6 +14,7 @@ Page({
     start: 0,
     trips_more: false,
     searching: false,
+    searchFocus: false,
   },
   onLoad(options) {
     const self = this;
@@ -127,6 +128,14 @@ Page({
       },
     });
     WxSearch.wxSearchAddHisKey(self);
+  },
+  clearInput() {
+    const temData = this.data.wxSearchData;
+    temData.value = '';
+    this.setData({
+      wxSearchData: temData,
+      searchFocus: true,
+    });
   },
   wxSearchInput(e) {
     WxSearch.wxSearchInput(e, this);
