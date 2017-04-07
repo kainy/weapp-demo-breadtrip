@@ -129,30 +129,24 @@ Page({
     WxSearch.wxSearchAddHisKey(self);
   },
   wxSearchInput(e) {
-    const self = this;
-    WxSearch.wxSearchInput(e, self);
+    WxSearch.wxSearchInput(e, this);
   },
   wxSerchFocus(e) {
-    const self = this;
-    WxSearch.wxSearchFocus(e, self);
+    WxSearch.wxSearchFocus(e, this);
   },
   wxSearchBlur(e) {
-    const self = this;
-    WxSearch.wxSearchBlur(e, self);
+    WxSearch.wxSearchBlur(e, this);
   },
   wxSearchKeyTap(e) {
     WxSearch.wxSearchKeyTap(e, this, this.wxSearchFn);
   },
   wxSearchDeleteKey(e) {
-    const self = this;
-    WxSearch.wxSearchDeleteKey(e, self);
+    WxSearch.wxSearchDeleteKey(e, this);
   },
   wxSearchDeleteAll() {
-    const self = this;
-    WxSearch.wxSearchDeleteAll(self);
+    WxSearch.wxSearchDeleteAll(this);
   },
   wxSearchTap() {
-    const self = this;
-    WxSearch.wxSearchHiddenPancel(self);
+    WxSearch.wxSearchHiddenPancel(this);
   },
 });
