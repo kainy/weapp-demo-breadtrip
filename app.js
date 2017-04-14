@@ -34,11 +34,32 @@ App({
     });
   },
   onError(error) {
-    if (this.systemInfo.platform !== 'devtools') {
-      const log = new AV.Object('Log');
-      log.set('jsError', error);
-      log.save();
-    }
+    const log = new AV.Object('Log');
+    this.loginOrSignup().then((user) => {
+      log.set('submitter', user);
+      log.set('systemInfo', this.systemInfo);
+      try {
+        // 上报业务代码错误信息
+        // console.log(1111, error)
+        if (this.systemInfo.platform === 'devtools') {
+          log.set('jsError_dev', error);
+        } else {
+          log.set('jsError_prd', error);
+        }
+        log.save();
+      } catch (e) {
+        // 上报捕获代码错误信息
+        // console.log(2222, e, e.message)
+        log.set('jsError_catch', e.message);
+        log.save();
+        console.error(e);
+      } finally {
+        // 上报捕获代码报错时，的业务代码错误信息
+        // console.log(3333, arguments[0])
+        log.set('jsError_finally', arguments[0]);
+        log.save();
+      }
+    });
   },
   globalData: {
     userInfo: null,
