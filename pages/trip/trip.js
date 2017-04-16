@@ -25,7 +25,15 @@ Page({
     const self = this;
     const id = options.id;
     this.arrShow = [];
-    this.icon = getCurrentPages().length === 1 ? 'homenav' : 'donate';
+    if (getCurrentPages().length === 1) {
+      if (options.referrer) {
+        this.icon = 'donate';
+      } else {
+        this.icon = 'homenav';
+      }
+    } else {
+      this.icon = 'share';
+    }
     this.setData({
       options,
       icon: this.icon,

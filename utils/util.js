@@ -59,10 +59,19 @@ function alert(msg, cb) {
 function params(qs) {
   return Object.keys(qs).map(i => `${i}=${qs[i]}`).join('&');
 }
+function getLastPageOptions() {
+  const curPages = getCurrentPages();
+  let options = null;
+  if (curPages[curPages.length - 2]) {
+    options = curPages[curPages.length - 2].data.options;
+  }
+  return options;
+}
 module.exports = {
   formatNumber,
   formatTime,
   throttle,
   alert,
   params,
+  getLastPageOptions,
 };

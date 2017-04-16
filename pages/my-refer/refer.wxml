@@ -3,29 +3,23 @@
         <view class="m-userinfo">
             <view class="m-photo">
                 <image src="http://wx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLD9mFbl0BSJqdZ3eX0knFBvQ73tlYibgoXudaIibfbqA2pJNjpOBMRxhuvJuOEIQdib3zU4IazlwBjiaQ/0">
-                    <div style="background-size: 100% 100%; background-repeat: no-repeat; background-image: url(&quot;http://wx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLD9mFbl0BSJqdZ3eX0knFBvQ73tlYibgoXudaIibfbqA2pJNjpOBMRxhuvJuOEIQdib3zU4IazlwBjiaQ/0&quot;);"></div>
-                    <virtual></virtual>
                 </image>
             </view>
             <view class="m-text">
-                <label>我是郭涛 ℡ ₁₅₈₀₆₀₂₆₆₇₃</label>
-                <text>我为灯网灯饰O2O代言
-                </text>
+                <label>我是{{userInfo.nickName}}</label>
+                <text>我为跨时空小程序代言</text>
             </view>
         </view>
     </view>
     <view class="u-toptip">
         <view class="u-loadmore u-loadmore-line">
-            <text class="u-loadmore-tips">为您推荐
-            </text>
+            <text class="u-loadmore-tips">为您推荐</text>
         </view>
     </view>
     <view class="m-product-list">
         <navigator class="m-product-item" open-type="redirect" url="../productdetail/productdetail?pid=18194&amp;uid=24085">
             <view class="m-product-img">
                 <image mode="aspectFill" src="http://kkdfile.soonku.net//product15/p0014d-10 5/af45ec61-9c97-4a0a-9f30-f80371b34703_source.jpg">
-                    <div style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url(&quot;http://kkdfile.soonku.net//product15/p0014d-10 5/af45ec61-9c97-4a0a-9f30-f80371b34703_source.jpg&quot;);"></div>
-                    <virtual></virtual>
                 </image>
             </view>
             <view class="m-product-info">
@@ -33,22 +27,22 @@
                     <label>新中式客厅灯复古卧室灯具现代简约餐厅灯具别墅复式楼灯型号：P0014D-10+5</label>
                 </view>
                 <view class="m-product-price">
-                    <label>￥</label>5998
-                    <button class="u-btn u-btn-default">去购买</button>
+                    <label>￥</label>1
+                    <button class="u-btn u-btn-default">去打赏</button>
                 </view>
             </view>
         </navigator>
     </view>
     <view class="m-text-box">
         <view>
-            <label class="iconfont icon-14052218"></label>推广规则
+            <label class="iconfont icon-14052218"></label>推荐规则
         </view>
         <view>
-            <view>当你的粉丝在店铺内支付订单后，订单中的所有商品，都有相应的收益比例：一级粉丝
-                <label style="color:red">15%</label>，二级粉丝
-                <label style="color:red">10%</label>（以店铺设置为准）。将支付订单金额和收益比例相乘后，累计计算出你此单的总收益。 * 注： - 不计算收益的内容：运费、优惠券、关税，以及收益比例为0的商品； - 如果发生了退货退款，需要按照实际退货数量对收益进行相应的扣除； - 按照国家法律规定，当你的月累计收入达到相关税金起征点后，商家会为你代缴税款，你的收益将是税后收入；
+            <view>当你的粉丝为你推荐的内容支付打赏后，订单金额的收益比例：一级粉丝
+                <label style="color:red">50%</label>，二级粉丝
+                <label style="color:red">20%</label>。将打赏金额和收益比例相乘后，计算出你此单的总收益。 * 注：  - 按照国家法律规定，当你的月累计收入达到相关税金起征点后，商家会为你代缴税款，你的收益将是税后收入；
             </view>
         </view>
     </view>
-    <navigator class="u-btn u-btn-default">我也要推广</navigator>
+    <!-- <navigator class="u-btn u-btn-default">我也要推荐</navigator> -->
     <label class="u-tip-text">点击右上角分享给朋友</label>

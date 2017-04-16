@@ -14,6 +14,14 @@
     </view>
   </navigator>
 </template>
+<template name="m-share">
+  <navigator url="/pages/my-refer/refer?name={{options.name}}" hover-class="none">
+    <view class="home-nav">
+      <image mode="scaleToFill" src="http://kaidn-cdn.stor.sinaapp.com/ksk/share.svg"></image>
+      <text>分享</text>
+    </view>
+  </navigator>
+</template>
 <!-- <template name="m-top">
   <view class="home-nav">
     <image mode="scaleToFill" src="https://image.flaticon.com/icons/svg/180/180015.svg"></image>

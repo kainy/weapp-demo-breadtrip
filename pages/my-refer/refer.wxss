@@ -46,3 +46,8 @@
 .u-btn-default:active{background-color: #fa5c70;}
 .u-btn-disabled{background-color: #aaaaaa;color:#fff;margin: 9px 19px;border-radius: 3px;}
 .u-link-btn{display: inline-block;padding:4px;border:1px solid #DB384C;font-size: 13px;color:#DB384C;border-radius: 1px;}
+
+
+.icon-14052218:before {
+    content: "?";
+}
