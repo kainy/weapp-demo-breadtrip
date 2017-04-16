@@ -11,6 +11,7 @@
     "pages/my-user/user",
     "pages/my-pay/pay",
     "pages/my-setting/setting",
+    "pages/my-refer/refer",
     "pages/trip/trip"
   ],
   "window": {
