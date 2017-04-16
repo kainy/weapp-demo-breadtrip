@@ -1,6 +1,10 @@
 require('./libs/ald-stat.js');
 const AV = require('./libs/av-weapp.js');
 
+AV.init({
+  appId: '8RLDamMl5A27EOhFH2fU7AN0-gzGzoHsz', // {{appid}}
+  appKey: 'gVpxIyNY3brM8JXwCTGSNeG3',
+});
 
 App({
   systemInfo: null,
@@ -77,7 +81,3 @@ App({
   },
 });
 
-AV.init({
-  appId: '8RLDamMl5A27EOhFH2fU7AN0-gzGzoHsz', // {{appid}}
-  appKey: 'gVpxIyNY3brM8JXwCTGSNeG3',
-});

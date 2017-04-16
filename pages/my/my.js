@@ -61,6 +61,8 @@ Page({
       });
       this.fetchTodos(user);
       this.syncUserInfo(user);
+    }).catch(() => {
+      util.alert('登陆失败，请点击头像重试，如问题持续，请点击右下方按钮联系我们');
     });
   },
   fetchTodos(user) {
