@@ -7,6 +7,8 @@ Page({
   data: {
     orders: [],
     error: null,
+    payDescription: '',
+    referrer: '',
   },
   onLoad() {
     wx.showToast({
@@ -14,8 +16,14 @@ Page({
       icon: 'loading',
       duration: 10000,
     });
+    this.originPageData = util.getOriginPageData();
+    let payDescription = '🍵 请郭老师喝碗茶。';
+    if (this.originPageData && this.originPageData.options) {
+      payDescription = `感谢 ${decodeURIComponent(this.originPageData.options.nickName)} 为我推荐精彩内容`;
+    }
     this.setData({
       pageLength: getCurrentPages().length,
+      payDescription,
     });
     return this.refreshOrders();
   },
@@ -46,17 +54,20 @@ Page({
       .catch(console.error);
   },
   genOrderParams() {
-    const curPages = getCurrentPages();
     const ret = {
       amount: (app.systemInfo.platform === 'devtools') ? 1 : 100,
+      payDescription: this.data.payDescription,
     };
-    if (curPages[curPages.length - 2]) {
-      const options = curPages[curPages.length - 2].data.options;
+    if (this.originPageData) {
+      const options = this.originPageData.options;
       if (options && options.id) {
         ret.link = {
           page: 'pages/trip/trip',
           options,
         };
+      }
+      if (options && options.referrer) {
+        ret.referrer = options.referrer;
       }
     }
     return ret;

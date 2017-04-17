@@ -2,7 +2,7 @@
  * @Author: kainyguo (gt@kainy.cn)
  * @Date: 2017-04-16 17:17:49
  * @Last Modified by: kainyguo (gt@kainy.cn)
- * @Last Modified time: 2017-04-17 14:40:34
+ * @Last Modified time: 2017-04-17 14:44:42
  */
 const util = require('../../utils/util.js');
 
@@ -22,7 +22,7 @@ Page({
       // console.log(data, this.data.userInfo);
       this.setData({
         tripName: `「${data.trip.name}」 ${data.trip.days[0].waypoints[0].text}`,
-        pagePath: `/pages/trip/trip?id=${data.trip.id}&name=${data.trip.name}&referrer=${userInfo.get('objectId')}`,
+        pagePath: `/pages/trip/trip?id=${data.trip.id}&name=${data.trip.name}&referrer=${userInfo.get('objectId')}&nickName=${userInfo.get('nickName')}`,
         coverImage: data.trip.cover_image,
       });
     });
