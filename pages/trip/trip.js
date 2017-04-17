@@ -25,18 +25,8 @@ Page({
     const self = this;
     const id = options.id;
     this.arrShow = [];
-    if (getCurrentPages().length === 1) {
-      if (options.referrer) {
-        this.icon = 'donate';
-      } else {
-        this.icon = 'homenav';
-      }
-    } else {
-      this.icon = 'share';
-    }
     this.setData({
       options,
-      icon: this.icon,
     });
     wx.showToast({
       title: '正在加载',
@@ -65,9 +55,18 @@ Page({
             wp.idx = self.arrShow.length;
           }
         }
-        /* eslint-disable */
-        self.setData({
-          trip,
+        if (getCurrentPages().length === 1) {
+          if (options.referrer) {
+            this.icon = 'donate';
+          } else {
+            this.icon = 'homenav';
+          }
+        } else {
+          this.icon = 'share';
+        }
+        this.setData({
+          icon: this.icon,
+          trip
         });
         this.audioInit();
         wx.hideToast();

@@ -1,7 +1,7 @@
 .u-loadmore{margin:28px auto 0 auto;}
 .u-loadmore-tips{background-color: #fff !important;}
 .m-endorsementBox{width: 100%;overflow: hidden;height: 115px;position: relative;text-align: center;}
-.m-endorsementBox-bg{height: 451px;width: 451px;background-color: #e64340;-webkit-border-radius: 451px / 153px; border-radius: 451px / 153px;margin: 0 auto;margin-top: -336px;margin-left: -48px;position: relative;}
+.m-endorsementBox-bg{height: 451px;width: 100%;background-color: #e64340;-webkit-border-radius: 451px / 153px; border-radius: 451px / 153px;margin: 0 auto;margin-top: -336px;position: relative;}
 .m-userinfo-bg{bottom: 9px;width: 192px;}
 .m-userinfo{z-index: 2; position: relative;display: inline-block; position: relative;top:-87px;}
 .m-userinfo .m-photo{width: 59px;height: 59px;float: left;}
