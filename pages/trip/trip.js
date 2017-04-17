@@ -71,6 +71,7 @@ Page({
         });
         this.audioInit();
         wx.hideToast();
+        return res;
       },
     });
   },

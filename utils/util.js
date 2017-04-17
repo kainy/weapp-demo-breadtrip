@@ -59,13 +59,13 @@ function alert(msg, cb) {
 function params(qs) {
   return Object.keys(qs).map(i => `${i}=${qs[i]}`).join('&');
 }
-function getLastPageOptions() {
+function getOriginPageData() {
   const curPages = getCurrentPages();
-  let options = null;
+  let data = null;
   if (curPages[curPages.length - 2]) {
-    options = curPages[curPages.length - 2].data.options;
+    data = curPages[curPages.length - 2].data;
   }
-  return options;
+  return data;
 }
 module.exports = {
   formatNumber,
@@ -73,5 +73,5 @@ module.exports = {
   throttle,
   alert,
   params,
-  getLastPageOptions,
+  getOriginPageData,
 };

@@ -28,7 +28,7 @@
 .m-product-info{height: 100px;width:258px;float: left;box-sizing: border-box;padding:9px 0;position: relative;}
 .m-product-info::before {content: " ";position: absolute;left: 0;bottom: 0;right: 0;height: 1px;border-bottom: 1px solid #d5d5d5;color: #CCCCCC;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);z-index: 3;}
 .m-product-item:last-child .m-product-info::before{content: "";border: none}
-.m-product-name{font-size: 13px;line-height: 19px;height: 62px;box-sizing: border-box;padding-right:9px;position: relative;}
+.m-product-name{font-size: 13px;line-height: 19px;height: 72px;box-sizing: border-box;padding-right:9px;position: relative;}
 .m-product-name wx-label{height: 36px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp:2;}
 .m-product-price{font-size: 15px;line-height: 19px;color: #DB384C;}
 .m-product-price wx-label{font-size: 11px;}

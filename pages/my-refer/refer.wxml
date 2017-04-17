@@ -17,18 +17,18 @@
         </view>
     </view>
     <view class="m-product-list">
-        <navigator class="m-product-item" open-type="redirect" url="../productdetail/productdetail?pid=18194&amp;uid=24085">
+        <navigator class="m-product-item" open-type="redirect" url="{{pagePath}}">
             <view class="m-product-img">
-                <image mode="aspectFill" src="http://kkdfile.soonku.net//product15/p0014d-10 5/af45ec61-9c97-4a0a-9f30-f80371b34703_source.jpg">
+                <image mode="aspectFill" src="{{coverImage}}">
                 </image>
             </view>
             <view class="m-product-info">
                 <view class="m-product-name">
-                    <label>新中式客厅灯复古卧室灯具现代简约餐厅灯具别墅复式楼灯型号：P0014D-10+5</label>
+                    <label>{{tripName}}</label>
                 </view>
                 <view class="m-product-price">
-                    <label>￥</label>1
-                    <button class="u-btn u-btn-default">去打赏</button>
+                    <!-- <label>￥</label>1 -->
+                    <button class="u-btn u-btn-default">去阅读</button>
                 </view>
             </view>
         </navigator>
