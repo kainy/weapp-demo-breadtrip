@@ -2,7 +2,7 @@
         <view class="m-endorsementBox-bg"></view>
         <view class="m-userinfo">
             <view class="m-photo">
-                <image src="http://wx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLD9mFbl0BSJqdZ3eX0knFBvQ73tlYibgoXudaIibfbqA2pJNjpOBMRxhuvJuOEIQdib3zU4IazlwBjiaQ/0">
+                <image src="{{userInfo.avatarUrl}}">
                 </image>
             </view>
             <view class="m-text">
