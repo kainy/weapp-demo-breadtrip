@@ -15,18 +15,18 @@ App({
       success(res) {
         self.systemInfo = res;
         // console.log(res);
-        const oldSys = JSON.stringify(wx.getStorageSync('sysInfo'));
-        const newSys = JSON.stringify(res);
-        if (oldSys !== newSys) {
-          console.log('sysInfo changed:', `${oldSys}-->${newSys}`);
-          setTimeout(() => {
-            self.aldstat.debug(`${oldSys}-->${newSys}`);
-          }, 0);
-        }
-        wx.setStorage({
-          key: 'sysInfo',
-          data: res,
-        });
+        // const oldSys = JSON.stringify(wx.getStorageSync('sysInfo'));
+        // const newSys = JSON.stringify(res);
+        // if (oldSys !== newSys) {
+        //   console.log('sysInfo changed:', `${oldSys}-->${newSys}`);
+        //   setTimeout(() => {
+        //     self.aldstat.debug(`${oldSys}-->${newSys}`);
+        //   }, 0);
+        // }
+        // wx.setStorage({
+        //   key: 'sysInfo',
+        //   data: res,
+        // });
       },
     });
     wx.getNetworkType({
