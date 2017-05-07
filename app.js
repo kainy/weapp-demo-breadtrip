@@ -42,6 +42,8 @@ App({
     this.loginOrSignup().then((user) => {
       log.set('submitter', user);
       log.set('systemInfo', this.systemInfo);
+      log.set('pageData', this.getCurrentPage().data);
+      // console.log(log.attributes);
       try {
         // 上报业务代码错误信息
         // console.log(1111, error)
