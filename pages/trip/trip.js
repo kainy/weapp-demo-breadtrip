@@ -26,6 +26,7 @@ Page({
     const id = options.id;
     this.arrShow = [];
     this.arrLoadSucc = [];
+    this.arrLoadFail = [];
     this.setData({
       options,
     });
@@ -116,10 +117,10 @@ Page({
     this.setData({
       idxShow: Math.max(n, this.data.idxShow),
     });
-    // console.log(arrShow, n, this.data.idxShow)
-  }, 777, 3777),
+    // console.log(this.arrShow, n, this.data.idxShow);
+  }, 777, {}),
   errImg(e) {
-    // console.log(e);
+    // console.log(e.type);
     const id = e.target.dataset.idx;
     // e.type 取值： load 、 error 、 tap
     if (e.type === 'load') {
@@ -127,26 +128,53 @@ Page({
       util.hideLoading();
     } else if ((e.type === 'tap') && (this.arrLoadSucc.indexOf(id) > -1)) { // 点击加载成功的图片应跳转
       this.viewWaypoint(e);
+    } else if (e.type === 'tap') {
+      util.showLoading('加载中…', true);
+      this.reloadErrImg(id);
     } else {
-      const trip = this.data.trip;
-      if (e.type === 'tap') {
-        util.showLoading('加载中…', true);
-      } else {
-        util.hideLoading();
-      }
-      /* eslint-disable */
-      for (const day of trip.days) {
-        for (const wp of day.waypoints) {
-          if( wp.idx == id) {
-            wp.isLoadFail = (e.type === 'error'); // type 为 “error”，说明是由 binderror 触发
-            wp.photo_webtrip += '&_t=' + Date.now()
-          }
+      this.arrLoadFail.push(id);
+      // 节流时间间隔，每 977ms mark 一次错误图片；点击重载按钮后重新报错等待时长
+      throttle(this.markErrImg, 977, {
+        leading: false,
+        trailing: true,
+      })();
+    }
+  },
+  reloadErrImg(id) {
+    const trip = this.data.trip;
+    /* eslint-disable */
+    for (const day of trip.days) {
+      for (const wp of day.waypoints) {
+        if( id === wp.idx ) {
+          wp.isLoadFail = false
+          wp.photo_webtrip += '&_t=' + Date.now()
         }
       }
-      /* eslint-enable */
+    }
+    /* eslint-enable */
+    this.setData({
+      trip,
+    });
+  },
+  markErrImg() {
+    const trip = this.data.trip;
+    /* eslint-disable */
+    for (const day of trip.days) {
+      for (const wp of day.waypoints) {
+        if( this.arrLoadFail.indexOf(wp.idx) > -1) {
+          wp.isLoadFail = true;
+          // wp.photo_webtrip += '&_t=' + Date.now()
+        }
+      }
+    }
+    /* eslint-enable */
+    if (this.arrLoadFail.length) {
+      // console.log('2222 markErrImg invoked', this.arrLoadFail);
       this.setData({
         trip,
       });
+      this.arrLoadFail = [];
+      util.hideLoading();
     }
   },
   onShareAppMessage() {
