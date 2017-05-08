@@ -30,7 +30,7 @@ Page({
         self.setData({
           elements: dest.elements,
         });
-        wx.hideToast();
+        util.hideLoading();
       },
     });
   },
