@@ -67,6 +67,26 @@ function getOriginPageData() {
   }
   return data;
 }
+function showLoading(title = '传送门开启中', mask = false) {
+  const options = {
+    title,
+    duration: 10000,
+    icon: 'loading',
+    mask,
+  };
+  if (wx.showLoading) {
+    wx.showLoading(options);
+  } else {
+    wx.showToast(options);
+  }
+}
+function hideLoading() {
+  if (wx.hideLoading) {
+    wx.hideLoading();
+  } else {
+    wx.hideToast();
+  }
+}
 module.exports = {
   formatNumber,
   formatTime,
@@ -74,4 +94,6 @@ module.exports = {
   alert,
   params,
   getOriginPageData,
+  showLoading,
+  hideLoading,
 };

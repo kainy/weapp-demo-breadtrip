@@ -14,11 +14,7 @@ Page({
     editDraft: null,
   },
   onLoad() {
-    wx.showToast({
-      title: '正在加载',
-      icon: 'loading',
-      duration: 10000,
-    });
+    util.showLoading();
   },
   syncUserInfo(user, failCB) {
     if (!user) return;
@@ -85,7 +81,7 @@ Page({
       todos,
       activeTodos,
     });
-    wx.hideToast();
+    util.hideLoading();
   },
   updateDraft({
     detail: {

@@ -11,11 +11,7 @@ Page({
     referrer: '',
   },
   onLoad() {
-    wx.showToast({
-      title: '传送门开启中',
-      icon: 'loading',
-      duration: 10000,
-    });
+    util.showLoading();
     this.originPageData = util.getOriginPageData();
     let payDescription = '🍵 请郭老师喝碗茶。';
     if (this.originPageData && this.originPageData.options) {
@@ -49,7 +45,7 @@ Page({
             queryString: (order.link && order.link.options) ? util.params(order.link.options) : '',
           })),
         });
-        wx.hideToast();
+        util.hideLoading();
       })
       .catch(console.error);
   },
@@ -73,20 +69,13 @@ Page({
     return ret;
   },
   donate() {
-    wx.showToast({
-      title: '正在创建订单',
-      icon: 'loading',
-      duration: 10000,
-      mask: true,
-    });
+    util.showLoading('正在创建订单', true);
     Cloud.run('order', this.genOrderParams()).then((data) => {
       const payOpt = data;
-      wx.hideToast();
       payOpt.success = () => {
         wx.showToast({
           title: '支付成功',
           icon: 'success',
-          duration: 1500,
         });
         setTimeout(this.refreshOrders.bind(this), 1500);
       };
@@ -96,7 +85,6 @@ Page({
       wx.requestPayment(payOpt);
     }).catch((error) => {
       this.setData({ error: error.message });
-      wx.hideToast();
     });
   },
 });

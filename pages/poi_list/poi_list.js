@@ -27,11 +27,7 @@ Page({
     const type = options.type;
     const id = options.id;
     const name = options.name;
-    wx.showToast({
-      title: '传送门开启中',
-      icon: 'loading',
-      duration: 10000,
-    });
+    util.showLoading();
     this.setData({
       title: name,
       type,
@@ -106,7 +102,7 @@ Page({
           pois: newList,
           loading: false,
         });
-        wx.hideToast();
+        util.hideLoading();
       },
     });
   },

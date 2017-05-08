@@ -18,11 +18,7 @@ Page({
   },
   onLoad(options) {
     const self = this;
-    wx.showToast({
-      title: '传送门开启中',
-      icon: 'loading',
-      duration: 10000,
-    });
+    util.showLoading();
     WxSearch.init(this, 62, ['蜜月', '毕业', '跨年', '哈尔滨', '浪漫']);
     WxSearch.initMindKeys(['香港', '澳门', '泰国', '德国', '北京', '英国', '法国', '哈尔滨', '三亚']);
     if (options.keyword) {

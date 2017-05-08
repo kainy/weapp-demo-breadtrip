@@ -15,7 +15,6 @@ const wxRequest = (params, url) => {
       }
     },
     fail(res) {
-      wx.hideToast();
       util.alert('数据加载失败，请确认网络连接顺畅或稍后重试', () => {
         if (params.fail) {
           params.fail(res);

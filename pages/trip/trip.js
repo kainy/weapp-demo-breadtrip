@@ -29,11 +29,7 @@ Page({
     this.setData({
       options,
     });
-    wx.showToast({
-      title: '正在加载',
-      icon: 'loading',
-      duration: 10000,
-    });
+    util.showLoading();
     wx.getSystemInfo({
       success(res) {
         if (App.systemInfo.windowHeight !== res.windowHeight) {
@@ -72,7 +68,7 @@ Page({
           trip,
         });
         this.audioInit();
-        wx.hideToast();
+        util.hideLoading();
         return res;
       },
     });
