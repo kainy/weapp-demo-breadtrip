@@ -129,12 +129,12 @@ Page({
     } else if ((e.type === 'tap') && (this.arrLoadSucc.indexOf(id) > -1)) { // 点击加载成功的图片应跳转
       this.viewWaypoint(e);
     } else if (e.type === 'tap') {
-      util.showLoading('加载中…', true);
+      util.showLoading('图片重新加载中…', true);
       this.reloadErrImg(id);
     } else {
       this.arrLoadFail.push(id);
       // 节流时间间隔，每 977ms mark 一次错误图片；点击重载按钮后重新报错等待时长
-      throttle(this.markErrImg, 977, {
+      throttle(this.markErrImg, 1277, {
         leading: false,
         trailing: true,
       })();
