@@ -25,6 +25,7 @@ Page({
     const self = this;
     const id = options.id;
     this.arrShow = [];
+    this.arrLoadSucc = [];
     this.setData({
       options,
     });
@@ -122,22 +123,28 @@ Page({
     // console.log(arrShow, n, this.data.idxShow)
   }, 777, 3777),
   errImg(e) {
+    // console.log(e);
     const id = e.target.dataset.idx;
-    const trip = this.data.trip;
-    /* eslint-disable */
-    for (const day of trip.days) {
-      for (const wp of day.waypoints) {
-        if( wp.idx == id) {
-          wp.isLoadFail = (e.type === 'error'); // type 为 “error”，说明是由 binderror 触发
+    // e.type 取值： load 、 error 、 tap
+    if (e.type === 'load') {
+      this.arrLoadSucc.push(id);
+    } else if ((e.type === 'tap') && (this.arrLoadSucc.indexOf(id) > -1)) { // 点击加载成功的图片应跳转
+      this.viewWaypoint(e);
+    } else {
+      const trip = this.data.trip;
+      /* eslint-disable */
+      for (const day of trip.days) {
+        for (const wp of day.waypoints) {
+          if( wp.idx == id) {
+            wp.isLoadFail = (e.type === 'error'); // type 为 “error”，说明是由 binderror 触发
+          }
         }
       }
+      /* eslint-enable */
+      this.setData({
+        trip,
+      });
     }
-    /* eslint-enable */
-    this.setData({
-      trip,
-    });
-    console.log(e);
-    return false;
   },
   onShareAppMessage() {
     const opt = {
