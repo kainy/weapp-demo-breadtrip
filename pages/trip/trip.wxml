@@ -24,7 +24,8 @@
               <view class="waypoint" bindtap="viewWaypoint" data-waypoint="{{ wp.id }}">
                 <block wx:if="{{ wp.photo }}">
                   <view class="photo-ctn">
-                    <image style="width: 100%; height: {{ wp.photo_info.h * (windowWidth - 30) / wp.photo_info.w }}px;" class="cover" src="{{ idxShow < wp.idx? '' : wp.photo_webtrip }}"></image><!-- {{wp.idx}}  -->
+                    <view wx:if="{{wp.isLoadFail}}" class="img_loadederror" catchtap="errImg" style="width: 100%; height: {{ wp.photo_info.h * (windowWidth - 30) / wp.photo_info.w }}px;" data-idx="{{wp.idx}}"></view>
+                    <image wx:else style="width: 100%; height: {{ wp.photo_info.h * (windowWidth - 30) / wp.photo_info.w }}px;" class="cover" data-idx="{{wp.idx}}" src="{{ ((idxShow < wp.idx) || wp.isLoadFail) ? '' : wp.photo_webtrip }}" binderror="errImg"></image>
                   </view>
                   <view wx:if="{{ wp.text }}" class="text">{{ wp.text }}</view>
                   <view class="wp-stats">

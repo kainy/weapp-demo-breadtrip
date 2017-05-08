@@ -53,8 +53,10 @@ Page({
           for (const wp of day.waypoints) {
             self.arrShow.push(wp.id);
             wp.idx = self.arrShow.length;
+            wp.isLoadFail = false;
           }
         }
+        /* eslint-enable */
         if (getCurrentPages().length === 1) {
           if (options.referrer) {
             this.icon = 'donate';
@@ -66,7 +68,7 @@ Page({
         }
         this.setData({
           icon: this.icon,
-          trip
+          trip,
         });
         this.audioInit();
         wx.hideToast();
@@ -119,6 +121,24 @@ Page({
     });
     // console.log(arrShow, n, this.data.idxShow)
   }, 777, 3777),
+  errImg(e) {
+    const id = e.target.dataset.idx;
+    const trip = this.data.trip;
+    /* eslint-disable */
+    for (const day of trip.days) {
+      for (const wp of day.waypoints) {
+        if( wp.idx == id) {
+          wp.isLoadFail = (e.type === 'error'); // type 为 “error”，说明是由 binderror 触发
+        }
+      }
+    }
+    /* eslint-enable */
+    this.setData({
+      trip,
+    });
+    console.log(e);
+    return false;
+  },
   onShareAppMessage() {
     const opt = {
       title: `「${this.data.options.name}」`,
