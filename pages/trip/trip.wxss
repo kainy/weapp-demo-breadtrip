@@ -69,6 +69,7 @@ page{
   background: #e7ddc6 url(http://kaidn-cdn.stor.sinaapp.com/ksk/placeholder.png) no-repeat center;
 }
 .day-content .cover{
+  transition: .7s; 
   vertical-align: bottom;
 }
 .day-content .text{
