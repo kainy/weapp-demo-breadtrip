@@ -137,6 +137,7 @@ Page({
         for (const wp of day.waypoints) {
           if( wp.idx == id) {
             wp.isLoadFail = (e.type === 'error'); // type 为 “error”，说明是由 binderror 触发
+            wp.photo_webtrip += '&_t=' + Date.now()
           }
         }
       }
