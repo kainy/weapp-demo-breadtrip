@@ -12,6 +12,14 @@ App({
   AV,
   onLaunch() {
     const self = this;
+    this.getNetworkType();
+    if (wx.onNetworkStatusChange) {
+      wx.onNetworkStatusChange((res) => {
+        self.globalData.networkType = res.networkType;
+      });
+    } else {
+      setInterval(this.getNetworkType, 2777);
+    }
     wx.getSystemInfo({
       success(res) {
         self.systemInfo = res;
@@ -30,16 +38,21 @@ App({
         // });
       },
     });
+  },
+  getNetworkType() {
+    const self = this;
     wx.getNetworkType({
       success(res) {
         // 返回网络类型, 有效值：
         // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
         self.globalData.networkType = res.networkType;
+        // console.log(7777777, self.globalData.networkType);
       },
     });
   },
   logQueue: [],
   onError(error) {
+    if (this.globalData.networkType === 'none') return; // 6.5.3 版本断网后持续报 “request:fail send request fail:Unable to resolve host” 错导致崩溃问题
     const log = new AV.Object('Log');
     this.loginOrSignup().then((user) => {
       if (!this.logQueue.length) { // 列队首条设置公共信息，节约流量
