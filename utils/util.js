@@ -61,7 +61,7 @@ function throttle(func, wait, options = {}) {
     return result;
   };
 }
-function alert(msg, cb) {
+function alert(msg = '', cb) {
   wx.showModal({
     title: '提示',
     content: msg,

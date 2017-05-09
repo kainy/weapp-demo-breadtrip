@@ -100,21 +100,17 @@ Page({
         data_type: 'trip',
       },
       success: (res) => {
-        if (res.data.status === 0) {
-          const len = res.data.data.trips.length;
-          if (len) {
-            self.setData({
-              searchResult: {
-                trips: self.data.searchResult.trips.concat(res.data.data.trips),
-              },
-              start: self.data.start + len,
-              trips_more: res.data.data.trips_more,
-            });
-          } else {
-            util.alert('未找到相关内容，换个关键词试试 ？');
-          }
+        const len = res.data.data.trips.length;
+        if (len) {
+          self.setData({
+            searchResult: {
+              trips: self.data.searchResult.trips.concat(res.data.data.trips),
+            },
+            start: self.data.start + len,
+            trips_more: res.data.data.trips_more,
+          });
         } else {
-          util.alert(res.data.message);
+          util.alert('未找到相关内容，换个关键词试试 ？');
         }
         self.fetching = false;
         self.setData({
