@@ -39,6 +39,9 @@ App({
       },
     });
   },
+  getCurPage() {
+    return getCurrentPages().slice(-1)[0];
+  },
   getNetworkType() {
     const self = this;
     wx.getNetworkType({
@@ -57,11 +60,13 @@ App({
     if (this.globalData.networkType === 'none') return; // 6.5.3 版本断网后持续报 “request:fail send request fail:Unable to resolve host” 错导致崩溃问题
     if (this.errFilter.indexOf(error) > -1) return;
     const log = new AV.Object('Log');
+    const pageData = this.getCurPage().data;
     this.loginOrSignup().then((user) => {
-      if (!this.logQueue.length) { // 列队首条设置公共信息，节约流量
+      if (!this.logQueue.length && pageData !== this.tempPageData) { // 页面数据变换后 && 列队首条设置公共信息，以节约流量
         log.set('submitter', user);
         log.set('systemInfo', this.systemInfo);
-        log.set('pageData', this.getCurrentPage().data);
+        log.set('pageData', pageData);
+        this.tempPageData = pageData; // 缓存 pageData 用于比较
       }
       // console.log(log.attributes);
       try {
