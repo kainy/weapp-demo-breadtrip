@@ -51,8 +51,11 @@ App({
     });
   },
   logQueue: [],
+  // 过滤已知的、老旧版本导致的报错信息
+  errFilter: ['hideToast:fail', 'getStorageSync:fail'],
   onError(error) {
     if (this.globalData.networkType === 'none') return; // 6.5.3 版本断网后持续报 “request:fail send request fail:Unable to resolve host” 错导致崩溃问题
+    if (this.errFilter.indexOf(error) > -1) return;
     const log = new AV.Object('Log');
     this.loginOrSignup().then((user) => {
       if (!this.logQueue.length) { // 列队首条设置公共信息，节约流量
