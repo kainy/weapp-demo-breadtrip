@@ -76,6 +76,9 @@ function alert(msg = '', cb) {
 function params(qs) {
   return Object.keys(qs).map(i => `${i}=${qs[i]}`).join('&');
 }
+function getCurrPage() {
+  return getCurrentPages().slice(-1)[0];
+}
 function getOriginPageData() {
   const curPages = getCurrentPages();
   let data = null;
@@ -111,6 +114,7 @@ module.exports = {
   alert,
   params,
   getOriginPageData,
+  getCurrPage,
   showLoading,
   hideLoading,
 };
