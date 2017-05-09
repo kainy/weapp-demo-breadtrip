@@ -1,5 +1,6 @@
 const apiURL = 'https://kainy.cn/api/trip';
 const util = require('./util.js');
+const App = getApp();
 
 const wxRequest = (params, url) => {
   wx.request({
@@ -15,7 +16,7 @@ const wxRequest = (params, url) => {
           params.success(res);
         } else {
           util.alert(res.data || '服务器响应异常，请稍后再试');
-          console.log(res);
+          App.onError(`Fail API: ${url}\r\nreturn: ${JSON.stringify(res)}`);
         }
       }
     },

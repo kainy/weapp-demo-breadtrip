@@ -1,5 +1,6 @@
 require('./libs/ald-stat.js');
 const AV = require('./libs/av-weapp.js');
+const util = require('./utils/util.js');
 
 AV.init({
   appId: '8RLDamMl5A27EOhFH2fU7AN0-gzGzoHsz', // {{appid}}
@@ -37,12 +38,15 @@ App({
       },
     });
   },
+  logQueue: [],
   onError(error) {
     const log = new AV.Object('Log');
     this.loginOrSignup().then((user) => {
-      log.set('submitter', user);
-      log.set('systemInfo', this.systemInfo);
-      log.set('pageData', this.getCurrentPage().data);
+      if (!this.logQueue.length) { // 列队首条设置公共信息，节约流量
+        log.set('submitter', user);
+        log.set('systemInfo', this.systemInfo);
+        log.set('pageData', this.getCurrentPage().data);
+      }
       // console.log(log.attributes);
       try {
         // 上报业务代码错误信息
@@ -52,20 +56,25 @@ App({
         } else {
           log.set('jsError_prd', error);
         }
-        log.save();
       } catch (e) {
         // 上报捕获代码错误信息
         // console.log(2222, e, e.message)
         log.set('jsError_catch', e.message);
-        log.save();
-        console.error(e);
       } finally {
         // 上报捕获代码报错时，的业务代码错误信息
         // console.log(3333, arguments[0])
         log.set('jsError_finally', arguments[0]);
-        log.save();
       }
+      this.logQueue.push(log);
+      util.throttle(this.sendLog, 2000, {
+        leading: false,
+        trailing: true,
+      })();
     });
+  },
+  sendLog() {
+    AV.Object.saveAll(this.logQueue);
+    this.logQueue = [];
   },
   globalData: {
     userInfo: null,
