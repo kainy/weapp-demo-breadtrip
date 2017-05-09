@@ -129,7 +129,7 @@ Page({
     } else if ((e.type === 'tap') && (this.arrLoadSucc.indexOf(id) > -1)) { // 点击加载成功的图片应跳转
       this.viewWaypoint(e);
     } else if (e.type === 'tap') {
-      util.showLoading('图片重新加载中…', true);
+      util.showLoading('图片重新加载中', true);
       this.reloadErrImg(id);
     } else {
       this.arrLoadFail.push(id);

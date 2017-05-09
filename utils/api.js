@@ -11,7 +11,12 @@ const wxRequest = (params, url) => {
     },
     success(res) {
       if (params.success) {
-        params.success(res);
+        if (res.statusCode === 200) {
+          params.success(res);
+        } else {
+          util.alert(res.data || '服务器响应异常，请稍后再试');
+          console.log(res);
+        }
       }
     },
     fail(res) {
