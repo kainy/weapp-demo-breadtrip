@@ -76,7 +76,7 @@ App({
       } finally {
         // 上报捕获代码报错时，的业务代码错误信息
         // console.log(3333, arguments[0])
-        log.set('jsError_finally', arguments[0]);
+        log.set('jsError_finally', error);
       }
       this.logQueue.push(log);
       util.throttle(this.sendLog, 2000, {
