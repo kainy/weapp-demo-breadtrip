@@ -14,8 +14,8 @@ const wxRequest = (params, url) => {
       if (params.success) {
         // console.log(res);
         if (res.statusCode == 200) {  // 网络问题报错
-          if (res.data.status != 0) { // 业务逻辑报错
-            util.alert(res.data.message);
+          if (res.data.status && res.data.status != 0) { // 业务逻辑报错
+            res.data.message && util.alert(res.data.message);
           }
           params.success(res);
         } else {
