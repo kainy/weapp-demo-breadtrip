@@ -18,7 +18,7 @@ App({
         self.globalData.networkType = res.networkType;
       });
     } else {
-      setInterval(this.getNetworkType, 2777);
+      setInterval(this.getNetworkType, 7777);
     }
     wx.getSystemInfo({
       success(res) {
@@ -45,7 +45,9 @@ App({
       success(res) {
         // 返回网络类型, 有效值：
         // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
-        self.globalData.networkType = res.networkType;
+        if (self.globalData.networkType !== res.networkType) {
+          self.globalData.networkType = res.networkType;
+        }
         // console.log(7777777, self.globalData.networkType);
       },
     });
