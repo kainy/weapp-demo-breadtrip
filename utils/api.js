@@ -1,4 +1,5 @@
-const apiURL = 'https://kainy.cn/api/trip';
+const apiURL = 'https://api.breadtrip.com';
+// const apiURL = 'https://kainy.cn/api/trip';
 const util = require('./util.js');
 const App = getApp();
 
