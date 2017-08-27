@@ -90,13 +90,13 @@ function getOriginPageData() {
 function showLoading(title = '传送门开启中', mask = false) {
   const options = {
     title,
-    duration: 10000,
     icon: 'loading',
     mask,
   };
   if (wx.showLoading) {
     wx.showLoading(options);
   } else {
+    options.duration = 20000;
     wx.showToast(options);
   }
 }
