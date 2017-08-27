@@ -1,6 +1,6 @@
 <import src="../../components/trip/trip.wxml"/>
 
-<scroll-view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800" enable-back-to-top="true">
+<view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;">
   <block wx:for="{{ trips }}" wx:for-item="trip" wx:key="trip.data[0].id">
     <template is="m-trip" wx:if="{{ trip.type === 4 }}" data="{{trip: trip.data[0], mode: 1}}" />
   </block>
@@ -8,4 +8,4 @@
     <icon></icon>
     <text>正在加载</text>
   </view>
-</scroll-view>
+</view>

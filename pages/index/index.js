@@ -68,4 +68,7 @@ Page({
       url: `../trip/trip?id=${ds.id}&name=${ds.name}`,
     });
   },
+  onReachBottom() {
+    this.loadMore();
+  },
 });
