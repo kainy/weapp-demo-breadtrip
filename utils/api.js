@@ -31,7 +31,7 @@ const wxRequest = (params, url) => {
         if (params.fail) {
           params.fail(res);
         } else {
-          wx.navigateBack();
+          // wx.navigateBack();
         }
       });
     },
