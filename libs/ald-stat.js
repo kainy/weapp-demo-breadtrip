@@ -1,69 +1,105 @@
 ! function () {
-  var t = "3.0",
+  var t = "5.2",
     a = "log",
-    s = require("./ald-stat-conf.js"),
-    e = "";
+    e = require("./ald-stat-conf.js"),
+    s = 0,
+    n = 0,
+    o = 0,
+    d = 0;
 
-  function _(t, a, s) {
+  function _(t) {
+    var a = wx.getStorageSync("aldstat_uuid");
+    return a || (a = "" + Date.now() + Math.floor(1e7 * Math.random()), wx.setStorageSync("aldstat_uuid", a), t.aldstat_is_first_open = !0), a
+  }
+
+  function r() {
+    wx.request({
+      url: "https://" + a + ".aldwx.com/config/app.json",
+      header: {
+        AldStat: "MiniApp-Stat"
+      },
+      method: "GET",
+      success: function (t) {
+        if (200 === t.statusCode)
+          for (var a in t.data) wx.setStorageSync(a, t.data[a])
+      }
+    })
+  }
+
+  function i(t, a, e) {
     if (t[a]) {
-      var e = t[a];
+      var s = t[a];
       t[a] = function (t) {
-        s.call(this, t, a), e.call(this, t)
+        e.call(this, t, a), s.call(this, t)
       }
     } else t[a] = function (t) {
-      s.call(this, t, a)
+      e.call(this, t, a)
     }
   }
 
-  function n(t, a, s) {
+  function l(t, a, e) {
     if (t[a]) {
-      var e = t[a];
+      var s = t[a];
       t[a] = function (t) {
-        var _ = e.call(this, t);
-        return s.call(this, [t, _], a), _
+        var n = s.call(this, t);
+        return e.call(this, [t, n], a), n
       }
     } else t[a] = function (t) {
-      s.call(this, t, a)
+      e.call(this, t, a)
     }
   }
-  var o = function (t) {
+  var c = function (t) {
       wx.login({
         success: function (a) {
           wx.getUserInfo({
             success: function (a) {
               t(a)
-            },
-            fail: function () {},
-            complete: function () {}
+            }
           })
-        },
-        fail: function () {},
-        complete: function () {}
+        }
       })
     },
-    l = function (t, s, e) {
-      arguments[1] || (s = "GET"), arguments[2] || (e = "d.php");
-      var _ = 0,
-        n = function () {
-          wx.request({
-            url: "https://" + a + ".aldwx.com/" + e,
+    p = function (t, e, n) {
+      "undefined" == typeof arguments[1] && (e = "GET"), "undefined" == typeof arguments[2] && (n = "d.html");
+      var o = 0,
+        d = function () {
+          s += 1, t.rq_c = s, wx.request({
+            url: "https://" + a + ".aldwx.com/" + n,
             data: t,
-            method: s,
+            header: {
+              AldStat: "MiniApp-Stat"
+            },
+            method: e,
+            success: function () {},
             fail: function () {
-              2 > _ && (_++, n())
+              2 > o && (o++, t.retryTimes = o, d())
             }
           })
         };
-      n()
+      d()
     },
-    r = function (a, e, _, n) {
-      var o = {
-        ak: s.app_key,
-        uu: a.aldstat_uuid,
+    u = function (a, s, n, o) {
+      var d = {
+        ak: e.app_key,
+        uu: _(a),
         at: a.aldstat_access_token,
         ts: Date.now(),
-        tp: _,
-        ev: e,
+        tp: n,
+        ev: s,
+        v: t
+      };
+      o && (d.ct = o), a.aldstat_qr && (d.qr = a.aldstat_qr), p(d, "GET", "d.html")
+    },
+    h = function (a, s, n, o) {
+      "undefined" == typeof a.aldstat_showoption && (a.aldstat_showoption = []);
+      var d = {
+        ak: e.app_key,
+        wsr: a.aldstat_showoption,
+        uu: _(a),
+        at: a.aldstat_access_token,
+        ts: Date.now(),
+        tp: n,
+        ev: s,
         nt: a.aldstat_network_type,
         pm: a.aldstat_phone_model,
         pr: a.aldstat_pixel_ratio,
@@ -76,200 +112,246 @@
         spd: a.aldstat_speed,
         v: t
       };
-      n && (o.ct = n), a.aldstat_location_name && (o.ln = a.aldstat_location_name), a.aldstat_src && (o.sr = a.aldstat_src), a.aldstat_qr && (o.qr = a.aldstat_qr), l(o)
+      o && (d.ct = o), a.aldstat_location_name && (d.ln = a.aldstat_location_name), a.aldstat_src && (d.sr = a.aldstat_src), a.aldstat_qr && (d.qr = a.aldstat_qr), p(d, "GET", "d.html")
     };
 
-  function d(t) {
+  function f(t) {
     this.app = t
   }
-  d.prototype.debug = function (t) {
-    r(this.app, "debug", 0, t)
-  }, d.prototype.warn = function (t) {
-    r(this.app, "debug", 1, t)
-  }, d.prototype.error = function (t) {
-    r(this.app, "debug", 2, t)
-  }, d.prototype.sendEvent = function (t, a) {
-    g(a) ? r(this.app, "event", t) : r(this.app, "event", t, JSON.stringify(a))
+  f.prototype.debug = function (t) {
+    h(this.app, "debug", 0, t)
+  }, f.prototype.warn = function (t) {
+    h(this.app, "debug", 1, t)
+  }, f.prototype.error = function (t) {
+    u(this.app, "debug", 2, t)
+  }, f.prototype.sendEvent = function (t, a) {
+    D(a) ? h(this.app, "event", t) : h(this.app, "event", t, JSON.stringify(a))
   };
-  var i = function () {
-      this.aldstat = new d(this);
-      var t = wx.getStorageSync("aldstat_src");
-      t && (this.aldstat_src = t);
-      var e = wx.getStorageSync("aldstat_uuid");
-      e || (e = "" + Date.now() + Math.floor(1e7 * Math.random()), wx.setStorageSync("aldstat_uuid", e), this.aldstat_is_first_open = !0), this.aldstat_uuid = e, this.aldstat_timestamp = Date.now(), this.aldstat_showtime = Date.now(), this.aldstat_duration = 0, this.aldstat_access_token = "" + Date.now() + Math.floor(1e7 * Math.random());
-      var _ = this;
-      _.aldstat_refresh_count = 0, _.aldstat_error_count = 0, _.aldstat_bottom_count = 0, _.aldstat_page_count = 0, _.aldstat_first_page = 0;
-      var n = function () {
+  var g = function () {
+      var t = this;
+      t.aldstat_duration += Date.now() - t.aldstat_showtime, S(t, "app", "unLaunch")
+    },
+    w = function (t, a, e) {
+      "undefined" != typeof wx.getShareInfo ? wx.getShareInfo({
+        shareTicket: a,
+        success: function (a) {
+          h(t, "event", "ald_share_" + e, JSON.stringify(a))
+        },
+        fail: function () {
+          h(t, "event", "ald_share_" + e, "1")
+        }
+      }) : h(t, "event", "ald_share_" + e, "1")
+    },
+    v = function (t) {
+      r(), this.aldstat = new f(this);
+      var a = wx.getStorageSync("aldstat_src");
+      a && (this.aldstat_src = a);
+      var s = _(this);
+      this.aldstat_uuid = s, this.aldstat_timestamp = Date.now(), this.aldstat_showtime = Date.now(), this.aldstat_duration = 0;
+      var n = this;
+      n.aldstat_error_count = 0, n.aldstat_page_count = 1, n.aldstat_first_page = 0, this.aldstat_showoption = "undefined" != typeof t ? t : {};
+      var o = function () {
           wx.getNetworkType({
             success: function (t) {
-              _.aldstat_network_type = t.networkType
+              n.aldstat_network_type = t.networkType
             },
-            complete: r
+            complete: d
           })
         },
-        r = function () {
+        d = function () {
           wx.getSystemInfo({
             success: function (t) {
-              _.aldstat_phone_model = t.model, _.aldstat_pixel_ratio = t.pixelRatio, _.aldstat_window_width = t.windowWidth, _.aldstat_window_height = t.windowHeight, _.aldstat_language = t.language, _.aldstat_wechat_version = t.version
+              n.aldstat_vsdk_version = "undefined" == typeof t.SDKVersion ? "1.0.0" : t.SDKVersion, n.aldstat_phone_model = t.model, n.aldstat_pixel_ratio = t.pixelRatio, n.aldstat_window_width = t.windowWidth, n.aldstat_window_height = t.windowHeight, n.aldstat_language = t.language, n.aldstat_wechat_version = t.version
             },
             complete: function () {
-              u(), s.getUserinfo && i()
+              e.getLocation && l(), e.getUserinfo && i()
             }
           })
         },
         i = function () {
-          o(function (t) {
+          c(function (t) {
             var a = wx.getStorageSync("aldstat_uuid");
-            t.userInfo.uu = a, l(t.userInfo, "POST", "u.php")
+            t.userInfo.uu = a, p(t.userInfo, "GET", "u.html")
           })
         },
-        c = function () {
+        l = function () {
           wx.getLocation({
             type: "wgs84",
             success: function (t) {
-              _.aldstat_lat = t.latitude, _.aldstat_lng = t.longitude, _.aldstat_speed = t.speed
-            },
-            complete: u
-          })
-        },
-        u = function () {
-          wx.request({
-            url: "https://" + a + ".aldwx.com/l.php",
-            data: {},
-            method: "GET",
-            success: function (t) {
-              t.data.success && (_.aldstat_location_name = t.data.country + ":" + t.data.province + ":" + t.data.city)
+              n.aldstat_lat = t.latitude, n.aldstat_lng = t.longitude, n.aldstat_speed = t.speed
             }
           })
         };
-      n()
+      o();
+      var u = wx.getStorageSync("app_session_key_create_launch_upload");
+      u ? u > 0 && "number" == typeof u && (n.aldstat_access_token = "" + Date.now() + Math.floor(1e7 * Math.random())) : n.aldstat_access_token = "" + Date.now() + Math.floor(1e7 * Math.random()), S(n, "app", "launch")
     },
-    c = function (t, a) {
-      var s = getApp();
-      this.aldstat_error_count++, s.aldstat_error_count++
+    y = function (t, a) {
+      var e = getApp();
+      "undefined" == typeof this.aldstat_error_count ? this.aldstat_error_count = 1 : this.aldstat_error_count++, h(e, "event", "ald_error_message", JSON.stringify(t))
     },
-    u = function () {
-      this.aldstat_showtime = Date.now()
+    S = function (a, s, r) {
+      var i = wx.getStorageSync("app_" + r + "_upload");
+      if (!(!i && "launch" !== r || 1 > i && "number" == typeof i)) {
+        "undefined" == typeof a.aldstat_timestamp && (a.aldstat_timestamp = Date.now()), a.aldstat_duration += Date.now() - a.aldstat_showtime;
+        var l = wx.getSystemInfoSync();
+        a.aldstat_vsdk_version = "undefined" == typeof l.SDKVersion ? "1.0.0" : l.SDKVersion, a.aldstat_phone_model = l.model, a.aldstat_pixel_ratio = l.pixelRatio, a.aldstat_window_width = l.windowWidth, a.aldstat_window_height = l.windowHeight, a.aldstat_language = l.language, a.aldstat_wechat_version = l.version;
+        var c = wx.getStorageSync("aldstat_vsdk_version"),
+          u = {
+            ak: e.app_key,
+            waid: e.appid,
+            wst: e.appsecret,
+            uu: _(a),
+            at: a.aldstat_access_token,
+            wsr: a.aldstat_showoption,
+            st: a.aldstat_timestamp,
+            dr: a.aldstat_duration,
+            et: Date.now(),
+            pc: a.aldstat_page_count,
+            fp: a.aldstat_first_page,
+            lp: a.aldstat_last_page,
+            life: r,
+            ec: a.aldstat_error_count,
+            nt: a.aldstat_network_type,
+            pm: a.aldstat_phone_model,
+            wsdk: c,
+            pr: a.aldstat_pixel_ratio,
+            ww: a.aldstat_window_width,
+            wh: a.aldstat_window_height,
+            lang: a.aldstat_language,
+            wv: a.aldstat_wechat_version,
+            lat: a.aldstat_lat,
+            lng: a.aldstat_lng,
+            spd: a.aldstat_speed,
+            v: t,
+            ev: s
+          };
+        "launch" === r ? n += 1 : "show" === r ? o += 1 : d += 1, u.la_c = n, u.as_c = o, u.ah_c = d, a.page_share_count && "number" == typeof a.page_share_count && (u.sc = a.page_share_count), a.aldstat_is_first_open && (u.ifo = "true"), a.aldstat_location_name && (u.ln = a.aldstat_location_name), a.aldstat_src && (u.sr = a.aldstat_src), a.aldstat_qr && (u.qr = a.aldstat_qr), a.ald_share_src && (u.usr = a.ald_share_src), p(u, "GET", "d.html")
+      }
     },
-    p = function (a, e) {
-      var _ = this;
-      _.aldstat_duration += Date.now() - _.aldstat_showtime;
-      var n = {
-        ak: s.app_key,
-        uu: _.aldstat_uuid,
-        at: _.aldstat_access_token,
-        st: _.aldstat_timestamp,
-        dr: _.aldstat_duration,
-        et: Date.now(),
-        pc: _.aldstat_page_count,
-        fp: _.aldstat_first_page,
-        lp: _.aldstat_last_page,
-        rc: _.aldstat_refresh_count,
-        bc: _.aldstat_bottom_count,
-        sc: _.page_share_count,
-        ec: _.aldstat_error_count,
-        nt: _.aldstat_network_type,
-        pm: _.aldstat_phone_model,
-        pr: _.aldstat_pixel_ratio,
-        ww: _.aldstat_window_width,
-        wh: _.aldstat_window_height,
-        lang: _.aldstat_language,
-        wv: _.aldstat_wechat_version,
-        lat: _.aldstat_lat,
-        lng: _.aldstat_lng,
-        spd: _.aldstat_speed,
-        v: t,
-        ev: "app"
-      };
-      _.aldstat_is_first_open && (n.ifo = "true"), _.aldstat_location_name && (n.ln = _.aldstat_location_name), _.aldstat_src && (n.sr = _.aldstat_src), _.aldstat_qr && (n.qr = _.aldstat_qr), _.ald_share_src && (n.usr = _.ald_share_src), l(n)
+    m = function (t) {
+      this.aldstat_showtime = Date.now(), this.aldstat_showoption = "undefined" != typeof t ? t : {};
+      var a = wx.getStorageSync("app_session_key_create_show_upload");
+      a && a > 0 && "number" == typeof a && (this.aldstat_access_token = "" + Date.now() + Math.floor(1e7 * Math.random())), this.aldstat_duration += Date.now() - this.aldstat_showtime, S(this, "app", "show"), "undefined" != typeof t && ("undefined" != typeof t.shareTicket ? w(this, t.shareTicket, "click") : "undefined" != typeof t.query && "undefined" != typeof t.query.ald_share_src && w(this, "0", "click"))
     },
-    h = App;
+    x = function (t, a) {
+      var e = this;
+      e.aldstat_is_first_open && (e.aldstat_is_first_open = !1), e.aldstat_duration += Date.now() - e.aldstat_showtime, S(e, "app", "hide")
+    },
+    k = App;
   App = function (t) {
-    _(t, "onLaunch", i), _(t, "onShow", u), _(t, "onHide", p), h(t)
+    i(t, "onLaunch", v), i(t, "onUnlaunch", g), i(t, "onShow", m), i(t, "onHide", x), i(t, "onError", y), k(t)
   };
 
-  function g(t) {
+  function D(t) {
     for (var a in t) return !1;
     return !0
   }
-  var f = function (a, e) {
-      var _ = getApp(),
-        n = this,
-        o = {
-          uu: _.aldstat_uuid,
-          at: _.aldstat_access_token,
-          v: t,
-          ak: s.app_key,
+  var q = function (t, a) {
+      var e = getApp();
+      M(e, this, "hide")
+    },
+    A = function (t, a) {
+      var e = getApp();
+      M(e, this, "unload")
+    },
+    T = function (t, a) {
+      var e = wx.getStorageSync("aldstat_src");
+      "undefined" != typeof wx.showShareMenu;
+      var s = getApp();
+      if (e && (s.aldstat_src = e), !D(t)) {
+        "undefined" != typeof t.aldsrc && (e ? s.aldstat_qr = t.aldsrc : (wx.setStorageSync("aldstat_src", t.aldsrc), s.aldstat_src = t.aldsrc, s.aldstat_qr = t.aldsrc));
+        var n = wx.getStorageSync("aldstat_uuid");
+        "undefined" != typeof t.ald_share_src && (s.ald_share_src = t.ald_share_src), this.aldstat_page_args = JSON.stringify(t)
+      }
+      M(s, this, "load")
+    },
+    M = function (a, s, n) {
+      var o = wx.getStorageSync("page_" + n + "_upload");
+      if (!(!o && "show" !== n || 1 > o && "number" == typeof o)) {
+        s.aldstat_start_time = Date.now(), s.aldstat_error_count = 0, a.aldstat_page_count ? a.aldstat_page_count++ : a.aldstat_page_count = 1, a.aldstat_first_page || (a.aldstat_first_page = s.__route__, s.aldstat_is_first_page = !0), a.aldstat_last_page = s.__route__;
+        var d = {
+          uu: _(a),
+          at: a.aldstat_access_token,
+          wsr: a.aldstat_showoption,
+          ak: e.app_key,
           ev: "page",
-          st: n.aldstat_start_time,
-          dr: Date.now() - n.aldstat_start_time,
-          rc: n.aldstat_refresh_count,
-          bc: n.aldstat_bottom_count,
-          pp: n.__route__,
-          sc: n.page_share_count,
-          ec: n.aldstat_error_count,
-          nt: _.aldstat_network_type,
-          pm: _.aldstat_phone_model,
-          pr: _.aldstat_pixel_ratio,
-          ww: _.aldstat_window_width,
-          wh: _.aldstat_window_height,
-          lang: _.aldstat_language,
-          wv: _.aldstat_wechat_version,
-          lat: _.aldstat_lat,
-          lng: _.aldstat_lng,
-          spd: _.aldstat_speed,
+          st: s.aldstat_start_time,
+          dr: Date.now() - s.aldstat_start_time,
+          pp: s.__route__,
+          life: n,
+          sc: s.page_share_count,
+          ec: s.aldstat_error_count,
+          nt: a.aldstat_network_type,
+          pm: a.aldstat_phone_model,
+          pr: a.aldstat_pixel_ratio,
+          ww: a.aldstat_window_width,
+          wh: a.aldstat_window_height,
+          lang: a.aldstat_language,
+          wv: a.aldstat_wechat_version,
+          lat: a.aldstat_lat,
+          lng: a.aldstat_lng,
+          spd: a.aldstat_speed,
           v: t
         };
-      n.aldstat_is_first_page && (o.ifp = "true"), _.aldstat_page_last_page && (o.lp = _.aldstat_page_last_page), _.aldstat_location_name && (o.ln = _.aldstat_location_name), n.aldstat_page_args && (o.ag = n.aldstat_page_args), _.aldstat_src && (o.sr = _.aldstat_src), _.aldstat_qr && (o.qr = _.aldstat_qr), _.ald_share_src && (o.usr = _.ald_share_src), l(o), _.aldstat_page_last_page = n.__route__
-    },
-    w = function (t, a) {
-      var s = wx.getStorageSync("aldstat_src"),
-        e = getApp();
-      if (s && (e.aldstat_src = s), !g(t)) {
-        "undefined" != typeof t.aldsrc && (s ? (console.log(t.aldsrc), e.aldstat_qr = t.aldsrc) : (wx.setStorageSync("aldstat_src", t.aldsrc), e.aldstat_src = t.aldsrc));
-        var _ = wx.getStorageSync("aldstat_uuid");
-        if ("undefined" == typeof t.ald_share_src) e.ald_share_src = _;
-        else {
-          var n = t.ald_share_src.split(",");
-          n.length >= 3 && (n.shift(), t.ald_share_src = n.toString());
-          for (var o = !1, l = 0; l < n.length; l++) n[l] === _ && (o = !0);
-          o || "undefined" == typeof t.ald_share_src ? e.ald_share_src = t.ald_share_src : (console.log(t.ald_share_src), e.ald_share_src = t.ald_share_src + "," + _)
-        }
-        this.aldstat_page_args = JSON.stringify(t)
+        s.aldstat_is_first_page && (d.ifp = "true"), a.aldstat_page_last_page && (d.lp = a.aldstat_page_last_page), a.aldstat_location_name && (d.ln = a.aldstat_location_name), s.aldstat_page_args && (d.ag = s.aldstat_page_args), a.aldstat_src && (d.sr = a.aldstat_src), a.aldstat_qr && (d.qr = a.aldstat_qr), a.ald_share_src && (d.usr = a.ald_share_src), a.aldstat_page_last_page = s.__route__, p(d, "GET", "d.html")
       }
     },
-    v = function (t, a) {
-      var s = getApp(),
-        e = wx.getStorageSync(this.__route__);
-      this.aldstat_start_time = Date.now(), this.aldstat_refresh_count = 0, this.aldstat_error_count = 0, this.aldstat_bottom_count = 0, this.page_share_count = "" === e ? 0 : e, s.aldstat_page_count ? s.aldstat_page_count++ : s.aldstat_page_count = 1, s.aldstat_first_page || (s.aldstat_first_page = this.__route__, this.aldstat_is_first_page = !0), s.aldstat_last_page = this.__route__
+    b = function (t, a) {
+      var e = getApp();
+      M(e, this, "show")
     },
-    m = function (t, a) {
-      var s = getApp();
-      this.aldstat_refresh_count++, s.aldstat_refresh_count++
+    E = function (t, a) {
+      var e = getApp();
+      h(e, "event", "ald_pulldownrefresh", 1)
     },
-    y = function (t, a) {
-      var s = getApp();
-      this.aldstat_bottom_count++, s.aldstat_bottom_count++
+    I = function (t, a) {
+      var e = getApp();
+      h(e, "event", "ald_reachbottom", 1)
     },
-    S = Page,
-    x = function (t, a) {
-      var s = getApp();
-      if ("undefined" != typeof t) {
-        var e = k(t[1].path),
-          _ = wx.getStorageSync(this.__route__);
-        return "undefined" !== s.ald_share_src && s.ald_share_src || (s.ald_share_src = wx.getStorageSync("aldstat_uuid")), console.log(s.ald_share_src), t[1].path += Object.keys(e).length > 0 ? "&ald_share_src=" + s.ald_share_src : "?ald_share_src=" + s.ald_share_src, "" === _ ? (wx.setStorageSync(this.__route__, 1), this.page_share_count += 1, s.page_share_count = this.page_share_count) : (this.page_share_count = parseInt(wx.getStorageSync(this.__route__)) + 1, wx.setStorageSync(this.__route__, this.page_share_count), s.page_share_count = this.page_share_count), o(function (t) {
+    G = Page,
+    O = function (t, a) {
+      var e = getApp();
+      if ("undefined" != typeof t && "undefined" != typeof t[1]) {
+        var s = wx.getStorageSync("aldstat_uuid");
+        "undefined" == typeof t[1].path && (t[1].path = this.path);
+        var n = N(t[1].path),
+          o = wx.getStorageSync(s),
+          d = "";
+        if ("undefined" !== e.ald_share_src && e.ald_share_src) {
+          d = e.ald_share_src;
+          var _ = d.split(",");
+          _.length >= 3 && (_.shift(), d = _.toString()), "" !== d && (d = d + "," + s)
+        } else d = wx.getStorageSync("aldstat_uuid");
+        t[1].path += -1 != n.indexOf("?") ? "&ald_share_src=" + d : "?ald_share_src=" + d, h(e, "event", "ald_share_chain", {
+          path: e.aldstat_last_page,
+          chain: d
+        }), "" === o || "undefined" == typeof o ? (wx.setStorageSync(s, 1), o = 1, e.page_share_count = o) : (o = parseInt(wx.getStorageSync(s)) + 1, e.page_share_count = o, wx.setStorageSync(s, o)), c(function (t) {
           var a = wx.getStorageSync("aldstat_uuid");
-          t.userInfo.uu = a, l(t.userInfo, "POST", "u.php")
-        }), t[1]
+          t.userInfo.uu = a, p(t.userInfo, "GET", "u.html")
+        });
+        var r = t[1];
+        "undefined" == typeof t[1].success && (t[1].success = function (t) {}), "undefined" == typeof t[1].fail && (t[1].fail = function (t) {});
+        var i = t[1].fail,
+          l = t[1].success;
+        return t[1].success = function (t) {
+          var a = new Array;
+          if ("object" == typeof t.shareTickets)
+            for (var s = 0; s < t.shareTickets.length; s++) w(e, t.shareTickets[s], "user");
+          h(e, "event", "ald_share_status", JSON.stringify(t)), l(t)
+        }, t[1].fail = function (t) {
+          h(e, "event", "ald_share_status", "fail"), i(t)
+        }, t[1]
       }
     },
-    k = function (t) {
+    N = function (t) {
       var a = new Object;
       if (-1 != t.indexOf("?"))
-        for (var s = t.split("?")[1], e = s.split("&"), _ = 0; _ < e.length; _++) a[e[_].split("=")[0]] = unescape(e[_].split("=")[1]);
+        for (var e = t.split("?")[1], s = e.split("&"), n = 0; n < s.length; n++) a[s[n].split("=")[0]] = unescape(s[n].split("=")[1]);
+      else a = t;
       return a
     };
   Page = function (t) {
-    _(t, "onLoad", w), _(t, "onUnload", f), _(t, "onShow", v), _(t, "onHide", f), _(t, "onPullDownRefresh", m), _(t, "onReachBottom", y), n(t, "onShareAppMessage", x), S(t)
+    i(t, "onLoad", T), i(t, "onUnload", A), i(t, "onShow", b), i(t, "onHide", q), i(t, "onReachBottom", I), i(t, "onPullDownRefresh", E), "undefined" != typeof t.onShareAppMessage && l(t, "onShareAppMessage", O), G(t)
   }
 }();
