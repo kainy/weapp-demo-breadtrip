@@ -131,22 +131,24 @@ Page({
     // console.log(e.type);
     const id = e.target.dataset.idx;
     // e.type 取值： load 、 error 、 tap
-    if (e.type === 'load') {
-      this.arrLoadSucc.push(id);
-      util.hideLoading();
-    } else if ((e.type === 'tap') && (this.arrLoadSucc.indexOf(id) > -1)) { // 点击加载成功的图片应跳转
-      this.viewWaypoint(e);
-    } else if (e.type === 'tap') {
-      util.showLoading('图片加载中');
-      this.data.gIsLoadingImg = true;
-      this.reloadErrImg(id);
-    } else if (this.data.idxShow > id) { // 基础库1.5.2后img src为空时触发error事件，需增加判断条件
-      this.arrLoadFail.push(id);
-      // 节流时间间隔，每 977ms mark 一次错误图片；点击重载按钮后重新报错等待时长
-      throttle(this.markErrImg, 1277, {
-        leading: false,
-        trailing: true,
-      })();
+    if (this.data.idxShow > id) { // 基础库1.5.2后img src为空时触发error事件，需增加判断条件
+      if (e.type === 'load') {
+        this.arrLoadSucc.push(id);
+        util.hideLoading();
+      } else if ((e.type === 'tap') && (this.arrLoadSucc.indexOf(id) > -1)) { // 点击加载成功的图片应跳转
+        this.viewWaypoint(e);
+      } else if (e.type === 'tap') {
+        util.showLoading('图片加载中');
+        this.data.gIsLoadingImg = true;
+        this.reloadErrImg(id);
+      } else {
+        this.arrLoadFail.push(id);
+        // 节流时间间隔，每 977ms mark 一次错误图片；点击重载按钮后重新报错等待时长
+        throttle(this.markErrImg, 1277, {
+          leading: false,
+          trailing: true,
+        })();
+      }
     }
   },
   reloadErrImg(id) {
