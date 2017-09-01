@@ -137,7 +137,7 @@ Page({
     } else if (e.type === 'tap') {
       util.showLoading('图片加载中');
       this.reloadErrImg(id);
-    } else {
+    } else if (this.data.idxShow > id) { // 基础库1.5.2后img src为空时触发error事件，需增加判断条件
       this.arrLoadFail.push(id);
       // 节流时间间隔，每 977ms mark 一次错误图片；点击重载按钮后重新报错等待时长
       throttle(this.markErrImg, 1277, {
