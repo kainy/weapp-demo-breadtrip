@@ -120,11 +120,13 @@ Page({
     if (!e) return;
     const height = e.detail.scrollHeight / this.data.trip.waypoints;
     const n = Math.round(e.detail.scrollTop / height) + this.data.preLoadImg; // 预加载图片数量
-    this.setData({
-      idxShow: Math.max(n, this.data.idxShow),
-    });
-    // console.log(this.arrShow, n, this.data.idxShow);
-  }, 777, {}),
+    if (n > this.data.idxShow) {
+      this.setData({
+        idxShow: Math.max(n, this.data.idxShow),
+      });
+      // console.log(this.arrShow, n, this.data.idxShow);
+    }
+  }, 1077, {}),
   errImg(e) {
     // console.log(e.type);
     const id = e.target.dataset.idx;
@@ -196,7 +198,7 @@ Page({
       desc: this.data.trip.days[0].waypoints[0].text,
       path: `/pages/trip/trip?id=${this.data.options.id}&name=${this.data.options.name}`,
     };
-    console.log(opt);
+    // console.log(opt);
     return opt;
   },
   viewWaypoint(e) {
