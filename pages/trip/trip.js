@@ -136,6 +136,7 @@ Page({
       this.viewWaypoint(e);
     } else if (e.type === 'tap') {
       util.showLoading('图片加载中');
+      this.data.gIsLoadingImg = true;
       this.reloadErrImg(id);
     } else if (this.data.idxShow > id) { // 基础库1.5.2后img src为空时触发error事件，需增加判断条件
       this.arrLoadFail.push(id);
@@ -180,7 +181,13 @@ Page({
         trip,
       });
       this.arrLoadFail = [];
-      util.hideLoading();
+      if (this.data.gIsLoadingImg) {
+        util.showLoading('图片加载失败');
+        this.data.gIsLoadingImg = false;
+        setTimeout(util.hideLoading, 777);
+      } else {
+        util.hideLoading();
+      }
     }
   },
   onShareAppMessage() {
