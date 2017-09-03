@@ -120,30 +120,35 @@ Page({
     if (!e) return;
     const height = e.detail.scrollHeight / this.data.trip.waypoints;
     const n = Math.round(e.detail.scrollTop / height) + this.data.preLoadImg; // 预加载图片数量
-    this.setData({
-      idxShow: Math.max(n, this.data.idxShow),
-    });
-    // console.log(this.arrShow, n, this.data.idxShow);
-  }, 777, {}),
+    if (n > this.data.idxShow) {
+      this.setData({
+        idxShow: Math.max(n, this.data.idxShow),
+      });
+      // console.log(this.arrShow, n, this.data.idxShow);
+    }
+  }, 1077, {}),
   errImg(e) {
     // console.log(e.type);
     const id = e.target.dataset.idx;
     // e.type 取值： load 、 error 、 tap
-    if (e.type === 'load') {
-      this.arrLoadSucc.push(id);
-      util.hideLoading();
-    } else if ((e.type === 'tap') && (this.arrLoadSucc.indexOf(id) > -1)) { // 点击加载成功的图片应跳转
-      this.viewWaypoint(e);
-    } else if (e.type === 'tap') {
-      util.showLoading('图片加载中');
-      this.reloadErrImg(id);
-    } else {
-      this.arrLoadFail.push(id);
-      // 节流时间间隔，每 977ms mark 一次错误图片；点击重载按钮后重新报错等待时长
-      throttle(this.markErrImg, 1277, {
-        leading: false,
-        trailing: true,
-      })();
+    if (this.data.idxShow > id) { // 基础库1.5.2后img src为空时触发error事件，需增加判断条件
+      if (e.type === 'load') {
+        this.arrLoadSucc.push(id);
+        util.hideLoading();
+      } else if ((e.type === 'tap') && (this.arrLoadSucc.indexOf(id) > -1)) { // 点击加载成功的图片应跳转
+        this.viewWaypoint(e);
+      } else if (e.type === 'tap') {
+        util.showLoading('图片加载中');
+        this.data.gIsLoadingImg = true;
+        this.reloadErrImg(id);
+      } else {
+        this.arrLoadFail.push(id);
+        // 节流时间间隔，每 977ms mark 一次错误图片；点击重载按钮后重新报错等待时长
+        throttle(this.markErrImg, 1277, {
+          leading: false,
+          trailing: true,
+        })();
+      }
     }
   },
   reloadErrImg(id) {
@@ -180,7 +185,13 @@ Page({
         trip,
       });
       this.arrLoadFail = [];
-      util.hideLoading();
+      if (this.data.gIsLoadingImg) {
+        util.showLoading('图片加载失败');
+        this.data.gIsLoadingImg = false;
+        setTimeout(util.hideLoading, 777);
+      } else {
+        util.hideLoading();
+      }
     }
   },
   onShareAppMessage() {
@@ -189,7 +200,7 @@ Page({
       desc: this.data.trip.days[0].waypoints[0].text,
       path: `/pages/trip/trip?id=${this.data.options.id}&name=${this.data.options.name}`,
     };
-    console.log(opt);
+    // console.log(opt);
     return opt;
   },
   viewWaypoint(e) {
