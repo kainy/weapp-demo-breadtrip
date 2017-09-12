@@ -8,14 +8,14 @@ Page({
     orders: [],
     error: null,
     payDescription: '',
-    referrer: '',
+    referrer: '跨时空小程序',
   },
   onLoad() {
     util.showLoading();
     this.originPageData = util.getOriginPageData();
     let payDescription = '🍵 请郭老师喝碗茶。';
     if (this.originPageData && this.originPageData.options) {
-      payDescription = `感谢 ${decodeURIComponent(this.originPageData.options.nickName)} 为我推荐精彩内容`;
+      payDescription = `感谢 ${decodeURIComponent(this.originPageData.options.nickName || this.data.referrer)} 为我推荐精彩内容`;
     }
     this.setData({
       pageLength: getCurrentPages().length,

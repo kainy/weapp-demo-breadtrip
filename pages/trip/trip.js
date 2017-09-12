@@ -64,7 +64,7 @@ Page({
             this.icon = 'homenav';
           }
         } else {
-          this.icon = 'share';
+          this.icon = 'donate';
         }
         this.setData({
           icon: this.icon,
