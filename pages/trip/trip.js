@@ -8,18 +8,19 @@ Page({
     trip: {
       waypoints: 17,
     },
-    options: null,
     idxShow: 3, // 页面加载展示3张
     bgPlaying: false,
     windowWidth: App.systemInfo.windowWidth,
     windowHeight: App.systemInfo.windowHeight,
     bgMusic: '',
     preLoadImg: 7,
+    name: '',
+    id: '',
   },
   onReady() {
     const self = this;
     wx.setNavigationBarTitle({
-      title: self.data.options.name,
+      title: self.data.name,
     });
   },
   onLoad(options) {
@@ -29,7 +30,8 @@ Page({
     this.arrLoadSucc = [];
     this.arrLoadFail = [];
     this.setData({
-      options,
+      name: decodeURIComponent(options.name),
+      id: options.id,
     });
     util.showLoading();
     wx.getSystemInfo({
@@ -93,10 +95,10 @@ Page({
       url: 'https://kainy.cn/api/music/playlist/detail?id=616559806',
       success(res) {
         const arr = res.data.result.tracks;
-        // const src = arr[self.data.options.id % arr.length].mp3Url;
-        const id = arr[self.data.options.id % arr.length].id;
+        // const src = arr[self.data.id % arr.length].mp3Url;
+        const id = arr[self.data.id % arr.length].id;
         // https://api.imjad.cn/cloudmusic/?type=song&id=2872271&br=198000
-        // console.log(arr, self.data.options.id % arr.length, id);
+        // console.log(arr, self.data.id % arr.length, id);
         self.setData({ bgMusic: `https://api.imjad.cn/cloudmusic/?type=song&id=${id}&br=198000&raw=1` });
         // 使用 wx.createAudioContext 获取 audio 上下文 context
         self.audioCtx = wx.createAudioContext('myAudio');
@@ -196,11 +198,11 @@ Page({
   },
   onShareAppMessage() {
     const opt = {
-      title: `「${this.data.options.name}」`,
+      title: `「${this.data.name}」`,
       desc: this.data.trip.days[0].waypoints[0].text,
-      path: `/pages/trip/trip?id=${this.data.options.id}&name=${this.data.options.name}`,
+      path: `/pages/trip/trip?id=${this.data.id}&name=${this.data.name}`,
     };
-    // console.log(opt);
+    console.log(opt);
     return opt;
   },
   viewWaypoint(e) {
