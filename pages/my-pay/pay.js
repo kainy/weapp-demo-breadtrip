@@ -13,7 +13,7 @@ Page({
   onLoad() {
     util.showLoading();
     this.originPageData = util.getOriginPageData();
-    let payDescription = '🍵 请郭老师喝碗茶。';
+    let payDescription = '🍵 请作者喝碗茶。';
     if (this.originPageData && this.originPageData.options) {
       payDescription = `感谢 ${decodeURIComponent(this.originPageData.options.nickName || this.data.referrer)} 为我推荐精彩内容`;
     }
@@ -80,11 +80,14 @@ Page({
         setTimeout(this.refreshOrders.bind(this), 1500);
       };
       payOpt.fail = ({ errMsg }) => {
-        this.setData({ error: errMsg });
+        this.setData({ error: '支付失败，请稍后重试。' });
+        console.warn(errMsg);
+        util.hideLoading();
       };
       wx.requestPayment(payOpt);
     }).catch((error) => {
       this.setData({ error: error.message });
+      util.hideLoading();
     });
   },
 });
