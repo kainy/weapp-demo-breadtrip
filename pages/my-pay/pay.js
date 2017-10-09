@@ -90,4 +90,12 @@ Page({
       util.hideLoading();
     });
   },
+  onShareAppMessage() {
+    const opt = {
+      title: '体验小程序支付流程',
+      path: 'pages/my-pay/pay',
+    };
+    console.log(opt);
+    return opt;
+  },
 });
