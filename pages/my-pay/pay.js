@@ -11,7 +11,6 @@ Page({
     referrer: '跨时空小程序',
   },
   onLoad() {
-    util.showLoading();
     this.originPageData = util.getOriginPageData();
     let payDescription = '🍵 请作者喝碗茶。';
     if (this.originPageData && this.originPageData.options) {
@@ -21,7 +20,7 @@ Page({
       pageLength: getCurrentPages().length,
       payDescription,
     });
-    return this.refreshOrders();
+    return this.refreshOrders().then(this.donate);
   },
   onPullDownRefresh() {
     return this.refreshOrders().then(wx.stopPullDownRefresh);
@@ -45,7 +44,6 @@ Page({
             queryString: (order.link && order.link.options) ? util.params(order.link.options) : '',
           })),
         });
-        util.hideLoading();
       })
       .catch(console.error);
   },
@@ -80,10 +78,12 @@ Page({
         setTimeout(this.refreshOrders.bind(this), 1500);
       };
       payOpt.fail = ({ errMsg }) => {
-        this.setData({ error: '支付失败，请稍后重试。' });
+        if (errMsg.indexOf('fail cancel') < 0) {
+          this.setData({ error: '支付失败，请稍后重试。' });
+        }
         console.warn(errMsg);
-        util.hideLoading();
       };
+      util.hideLoading();
       wx.requestPayment(payOpt);
     }).catch((error) => {
       this.setData({ error: error.message });
