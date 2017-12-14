@@ -69,25 +69,27 @@ Page({
   donate() {
     util.showLoading('正在创建订单', true);
     const that = this;
+    const succCB = () => {
+      wx.showToast({
+        title: '支付成功',
+        icon: 'success',
+        complete: () => {
+          const curUserInfo = app.AV.User.current();
+          if (!curUserInfo.get('nickName')) {
+            app.syncUserInfo().then((userInfo) => {
+              that.setData({
+                userInfo,
+              });
+            }).catch(console.error);
+          }
+        },
+      });
+      setTimeout(this.refreshOrders.bind(this), 1500);
+    };
+    // succCB(); return;
     Cloud.run('order', this.genOrderParams()).then((data) => {
       const payOpt = data;
-      payOpt.success = () => {
-        wx.showToast({
-          title: '支付成功',
-          icon: 'success',
-          complete: () => {
-            const curUserInfo = app.AV.User.current();
-            if (!curUserInfo.nickName) {
-              app.syncUserInfo().then((userInfo) => {
-                that.setData({
-                  userInfo,
-                });
-              }).catch(console.error);
-            }
-          },
-        });
-        setTimeout(this.refreshOrders.bind(this), 1500);
-      };
+      payOpt.success = succCB;
       payOpt.fail = ({ errMsg }) => {
         if (errMsg.indexOf('fail cancel') < 0) {
           this.setData({ error: '支付失败，请稍后重试。' });
@@ -99,6 +101,7 @@ Page({
     }).catch((error) => {
       this.setData({ error: error.message });
       User.logOut();
+      this.onPullDownRefresh();
       util.hideLoading();
     });
   },
