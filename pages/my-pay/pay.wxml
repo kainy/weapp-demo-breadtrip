@@ -12,7 +12,7 @@
         <view class="order">
           <text class="amount">￥{{order.amount / 100}}</text>
           <text class="hint time">{{order.paidAt}}</text>
-          <navigator class="link" wx:if="{{ order.queryString}}" url="/{{order.link.page}}?{{order.queryString}}">「{{order.link.options.name}}」</navigator>
+          <navigator class="link" open-type="redirect" wx:if="{{ order.queryString}}" url="/{{order.link.page}}?{{order.queryString}}">「{{order.link.options.name}}」</navigator>
           <text class="hint orderid">订单号：{{order.tradeId}}</text>
         </view>
       </block>

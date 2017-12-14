@@ -53,7 +53,12 @@ Page({
       payDescription: this.data.payDescription,
     };
     if (this.originPageData) {
-      const options = this.originPageData.options;
+      const options = this.originPageData.options || {
+        id: this.originPageData.id,
+        name: this.originPageData.name,
+        nickName: 'KainyGuo',
+        referrer: 'kainyguo',
+      };
       if (options && options.id) {
         ret.link = {
           page: 'pages/trip/trip',
