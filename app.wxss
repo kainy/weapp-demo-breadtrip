@@ -50,3 +50,6 @@ page{
   animation: weuiLoading 1s steps(12, end) infinite;
   background: transparent center/cover url(http://kaidn-cdn.stor.sinaapp.com/ksk/loading.svg) no-repeat;
 }
+.g-active {
+  display: none;
+}

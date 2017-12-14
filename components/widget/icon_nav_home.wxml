@@ -1,5 +1,5 @@
 <template name="m-homenav">
-  <navigator url="/pages/index/index" open-type="switchTab" hover-class="none">
+  <navigator url="/pages/index/index" open-type="switchTab" hover-class="g-active">
     <view class="home-nav">
       <image mode="scaleToFill" src="http://kaidn-cdn.stor.sinaapp.com/ksk/home.svg"></image>
       <text>首页</text>
@@ -7,7 +7,7 @@
   </navigator>
 </template>
 <template name="m-donate">
-  <navigator url="/pages/my-pay/pay" hover-class="none">
+  <navigator url="/pages/my-pay/pay" hover-class="g-active">
     <view class="home-nav">
       <image mode="scaleToFill" src="http://kaidn-cdn.stor.sinaapp.com/ksk/donate.svg"></image>
       <text>打赏</text>
@@ -15,7 +15,7 @@
   </navigator>
 </template>
 <template name="m-share">
-  <navigator url="/pages/my-refer/refer?name={{options.name}}" hover-class="none">
+  <navigator url="/pages/my-refer/refer?name={{options.name}}" hover-class="g-active">
     <view class="home-nav">
       <image mode="scaleToFill" src="http://kaidn-cdn.stor.sinaapp.com/ksk/share.svg"></image>
       <text>分享</text>
