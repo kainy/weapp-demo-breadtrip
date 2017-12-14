@@ -27,7 +27,7 @@ Page({
   },
   refreshOrders() {
     if (!User.current()) {
-      return app.loginOrSignup().then(this.queryOrders);
+      return app.loginOrSignup().then(this.queryOrders).catch(console.error);
     }
     return this.queryOrders();
   },
@@ -68,12 +68,23 @@ Page({
   },
   donate() {
     util.showLoading('正在创建订单', true);
+    const that = this;
     Cloud.run('order', this.genOrderParams()).then((data) => {
       const payOpt = data;
       payOpt.success = () => {
         wx.showToast({
           title: '支付成功',
           icon: 'success',
+          complete: () => {
+            const curUserInfo = app.AV.User.current();
+            if (!curUserInfo.nickName) {
+              app.syncUserInfo().then((userInfo) => {
+                that.setData({
+                  userInfo,
+                });
+              }).catch(console.error);
+            }
+          },
         });
         setTimeout(this.refreshOrders.bind(this), 1500);
       };
@@ -87,6 +98,7 @@ Page({
       wx.requestPayment(payOpt);
     }).catch((error) => {
       this.setData({ error: error.message });
+      User.logOut();
       util.hideLoading();
     });
   },

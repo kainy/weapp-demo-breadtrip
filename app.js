@@ -110,5 +110,57 @@ App({
       })
       .catch(error => console.error(error.message));
   },
+  syncUserInfo(user = AV.User.current()) {
+    return new Promise((resolve, reject) => {
+      const success = ({ userInfo }) => {
+        // 更新当前用户的信息
+        user.set(userInfo).save().then(() => {
+          // 成功，此时可在控制台中看到更新后的用户信息
+        }).catch((res) => {
+          console.error(res);
+          AV.User.logOut();
+        });
+        resolve(userInfo);
+      };
+      wx.login({
+        success(res) {
+          if (res.code) {
+            wx.getUserInfo({
+              success,
+              fail(info) {
+                console.warn(`获取用户信息失败！${info.errMsg}`);
+                if (wx.openSetting) {
+                  util.alert('同步微信头像失败，请在后续弹窗中勾选“用户信息”', () => {
+                    wx.openSetting({
+                      // todo: BUG解决
+                      success: (resOS) => {
+                        if (resOS.authSetting['scope.userInfo']) {
+                          wx.getUserInfo({
+                            success,
+                            fail: reject,
+                          });
+                        } else {
+                          util.alert('授权失败，操作无法完成，请重试。');
+                          reject(resOS);
+                        }
+                      },
+                      fail: reject,
+                    });
+                  });
+                } else {
+                  reject(info);
+                }
+              },
+            });
+          } else {
+            console.log(`获取用户登录态失败！${res.errMsg}`);
+          }
+        },
+        fail(res) {
+          console.warn(res);
+        },
+      });
+    });
+  },
 });
 
