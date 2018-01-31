@@ -38,7 +38,8 @@ Page({
     console.log(opt);
     return opt;
   },
-  onTheWay() {
+  onTheWay(e) {
+    // console.log(e.currentTarget.dataset);
     util.alert('功能开发中，敬请期待…');
   },
   getPlaceInfo(type, id) {
