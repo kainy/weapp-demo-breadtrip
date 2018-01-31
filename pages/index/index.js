@@ -11,6 +11,7 @@ Page({
     loading: false,
     windowWidth: App.systemInfo.windowWidth,
     windowHeight: App.systemInfo.windowHeight,
+    scene: App.globalData.scene,
   },
   onLoad() {
     this.loadMore();
@@ -67,6 +68,9 @@ Page({
     wx.navigateTo({
       url: `../trip/trip?id=${ds.id}&name=${ds.name}`,
     });
+  },
+  launchAppError(e) {
+    console.log(e.detail.errMsg);
   },
   onReachBottom() {
     this.loadMore();

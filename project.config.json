@@ -1,0 +1,85 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": false,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.1",
+	"appid": "wxf8c8058dd4de52e5",
+	"projectname": "trip",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": [
+				{
+					"name": "test",
+					"pathName": "",
+					"title": "",
+					"cacheKey": ""
+				}
+			]
+		},
+		"conversation": {
+			"current": 0,
+			"list": [
+				{
+					"name": "test",
+					"query": "",
+					"boxQI": "",
+					"service": {}
+				}
+			]
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
+			"list": [
+				{
+					"id": 0,
+					"name": "trip",
+					"pathName": "pages/trip/trip",
+					"query": "id=2387216722&name=呈坎,唐模，写生季！",
+					"scene": 1044,
+					"shareInfo": {}
+				},
+				{
+					"id": -1,
+					"name": "destination",
+					"pathName": "pages/destination/destination",
+					"query": "type=3&id=26772&name=小樽市",
+					"scene": 1044,
+					"shareInfo": {}
+				},
+				{
+					"id": -1,
+					"name": "waypoint卡片详情",
+					"pathName": "pages/waypoint/waypoint",
+					"query": "waypointId=2362993232&tripId=2387216722"
+				},
+				{
+					"id": -1,
+					"name": "支付",
+					"pathName": "pages/my-pay/pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "launchApp",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": "wx2604a227cbdfc489"
+					}
+				}
+			]
+		}
+	}
+}

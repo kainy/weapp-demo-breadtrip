@@ -10,7 +10,7 @@ AV.init({
 App({
   systemInfo: null,
   AV,
-  onLaunch() {
+  onLaunch(options) {
     const self = this;
     this.getNetworkType();
     if (wx.onNetworkStatusChange) {
@@ -20,6 +20,7 @@ App({
     } else {
       setInterval(this.getNetworkType, 7777);
     }
+    console.log('onLaunch: ', options);
     wx.getSystemInfo({
       success(res) {
         self.systemInfo = res;
@@ -38,6 +39,12 @@ App({
         // });
       },
     });
+  },
+  onShow(options) {
+    if (options.scene) {
+      this.globalData.scene = options.scene;
+    }
+    console.log('onShow:', options);
   },
   getNetworkType() {
     const self = this;
