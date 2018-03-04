@@ -1,4 +1,6 @@
-// pages/webview/webview.js
+// 参数传递路径：
+//    分享操作： 网页 -postMessage-》小程序卡片
+//    打开卡片： 小程序卡片 -querystring-》 网页
 const util = require('../../utils/util.js');
 
 Page({
@@ -25,7 +27,7 @@ Page({
       const oUrl = util.qs2o(strQS); // 增加分享页参数
       // console.log(str, strQS, oUrl);
       oUrl.env = 'miniprogram'; // 增加参数用于网页判断小程序环境
-      oUrl.input = options.input || '',
+      oUrl.input = options.input || '';
       const url = `${str.split('?')[0]}?${util.o2qs(oUrl)}`;
       const src = decodeURIComponent(url);
       console.log('src: ', src);
