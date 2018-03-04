@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 8,
 			"list": [
 				{
 					"id": 0,
@@ -102,6 +102,13 @@
 					"name": "webview-blogs.html",
 					"pathName": "pages/webview/webview",
 					"query": "q=https%3A%2F%2Fblogs.kainy.cn%2Ftags%2F%3Fss%3Dff%26env%3Dminiprogram2",
+					"scene": "1011"
+				},
+				{
+					"id": 8,
+					"name": "webview-share2.html",
+					"pathName": "pages/webview/webview",
+					"query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html%3Fenv%3Dminiprogram%26input%3D&input=%E7%BB%9F%E4%B8%80",
 					"scene": "1011"
 				}
 			]
