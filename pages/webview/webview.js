@@ -27,7 +27,7 @@ Page({
       const oUrl = util.qs2o(strQS); // 增加分享页参数
       // console.log(str, strQS, oUrl);
       oUrl.env = 'miniprogram'; // 增加参数用于网页判断小程序环境
-      oUrl.input = options.input || '';
+      oUrl.input = decodeURIComponent(options.input || '');
       const url = `${str.split('?')[0]}?${util.o2qs(oUrl)}`;
       const src = decodeURIComponent(url);
       console.log('src: ', src);
@@ -95,7 +95,7 @@ Page({
       console.log(options.target);
     }
     const title = `${this.data.shareData.title}: ${this.data.shareData.input}`;
-    const input = this.data.shareData.input || '';
+    const input = encodeURIComponent(this.data.shareData.input || '');
     // console.log(options.webViewUrl, this.data.src);
     const url = encodeURIComponent(options.webViewUrl);
     const ret = {
