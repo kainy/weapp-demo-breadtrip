@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -94,7 +94,7 @@
 					"id": 6,
 					"name": "webview-share.html",
 					"pathName": "pages/webview/webview",
-					"query": "q=https://kainy.cn/miniprograms/KSK/share.html",
+					"query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html",
 					"scene": "1011"
 				},
 				{
