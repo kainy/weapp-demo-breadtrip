@@ -12,7 +12,8 @@
     "pages/my-pay/pay",
     "pages/my-setting/setting",
     "pages/my-refer/refer",
-    "pages/trip/trip"
+    "pages/trip/trip",
+    "pages/webview/webview"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -26,22 +27,26 @@
     "selectedColor": "#4abdcc",
     "borderStyle": "white",
     "backgroundColor": "#fff",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "iconPath": "images/index_normal.png",
-      "selectedIconPath": "images/index_pressed.png",
-      "text": "推荐"
-    }, {
-      "pagePath": "pages/explore/explore",
-      "iconPath": "images/explore_normal.png",
-      "selectedIconPath": "images/explore_pressed.png",
-      "text": "发现"
-    }, {
-      "pagePath": "pages/my/my",
-      "iconPath": "images/my_normal.png",
-      "selectedIconPath": "images/my_pressed.png",
-      "text": "我的"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/index_normal.png",
+        "selectedIconPath": "images/index_pressed.png",
+        "text": "推荐"
+      },
+      {
+        "pagePath": "pages/explore/explore",
+        "iconPath": "images/explore_normal.png",
+        "selectedIconPath": "images/explore_pressed.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "images/my_normal.png",
+        "selectedIconPath": "images/my_pressed.png",
+        "text": "我的"
+      }
+    ]
   },
   "debug": true
 }

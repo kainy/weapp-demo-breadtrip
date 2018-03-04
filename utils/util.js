@@ -73,8 +73,27 @@ function alert(msg = '', cb) {
     },
   });
 }
-function params(qs) {
-  return Object.keys(qs).map(i => `${i}=${qs[i]}`).join('&');
+function o2qs(o) {
+  return Object.keys(o).map(i => `${i}=${o[i]}`).join('&');
+}
+function qs2o(str) {
+  const obj = {};
+  if (!str) return obj;
+  const pairs = str.split('&');
+  let pair;
+  let pos;
+
+  for (let i = 0, len = pairs.length; i < len; ++i) {
+    pair = pairs[i];
+    pos = pair.indexOf('=');
+    if (pos === -1) {
+      obj[decodeURIComponent(pair)] = '';
+    } else {
+      obj[decodeURIComponent(pair.slice(0, pos))] =
+        decodeURIComponent(pair.slice(pos + 1));
+    }
+  }
+  return obj;
 }
 function getCurrPage() {
   return getCurrentPages().slice(-1)[0];
@@ -112,7 +131,8 @@ module.exports = {
   formatTime,
   throttle,
   alert,
-  params,
+  o2qs,
+  qs2o,
   getOriginPageData,
   getCurrPage,
   showLoading,

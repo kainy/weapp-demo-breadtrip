@@ -41,7 +41,7 @@ Page({
         this.setData({
           orders: orders.map(order => Object.assign(order.toJSON(), {
             paidAt: order.paidAt.toLocaleString(),
-            queryString: (order.link && order.link.options) ? util.params(order.link.options) : '',
+            queryString: (order.link && order.link.options) ? util.o2qs(order.link.options) : '',
           })),
         });
       })

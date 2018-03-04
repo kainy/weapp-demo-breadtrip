@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 7,
 			"list": [
 				{
 					"id": 0,
@@ -89,6 +89,20 @@
 					"referrerInfo": {
 						"appId": "wx2604a227cbdfc489"
 					}
+				},
+				{
+					"id": 6,
+					"name": "webview-share.html",
+					"pathName": "pages/webview/webview",
+					"query": "q=https://kainy.cn/miniprograms/KSK/share.html",
+					"scene": "1011"
+				},
+				{
+					"id": 7,
+					"name": "webview-blogs.html",
+					"pathName": "pages/webview/webview",
+					"query": "q=https%3A%2F%2Fblogs.kainy.cn%2Ftags%2F%3Fss%3Dff%26env%3Dminiprogram2",
+					"scene": "1011"
 				}
 			]
 		}
