@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 8,
 			"list": [
 				{
 					"id": 0,
@@ -101,14 +101,14 @@
 					"id": 7,
 					"name": "webview-blogs.html",
 					"pathName": "pages/webview/webview",
-					"query": "q=https://blogs.kainy.cn/2018/02/%E5%BE%AE%E6%B5%B7%E6%8A%A5%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96%E5%B0%8F%E7%BB%93/#more",
+					"query": "q=https%3A%2F%2Fblogs.kainy.cn%2F2018%2F02%2F%E5%BE%AE%E6%B5%B7%E6%8A%A5%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96%E5%B0%8F%E7%BB%93%3Ffb%3D%26env%3Dminiprogram%26extend%3D",
 					"scene": "1011"
 				},
 				{
 					"id": 8,
 					"name": "webview-share2.html",
 					"pathName": "pages/webview/webview",
-					"query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html%3Fenv%3Dminiprogram%26input%3D&input=%E7%BB%9F%E4%B8%80",
+					"query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html%3Fenv%3Dminiprogram%26input%3D&extend=%E7%BB%9F%E4%B8%80",
 					"scene": "1011"
 				}
 			]

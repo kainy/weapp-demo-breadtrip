@@ -18,18 +18,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // console.log(options);
+    // console.log(options.q, 77, options.webviewurl);
     const strUrl = options.q || options.webviewurl;
 
     if (strUrl) {
-      const str = decodeURIComponent(strUrl);
+      const str = decodeURIComponent(decodeURIComponent(strUrl));
       const strQS = str.indexOf('?') < 0 ? '' : str.replace(/[^?]+\?/, '');
       const oUrl = util.qs2o(strQS); // 增加分享页参数
       // console.log(str, strQS, oUrl);
       oUrl.env = 'miniprogram'; // 增加参数用于网页判断小程序环境
-      oUrl.extend = options.extend || '';
-      const url = `${str.split('?')[0]}?${util.o2qs(oUrl)}`;
-      const src = decodeURIComponent(url);
+      oUrl.extend = decodeURIComponent(options.extend || '');
+      const src = encodeURI(`${str.split('?')[0]}?${util.o2qs(oUrl)}`); // src 不能有汉字
+      // const src = decodeURIComponent(url);
       console.log('src: ', src);
       this.setData({
         src,
@@ -95,7 +95,7 @@ Page({
       console.log(options.target);
     }
     const title = this.data.shareData.title || '';
-    const extend = this.data.shareData.extend || '';
+    const extend = encodeURIComponent(this.data.shareData.extend || '');
     // console.log(options.webViewUrl, this.data.src);
     const url = encodeURIComponent(options.webViewUrl);
     const ret = {
