@@ -22,14 +22,14 @@ Page({
     const strUrl = options.q || options.webviewurl;
 
     if (strUrl) {
-      const str = decodeURIComponent(decodeURIComponent(strUrl));
-      const strQS = str.indexOf('?') < 0 ? '' : str.replace(/[^?]+\?/, '');
-      const oUrl = util.qs2o(strQS); // 增加分享页参数
-      // console.log(str, strQS, oUrl);
-      oUrl.env = 'miniprogram'; // 增加参数用于网页判断小程序环境
-      oUrl.extend = decodeURIComponent(options.extend || '');
-      const src = encodeURI(`${str.split('?')[0]}?${util.o2qs(oUrl)}`); // src 不能有汉字
-      // const src = decodeURIComponent(url);
+      const str = decodeURI(decodeURIComponent(strUrl));
+      const oUrl = util.urlParser(str);
+      console.log(oUrl);
+      const oParams = util.qs2o(oUrl.search.replace('?', ''));
+      // console.log(str, strQS, oParams);
+      oParams.env = 'miniprogram'; // 增加参数用于网页判断小程序环境
+      oParams.extend = decodeURIComponent(options.extend || ''); // 增加分享页参数
+      const src = `${encodeURI(oUrl.url)}?${util.o2qs(oParams)}${oUrl.hash}`; // src 不能有汉字
       console.log('src: ', src);
       this.setData({
         src,
