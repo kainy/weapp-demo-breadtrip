@@ -1,5 +1,4 @@
 <import src="../../components/trip/trip.wxml"/>
-<button wx-if="{{scene == 1036}}" open-type="launchApp" app-parameter="app-parameter" binderror="launchAppError">打开APP</button>
 <view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;">
   <block wx:for="{{ trips }}" wx:for-item="trip" wx:key="trip.data[0].id">
     <template is="m-trip" wx:if="{{ trip.type === 4 }}" data="{{trip: trip.data[0], mode: 1}}" />

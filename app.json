@@ -13,7 +13,8 @@
     "pages/my-setting/setting",
     "pages/my-refer/refer",
     "pages/trip/trip",
-    "pages/webview/webview"
+    "pages/webview/webview",
+    "pages/webview/launchapp"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -1,0 +1,3 @@
+<view>scene: {{scene}}</view>
+<view>extend: {{extend}}</view>
+<button wx-if="{{1 || scene == 1036}}" open-type="launchApp" app-parameter="{{extend}}" binderror="launchAppError">打开APP</button>
