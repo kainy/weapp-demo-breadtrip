@@ -101,7 +101,7 @@ Page({
     const title = this.data.shareData.title || '';
     const extend = encodeURIComponent(this.data.shareData.extend || '');
     // console.log(options.webViewUrl, this.data.src);
-    const url = encodeURIComponent(options.webViewUrl);
+    const url = encodeURIComponent(this.data.shareData.webViewUrl || options.webViewUrl);
     const ret = {
       title,
       path: `/pages/webview/webview?webviewurl=${url}&extend=${extend}`,
