@@ -1,5 +1,6 @@
 // pages/webview/launchapp.js
 const App = getApp();
+const util = require('../../utils/util.js');
 
 Page({
 
@@ -20,7 +21,14 @@ Page({
     });
   },
   launchAppError(e) {
-    console.error(e.detail.errMsg);
+    console.error(e.detail);
+    let msg = e.detail.errMsg;
+    if (/invalid scene/i.test(e.detail.errMsg)) { // 正常流程不应该出现此情况，建议在上一步判断，并隐藏入口
+      msg = '小程序从 APP 分享消息卡片的场景打开时，才能唤起 APP';
+    } else if (/sdk launch/i.test(e.detail.errMsg)) {
+      msg = '请确认已安装最新版本APP';
+    }
+    util.alert(`唤起APP失败：${msg}`);
   },
 
   /**

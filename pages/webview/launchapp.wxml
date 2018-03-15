@@ -1,3 +1,10 @@
-<view>scene: {{scene}}</view>
-<view>extend: {{extend}}</view>
-<button wx-if="{{1 || scene == 1036}}" open-type="launchApp" app-parameter="{{extend}}" binderror="launchAppError">打开APP</button>
+<view class="launch">
+  <view class="tips">该操作需在APP中完成 balabala… </view>
+  <button wx-if="{{1 || scene == 1036}}" open-type="launchApp" app-parameter="{{extend}}" binderror="launchAppError" size="mini" type="primary">立即前往</button>
+</view>
+
+<view class="debug">
+  <view class="title">以下为调试信息：</view>
+  <view>scene: {{scene}}</view>
+  <view>extend: {{extend}}</view>
+</view>
