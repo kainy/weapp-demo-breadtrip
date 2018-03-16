@@ -27,7 +27,7 @@ Page({
       const str = decodeURI(decodeURIComponent(strUrl));
       const oUrl = util.urlParser(str);
       console.log(oUrl);
-      const oParams = util.qs2o(oUrl.search.replace('?', ''));
+      const oParams = util.qs2o(oUrl.search.replace('?', '')); // 对应 webviewSDK.params
       // console.log(str, strQS, oParams);
       oParams.env = 'miniprogram'; // 增加参数用于网页判断小程序环境
       oParams.scene = App.globalData.scene; // 增加参数用于网页判断小程序环境
