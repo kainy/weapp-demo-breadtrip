@@ -25,6 +25,7 @@ App({
   onShow(options) {
     if (options.scene) {
       this.globalData.scene = options.scene;
+      // util.alert(`scene:${options.scene}`);
     }
     console.log('onShow:', options);
   },

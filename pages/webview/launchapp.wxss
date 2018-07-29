@@ -1,0 +1,19 @@
+.launch {
+  margin: 300rpx 40rpx;
+  text-align: center;
+}
+
+.tips {
+  margin-bottom: 70rpx;
+  opacity: .67;
+}
+
+.debug {
+  margin: 80rpx;
+  opacity: .5;
+}
+
+.debug .title {
+  margin-left: -20rpx;
+  margin-bottom: 40rpx;
+}

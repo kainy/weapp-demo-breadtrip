@@ -3,6 +3,8 @@
 //    打开卡片： 小程序卡片 -querystring-》 网页
 const util = require('../../utils/util.js');
 
+const App = getApp();
+
 Page({
 
   /**
@@ -19,16 +21,18 @@ Page({
    */
   onLoad(options) {
     // console.log(options.q, 77, options.webviewurl);
-    const strUrl = options.q || options.webviewurl;
+    const strUrl = options.q || options.webviewurl || 'https://kainy.cn/miniprograms/KSK/share.html';
 
     if (strUrl) {
       const str = decodeURI(decodeURIComponent(strUrl));
       const oUrl = util.urlParser(str);
       console.log(oUrl);
-      const oParams = util.qs2o(oUrl.search.replace('?', ''));
+      const oParams = util.qs2o(oUrl.search.replace('?', '')); // 对应 webviewSDK.params
       // console.log(str, strQS, oParams);
       oParams.env = 'miniprogram'; // 增加参数用于网页判断小程序环境
+      oParams.scene = App.globalData.scene; // 增加参数用于网页判断小程序环境
       oParams.extend = decodeURIComponent(options.extend || ''); // 增加分享页参数
+      oParams._ = +new Date(); // 避免缓存
       const src = `${encodeURI(oUrl.url)}?${util.o2qs(oParams)}${oUrl.hash}`; // src 不能有汉字
       console.log('src: ', src);
       this.setData({
@@ -97,7 +101,7 @@ Page({
     const title = this.data.shareData.title || '';
     const extend = encodeURIComponent(this.data.shareData.extend || '');
     // console.log(options.webViewUrl, this.data.src);
-    const url = encodeURIComponent(options.webViewUrl);
+    const url = encodeURIComponent(this.data.shareData.webViewUrl || options.webViewUrl);
     const ret = {
       title,
       path: `/pages/webview/webview?webviewurl=${url}&extend=${extend}`,
