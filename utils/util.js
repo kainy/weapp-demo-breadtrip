@@ -171,12 +171,19 @@ function textOverflow(txt, length = 10) {
   }
   return txt;
 }
+function errHandler(err) {
+  wx.hideLoading();
+  console.error(err);
+  err.message && alert(err.message);
+  err.errMsg && alert(err.errMsg);
+}
 module.exports = {
   textOverflow,
   formatNumber,
   formatTime,
   throttle,
   alert,
+  errHandler,
   o2qs,
   qs2o,
   getOriginPageData,

@@ -46,7 +46,7 @@ Page({
   },
   changePic() {
     const idx = +new Date() % arrPoster.length;
-    console.log('idx:', idx);
+    console.log('changePic idx:', idx);
     this.setData({
       posterBG: `https://wx2.sinaimg.cn/mw690/${arrPoster[idx]}.jpg`,
     });
@@ -179,7 +179,7 @@ Page({
       filePath: tempFilePath,
       success(result) {
         console.log('saveImageToPhotosAlbum', result);
-        util.alert('海报已保存至系统相册，快到朋友圈分享吧～', wx.navigateBack);
+        util.alert('海报已保存至系统相册，快去朋友圈分享吧～', wx.navigateBack);
       },
     });
   },
@@ -188,7 +188,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-    const title = '推荐一篇文章，希望对你有用'; // 推荐一个不错的内容 这篇文章写的超赞，值得一读
+    const title = '推荐一篇文章希望对你有用'; // 推荐一个不错的内容 这篇文章写的超赞，值得一读
     const url = this.data.options.webviewurl;
     const ret = {
       title,
