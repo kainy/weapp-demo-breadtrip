@@ -35,12 +35,16 @@
 				}
 			]
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -94,7 +98,7 @@
 					"id": 6,
 					"name": "webview-share.html",
 					"pathName": "pages/webview/webview",
-					"query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html",
+					"query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html?Kjs",
 					"scene": "1011"
 				},
 				{
@@ -109,6 +113,19 @@
 					"name": "webview-share2.html",
 					"pathName": "pages/webview/webview",
 					"query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html%3Fenv%3Dminiprogram%26input%3D&extend=%E7%BB%9F%E4%B8%80",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "share",
+					"pathName": "pages/webview/share",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "share1",
+					"pathName": "pages/webview/share",
+					"query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html?Kjs",
 					"scene": "1011"
 				}
 			]
