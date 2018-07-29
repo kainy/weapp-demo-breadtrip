@@ -1,5 +1,5 @@
 <view class="content {{platform}} {{model}}" style="background-image:url('{{posterBG}}')">
-  <view class="preview">
+  <view class="preview" bindtap="changePic">
     
     <view class="title">《{{options.title}}》</view>
   </view>

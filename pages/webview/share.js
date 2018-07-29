@@ -4,6 +4,20 @@
 const App = getApp();
 const util = require('../../utils/util.js');
 const QR = require('../../utils/qrcode.js');
+const arrPoster = [
+  '4d6e3e3bgy1ftr4jt230pj20ia0wi3zp',
+  '4d6e3e3bgy1ftr4jsbyidj20ia0wimz0',
+  '4d6e3e3bgy1ftr4jrulwkj20ia0wj755',
+  '4d6e3e3bgy1ftr4jqfm8ej20ia0wi0v1',
+  '4d6e3e3bgy1ftr4jpsdjdj20f00qognf',
+  '4d6e3e3bgy1ftr4jp5omdj20ia0y7abd',
+  '4d6e3e3bgy1ftr4jok2t1j20ia0wimyp',
+  '4d6e3e3bgy1ftr4jnuuirj20ia0wimyx',
+  '4d6e3e3bgy1ftr4jmuxkij20ia0wiwg3',
+  '4d6e3e3bgy1ftr4jlftogj20ia0wiq5s',
+  '4d6e3e3bgy1ftr4jkbdaqj20ia0wit9x',
+  '4d6e3e3bgy1ftr4jjo19mj20ia0wimya',
+];
 
 Page({
   data: {
@@ -12,7 +26,7 @@ Page({
     shareData: {},
     platform: App.systemInfo.platform,
     model: App.systemInfo.model.toLowerCase().replace(' ', '_'),
-    posterBG: 'https://wx2.sinaimg.cn/mw690/4d6e3e3bgy1ftqti766a6j20ia0wi0v1.jpg',
+    posterBG: '',
     widthQR: 122, // 二维码图片宽度 182, // 194
     widthCanvas: 750,
     heightCanvas: 1334,
@@ -28,6 +42,14 @@ Page({
       options,
     });
     wx.hideShareMenu();
+    this.changePic();
+  },
+  changePic() {
+    const idx = +new Date() % arrPoster.length;
+    console.log('idx:', idx);
+    this.setData({
+      posterBG: `https://wx2.sinaimg.cn/mw690/${arrPoster[idx]}.jpg`,
+    });
   },
   shareToMoment() {
     console.log('shareToMoment');
@@ -157,7 +179,7 @@ Page({
       filePath: tempFilePath,
       success(result) {
         console.log('saveImageToPhotosAlbum', result);
-        util.alert('海报已保存至系统相册，可分享至朋友圈', wx.navigateBack);
+        util.alert('海报已保存至系统相册，快到朋友圈分享吧～', wx.navigateBack);
       },
     });
   },
