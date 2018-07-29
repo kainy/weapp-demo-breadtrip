@@ -1,3 +1,28 @@
+.devtools .preview-pic {
+  left: 0;
+  top: 2600rpx;
+  margin-bottom: 176rpx;
+}
+
+.devtools .qr-pic {
+  position: absolute;
+  left: 505rpx;
+  bottom: 34rpx;
+}
+
+.devtools .preview-canvas {
+  transform: scale(0.5);
+  position: absolute;
+  left: -375rpx;
+  top: 507rpx;
+  margin-bottom: 200rpx;
+}
+.devtools {
+  position: initial;
+}
+page {
+  position: fixed;
+}
 page,
 .preview,
 .content {
@@ -36,4 +61,25 @@ page,
 .buttons button {
   color: #333;
   opacity: .8;
+}
+
+.qr-pic {
+  width: 178rpx;
+  height: 178rpx;
+}
+
+.qr-canvas {
+  left: -7777rpx;
+}
+
+.preview-pic {
+  width: 750rpx;
+  height: 1334rpx;
+}
+.qr-pic,
+.preview-canvas,
+.preview-pic {
+  position: absolute;
+  left: -9999rpx;
+  z-index:-1;
 }

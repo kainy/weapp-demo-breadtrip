@@ -8,7 +8,7 @@ AV.init({
 });
 
 App({
-  systemInfo: null,
+  systemInfo: wx.getSystemInfoSync(),
   AV,
   onLaunch(options) {
     const self = this;
@@ -21,24 +21,6 @@ App({
       setInterval(this.getNetworkType, 7777);
     }
     console.log('onLaunch: ', options);
-    wx.getSystemInfo({
-      success(res) {
-        self.systemInfo = res;
-        // console.log(res);
-        // const oldSys = JSON.stringify(wx.getStorageSync('sysInfo'));
-        // const newSys = JSON.stringify(res);
-        // if (oldSys !== newSys) {
-        //   console.log('sysInfo changed:', `${oldSys}-->${newSys}`);
-        //   setTimeout(() => {
-        //     self.aldstat.debug(`${oldSys}-->${newSys}`);
-        //   }, 0);
-        // }
-        // wx.setStorage({
-        //   key: 'sysInfo',
-        //   data: res,
-        // });
-      },
-    });
   },
   onShow(options) {
     if (options.scene) {

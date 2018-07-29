@@ -165,7 +165,14 @@ function urlParser(url) {
 
   return parser;
 }
+function textOverflow(txt, length = 10) {
+  if (txt.length > length) {
+    return `${txt.substring(0, length)}…`;
+  }
+  return txt;
+}
 module.exports = {
+  textOverflow,
   formatNumber,
   formatTime,
   throttle,

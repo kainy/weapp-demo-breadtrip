@@ -125,7 +125,7 @@
 					"id": 10,
 					"name": "share1",
 					"pathName": "pages/webview/share",
-					"query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html?Kjs",
+					"query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html&title=总在深夜放大招，小程序官方团队真的没有性生活",
 					"scene": "1011"
 				}
 			]
