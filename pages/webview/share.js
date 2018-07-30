@@ -43,13 +43,18 @@ Page({
       options,
     });
     wx.hideShareMenu();
-    this.changePic();
+    // this.changePic();
   },
   changePic() {
     const idx = +new Date() % arrPoster.length;
     console.log('changePic idx:', idx);
     this.setData({
       posterBG: `https://wx2.sinaimg.cn/mw690/${arrPoster[idx]}.jpg`,
+    });
+  },
+  previewImgLoaded() {
+    this.setData({
+      posterBGLoaded: this.data.posterBG,
     });
   },
   shareToMoment() {

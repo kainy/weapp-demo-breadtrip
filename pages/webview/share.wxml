@@ -1,4 +1,5 @@
-<view class="content {{platform}} {{model}}" style="background-image:url('{{posterBG}}')">
+
+<view class="content {{platform}} {{model}}" style="{{posterBGLoaded ? 'background-image:url(' + posterBGLoaded + ')' : ''}}">
   <view class="preview" bindtap="changePic">
     
     <view class="title">《{{options.title}}》</view>
@@ -12,4 +13,5 @@
     <canvas canvas-id="qrcanvas" class="qr-pic qr-canvas"/>
     <canvas canvas-id="previewcanvas" class="preview-canvas" style="width:{{widthCanvas}}px;height:{{heightCanvas + widthQR}}px;"/>
     <image class="preview-pic" wx:if="{{result}}" src="{{result}}" />
+    <image class="preload-pic" src="{{posterBG}}" bindload="previewImgLoaded" />
 </view>

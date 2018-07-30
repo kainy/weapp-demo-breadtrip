@@ -29,8 +29,10 @@ page,
   height: 100%;
 }
 .content {
+  transition:.5s;
   background: #eee no-repeat center center fixed;
   background-size:cover;
+  background-image: url('https://wx2.sinaimg.cn/mw690/4d6e3e3bgy1ftr4jt230pj20ia0wi3zp.jpg')
 }
 .title {
   min-height: 100rpx;
@@ -78,6 +80,7 @@ page,
 }
 .qr-pic,
 .preview-canvas,
+.preload-pic
 .preview-pic {
   position: absolute;
   left: -9999rpx;
