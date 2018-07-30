@@ -14,8 +14,8 @@
   transform: scale(0.5);
   position: absolute;
   left: -375rpx;
-  top: 507rpx;
-  margin-bottom: 200rpx;
+  top: 2507rpx;
+  margin-bottom: 400rpx;
 }
 .devtools {
   position: initial;
@@ -75,8 +75,7 @@ page,
 }
 
 .preview-pic {
-  width: 750rpx;
-  height: 1334rpx;
+  height: 100%;
 }
 .qr-pic,
 .preview-canvas,

@@ -43,7 +43,7 @@ Page({
       options,
     });
     wx.hideShareMenu();
-    // this.changePic();
+    setTimeout(this.changePic, 888);
   },
   changePic() {
     const idx = +new Date() % arrPoster.length;
@@ -183,6 +183,11 @@ Page({
   },
   saveImageToPhotosAlbum(res) {
     const tempFilePath = encodeURI(res.tempFilePath);
+    if (this.data.platform === 'devtools') {
+      this.setData({
+        result: tempFilePath,
+      });
+    }
     wx.saveImageToPhotosAlbum({
       filePath: tempFilePath,
       success(result) {
