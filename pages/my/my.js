@@ -45,7 +45,7 @@ Page({
   onPullDownRefresh() {
     this.loginAndFetchTodos().then(wx.stopPullDownRefresh);
   },
-  setTodos(todos) {
+  setTodos(todos = []) {
     const activeTodos = todos.filter(todo => !todo.done);
     this.setData({
       todos,
