@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
@@ -126,6 +126,13 @@
 					"name": "share1",
 					"pathName": "pages/webview/share",
 					"query": "webviewurl=https%3A%2F%2Fblogs.kainy.cn%2F2018%2F03%2F180328%25E6%2580%25BB%25E5%259C%25A8%25E6%25B7%25B1%25E5%25A4%259C%25E6%2594%25BE%25E5%25A4%25A7%25E6%258B%259B%25EF%25BC%258C%25E5%25B0%258F%25E7%25A8%258B%25E5%25BA%258F%25E5%25AE%2598%25E6%2596%25B9%25E5%259B%25A2%25E9%2598%259F%25E7%259C%259F%25E7%259A%2584%25E6%25B2%25A1%25E6%259C%2589X%25E7%2594%259F%25E6%25B4%25BB%25EF%25BC%259F%2F&title=总在深夜放大招，小程序官方团队真的没有性生活?",
+					"scene": "1011"
+				},
+				{
+					"id": 12,
+					"name": "webview-短地址.html",
+					"pathName": "pages/webview/webview",
+					"query": "q=https://kainy.cn/t/MVJCC5",
 					"scene": "1011"
 				}
 			]

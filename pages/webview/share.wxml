@@ -2,7 +2,7 @@
 <view class="content {{platform}} {{model}}" style="{{posterBGLoaded ? 'background-image:url(' + posterBGLoaded + ')' : ''}}">
   <view class="preview" bindtap="changePic">
     
-    <view class="title">《{{options.title}}》</view>
+    <view class="title">《{{optionsData.title}}》</view>
   </view>
   <view class="buttons">
     <button open-type="share">转发到聊天会话</button>

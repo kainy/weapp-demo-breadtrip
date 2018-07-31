@@ -40,7 +40,7 @@ Page({
     }
     const optionsData = {
       title: options.title || '精彩内容',
-      webviewurl: options.webviewurl.replace('env=miniprogram', ''),
+      webviewurl: options.webviewurl.replace(encodeURIComponent('env=miniprogram'), ''),
     };
     this.setData({
       optionsData,
