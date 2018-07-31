@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 7,
 			"list": [
 				{
 					"id": 0,
@@ -105,7 +105,7 @@
 					"id": 7,
 					"name": "webview-blogs.html",
 					"pathName": "pages/webview/webview",
-					"query": "q=https%3A%2F%2Fblogs.kainy.cn%2F2018%2F02%2F%E5%BE%AE%E6%B5%B7%E6%8A%A5%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96%E5%B0%8F%E7%BB%93%3Ffb%3D%26env%3Dminiprogram%26extend%3D#more",
+					"query": "q=https%3A%2F%2Fblogs.kainy.cn/",
 					"scene": "1011"
 				},
 				{
@@ -125,8 +125,7 @@
 					"id": 10,
 					"name": "share1",
 					"pathName": "pages/webview/share",
-					"query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html&title=总在深夜放大招，小程序官方团队真的没有性生活",
-
+					"query": "webviewurl=https%3A%2F%2Fblogs.kainy.cn%2F2018%2F03%2F180328%25E6%2580%25BB%25E5%259C%25A8%25E6%25B7%25B1%25E5%25A4%259C%25E6%2594%25BE%25E5%25A4%25A7%25E6%258B%259B%25EF%25BC%258C%25E5%25B0%258F%25E7%25A8%258B%25E5%25BA%258F%25E5%25AE%2598%25E6%2596%25B9%25E5%259B%25A2%25E9%2598%259F%25E7%259C%259F%25E7%259A%2584%25E6%25B2%25A1%25E6%259C%2589X%25E7%2594%259F%25E6%25B4%25BB%25EF%25BC%259F%2F&title=总在深夜放大招，小程序官方团队真的没有性生活?",
 					"scene": "1011"
 				}
 			]

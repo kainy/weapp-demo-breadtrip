@@ -141,7 +141,7 @@ Page({
       ctx.setFillStyle('#000000');
       ctx.fillText(`《${util.textOverflow(this.data.options.title, 17)}》`, 2 * titleFontsize / suofang, positionY - (titleFontsize * 1.2));
       ctx.setFillStyle('#aaaaaa');
-      ctx.fillText('长按图片“识别二维码”查看原文👉', 6.7 * titleFontsize / suofang, positionY + (titleFontsize / 1.6));
+      ctx.fillText('长按图片“识别二维码”查看原文👉', 2.3 * titleFontsize / suofang, positionY + (titleFontsize / 1.6)); // 6.7;
       const that = this;
       Promise.all([this.remoteToLocal(this.data.posterBG), this.drawQRCode(shortUrl)]).then(([pic, qrcode]) => {
         console.log(`draw1-画背景图:${+new Date()}`);
