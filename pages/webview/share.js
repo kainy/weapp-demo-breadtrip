@@ -38,9 +38,12 @@ Page({
       util.alert('缺少分享URL参数', wx.navigateBack);
       return;
     }
-    options.title = options.title || '精彩内容';
+    const optionsData = {
+      title: options.title || '精彩内容',
+      webviewurl: options.webviewurl.replace('env=miniprogram', ''),
+    };
     this.setData({
-      options,
+      optionsData,
     });
     wx.hideShareMenu();
     setTimeout(this.changePic, 888);
@@ -59,7 +62,7 @@ Page({
   },
   shareToMoment() {
     console.log('shareToMoment');
-    this.generate(this.data.options.webviewurl);
+    this.generatePoster(this.data.optionsData.webviewurl);
   },
   getShortUrl(url) {
     return new Promise((resolve, reject) => {
@@ -118,7 +121,7 @@ Page({
       }, 777);
     });
   },
-  generate(url) {
+  generatePoster(url) {
     wx.showLoading({
       title: '海报合成中…',
       mask: true,
@@ -139,7 +142,7 @@ Page({
       // 绘制标题
       ctx.setFontSize(titleFontsize);
       ctx.setFillStyle('#000000');
-      ctx.fillText(`《${util.textOverflow(this.data.options.title, 17)}》`, 2 * titleFontsize / suofang, positionY - (titleFontsize * 1.2));
+      ctx.fillText(`《${util.textOverflow(this.data.optionsData.title, 17)}》`, 2 * titleFontsize / suofang, positionY - (titleFontsize * 1.2));
       ctx.setFillStyle('#aaaaaa');
       ctx.fillText('长按图片“识别二维码”查看原文👉', 2.3 * titleFontsize / suofang, positionY + (titleFontsize / 1.6)); // 6.7;
       const that = this;
@@ -202,7 +205,7 @@ Page({
    */
   onShareAppMessage() {
     const title = '推荐一篇文章希望对你有用'; // 推荐一个不错的内容 这篇文章写的超赞，值得一读
-    const url = this.data.options.webviewurl;
+    const url = this.data.optionsData.webviewurl;
     const ret = {
       title,
       path: `/pages/webview/webview?webviewurl=${url}`,
