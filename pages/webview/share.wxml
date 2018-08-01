@@ -11,7 +11,7 @@
 
   <!-- <view class="pop-tips">长按可以转发给好友</view> -->
     <canvas canvas-id="qrcanvas" class="qr-pic qr-canvas"/>
-    <canvas canvas-id="previewcanvas" class="preview-canvas" style="width:{{widthCanvas}}px;height:{{heightCanvas + widthQR}}px;"/>
+    <canvas canvas-id="previewcanvas" class="preview-canvas" style="width:{{widthCanvas}}px;height:{{heightCanvas + widthQR / suofang}}px;"/>
     <image class="preview-pic" wx:if="{{result}}" src="{{result}}" />
     <image class="preload-pic" src="{{posterBG}}" bindload="previewImgLoaded" />
 </view>

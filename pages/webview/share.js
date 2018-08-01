@@ -5,6 +5,7 @@ const App = getApp();
 const util = require('../../utils/util.js');
 const QR = require('../../utils/qrcode.js');
 
+const suofang = 2;
 const arrPoster = [
   '4d6e3e3bgy1ftr4jt230pj20ia0wi3zp',
   '4d6e3e3bgy1ftr4jsbyidj20ia0wimz0',
@@ -25,12 +26,13 @@ Page({
     src: '',
     // src: 'https://kainy.cn/miniprograms/KSK/loading.html',
     shareData: {},
+    suofang,
     platform: App.systemInfo.platform,
     model: App.systemInfo.model.toLowerCase().replace(' ', '_'),
     posterBG: '',
     widthQR: 122, // 二维码图片宽度 182, // 194
-    widthCanvas: 750,
-    heightCanvas: 1334,
+    widthCanvas: 750 / suofang,
+    heightCanvas: 1334 / suofang,
     ratio: 750 / App.systemInfo.screenWidth,
   },
   onLoad(options) {
@@ -126,7 +128,6 @@ Page({
       title: '海报合成中…',
       mask: true,
     });
-    const suofang = 1;
     const positionX = 710 / suofang; // 610-二维码区块中心点位置
     const positionY = 1414 / suofang; // 1194-
     const widthQR = this.data.widthQR / suofang;
@@ -138,7 +139,7 @@ Page({
       const ctx = wx.createCanvasContext('previewcanvas');
       // 这里是绘制灰色背景
       ctx.setFillStyle('#EEEEEE');
-      ctx.fillRect(0, 0, this.data.widthCanvas / suofang, (positionY + (widthQR / 2)) / suofang);
+      ctx.fillRect(0, 0, this.data.widthCanvas, (this.data.heightCanvas + widthQR));
       // 绘制标题
       ctx.setFontSize(titleFontsize);
       ctx.setFillStyle('#000000');
@@ -148,7 +149,7 @@ Page({
       const that = this;
       Promise.all([this.remoteToLocal(this.data.posterBG), this.drawQRCode(shortUrl)]).then(([pic, qrcode]) => {
         console.log(`draw1-画背景图:${+new Date()}`);
-        ctx.drawImage(pic.tempFilePath, 0, 0, this.data.widthCanvas / suofang, this.data.heightCanvas / suofang);
+        ctx.drawImage(pic.tempFilePath, 0, 0, this.data.widthCanvas, this.data.heightCanvas);
         that.drawPolyfill(ctx).then(() => {
           if (shortUrl) {
             console.log(`draw2-画二维码:${+new Date()}`);
