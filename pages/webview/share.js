@@ -198,6 +198,15 @@ Page({
         console.log('saveImageToPhotosAlbum', result);
         util.alert('海报已保存至系统相册，快去朋友圈分享吧～', wx.navigateBack);
       },
+      fail(res2) {
+        if (wx.openSetting) {
+          util.alert('海报保存失败，请在后续弹窗中勾选“保存到相册”并重试', () => {
+            wx.openSetting();
+          });
+        } else {
+          console.error(res2);
+        }
+      },
     });
   },
 
