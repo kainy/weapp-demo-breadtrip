@@ -199,9 +199,9 @@ Page({
         util.alert('已为您成功保存图片到手机相册，可以去发布朋友圈分享啦～', wx.navigateBack);
       },
       fail(res2) {
-        if (wx.openSetting) {
-          util.alert('海报保存失败，请在后续弹窗中勾选“保存到相册”并重试', () => {
-            wx.openSetting();
+        if (res2.errMsg === 'saveImageToPhotosAlbum:fail auth deny') {
+          util.alert('如需正常保存图片，请按确定并在授权管理中选中“保存到相册”，然后点按确定。返回后重新发起分享操作。', () => {
+            wx.openSetting && wx.openSetting();
           });
         } else {
           console.error(res2);

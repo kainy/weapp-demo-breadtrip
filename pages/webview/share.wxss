@@ -61,8 +61,8 @@ page,
   height: 200rpx;
 }
 .buttons button {
-  color: #333;
   opacity: .8;
+  width: 300rpx;
 }
 
 .qr-pic {

@@ -6,7 +6,7 @@
   </view>
   <view class="buttons">
     <button open-type="share">转发到聊天会话</button>
-    <button bindtap="shareToMoment">保存到系统相册</button>
+    <button bindtap="shareToMoment" type="primary">分享到朋友圈 </button>
   </view>
 
   <!-- <view class="pop-tips">长按可以转发给好友</view> -->
