@@ -13,9 +13,9 @@
 .devtools .preview-canvas {
   transform: scale(0.5);
   position: absolute;
-  left: -375rpx;
+  left: -75rpx;
   top: 2507rpx;
-  margin-bottom: 400rpx;
+  /* margin-bottom: 400rpx; */
 }
 .devtools {
   position: initial;
