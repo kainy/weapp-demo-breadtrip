@@ -195,7 +195,7 @@ Page({
       filePath: tempFilePath,
       success(result) {
         console.log('saveImageToPhotosAlbum', result);
-        util.alert('海报已保存至系统相册，快去朋友圈分享吧～', wx.navigateBack);
+        util.alert('已为您成功保存图片到手机相册，可以去发布朋友圈分享啦～', wx.navigateBack);
       },
     });
   },
