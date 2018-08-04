@@ -5,8 +5,8 @@
     <view class="title">《{{optionsData.title}}》</view>
   </view>
   <view class="buttons">
-    <button open-type="share">转发到聊天会话</button>
-    <button bindtap="shareToMoment" type="primary">分享到朋友圈 </button>
+    <button open-type="share">转发到会话</button>
+    <button bindtap="shareToMoment" type="primary">朋友圈分享</button>
   </view>
 
   <!-- <view class="pop-tips">长按可以转发给好友</view> -->
