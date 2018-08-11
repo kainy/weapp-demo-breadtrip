@@ -10,6 +10,7 @@
     "pages/my/my",
     "pages/my-user/user",
     "pages/my-pay/pay",
+    "pages/webview/pay",
     "pages/my-setting/setting",
     "pages/my-refer/refer",
     "pages/trip/trip",

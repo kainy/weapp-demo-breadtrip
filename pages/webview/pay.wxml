@@ -1,0 +1,15 @@
+<import src="../../components/trip/trip.wxml"/>
+<view class="container">
+  <view class="orders">
+    <text class="hint">{{payDescription}}</text>
+    <view class="form-wrap">
+    </view>
+  </view>
+</view>
+<view class=" footer">
+  <view class="info">
+    <view class="cancel" bindtap="cancel">取消</view>
+    <view class="amount">应付：￥{{amount}}</view>
+  </view>
+  <view class="confirm" bindtap="donate">确认支付</view>
+</view>

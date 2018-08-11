@@ -1,0 +1,43 @@
+/* @import "../../components/breadcrumb/breadcrumb.wxss"; */
+.order {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  margin: 0 -12px;
+  padding: 4px 12px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+  background: white;
+  display: flex;
+  height: 100rpx;
+  box-shadow:0 -1rpx 45px 1rpx #ddd;
+}
+.container {
+  padding:24rpx;
+}
+.info {
+  display: flex;
+  flex: 2;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  align-items: center;
+}
+.confirm {
+  flex: 1.5;
+  text-align: center;
+  background: #4abdcc;
+  color:white;
+line-height:90rpx;
+
+}
+.cancel {
+  color: #bbb;
+}
+.amount {
+  color: red;
+}
