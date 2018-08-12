@@ -100,8 +100,8 @@ Page({
     }
     const title = this.data.shareData.title || '';
     const extend = encodeURIComponent(this.data.shareData.extend || '');
-    // console.log(options.webViewUrl, this.data.src);
-    const url = encodeURIComponent(this.data.shareData.webViewUrl || options.webViewUrl);
+    // console.log(options.webviewurl, this.data.src);
+    const url = encodeURIComponent(this.data.shareData.webviewurl || options.webviewurl);
     const ret = {
       title,
       path: `/pages/webview/webview?webviewurl=${url}&extend=${extend}`,

@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 12,
 			"list": [
 				{
 					"id": 0,
@@ -139,7 +139,8 @@
 					"id": 12,
 					"name": "payment",
 					"pathName": "pages/webview/pay",
-					"query": "title=深圳|2018年7月29日出生同日宝宝&feeItems=费用&amount=0.02&callback=https://www.baidu.com/"
+					"query": "title=Kainy公众号打赏&feeItems=费用&amount=1&callback=https://blogs.kainy.cn/&nodiceTitle=公众号赞赏&nodiceRemark=谢谢支持~&autoPay=Y",
+					"scene": "1011"
 				}
 			]
 		}

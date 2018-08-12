@@ -41,7 +41,7 @@ Page({
       amount: this.data.amount,
       payDescription: this.data.payDescription,
       link: {
-        noticeJumpUrl: `/pages/webview/webview?webviewUrl=${this.data.callback}&extend=`,
+        noticeJumpUrl: `/pages/webview/webview?webviewurl=${this.data.callback}&extend=`,
         options: {
           title: this.data.nodiceTitle, // 模板消息-商品名称
           name: this.data.payDescription, // 模板消息-服务信息名称
@@ -61,7 +61,7 @@ Page({
         duration: 2500,
         complete: () => {
           wx.redirectTo({
-            url: `/pages/webview/webview?webviewUrl=${this.data.callback}&extend=${encodeURIComponent(orderParams.package)}`,
+            url: `/pages/webview/webview?webviewurl=${this.data.callback}&extend=${encodeURIComponent(orderParams.package)}`,
           });
         },
       });
