@@ -18,7 +18,7 @@ Page({
     const payDescription = options.title || '🍵 请作者喝碗茶。';
     const nodiceTitle = options.nodiceTitle;
     const nodiceRemark = options.nodiceRemark;
-    const amount = options.amount || 0.01;
+    const amount = options.amount || 1;
     const callback = options.callback || '';
     const autoPay = options.autoPay === 'Y';
     if (!callback) {
