@@ -9,6 +9,7 @@
 <view class=" footer">
   <view class="info">
     <view class="cancel" bindtap="cancel">取消</view>
+    <text wx:if="{{error}}" class="error" style="overflow: hidden;height: 100%;">{{error}}</text>
     <view class="amount">应付：￥{{amount}}</view>
   </view>
   <view class="confirm" bindtap="donate">确认支付</view>

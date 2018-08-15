@@ -38,7 +38,7 @@ Page({
   },
   genOrderParams() {
     const ret = {
-      amount: this.data.amount,
+      amount: Number(this.data.amount),
       payDescription: this.data.payDescription,
       link: {
         noticeJumpUrl: `/pages/webview/webview?webviewurl=${this.data.callback}&extend=`,
@@ -52,6 +52,12 @@ Page({
     return ret;
   },
   donate() {
+    if (!User.current()) {
+      return app.loginOrSignup().then(this.requestPayment).catch(console.error);
+    }
+    return this.requestPayment();
+  },
+  requestPayment() {
     util.showLoading('正在创建订单', true);
     const succCB = (orderParams) => {
       console.log(orderParams);
