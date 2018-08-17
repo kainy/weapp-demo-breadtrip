@@ -16,8 +16,8 @@ Page({
   onLoad(options) {
     console.log(options);
     const payDescription = options.title || '🍵 请作者喝碗茶。';
-    const nodiceTitle = options.nodiceTitle;
-    const nodiceRemark = options.nodiceRemark;
+    const noticeTitle = options.noticeTitle;
+    const noticeRemark = options.noticeRemark;
     const amount = options.amount || 1;
     const callback = options.callback || '';
     const autoPay = options.autoPay === 'Y';
@@ -27,8 +27,8 @@ Page({
     this.setData({
       payDescription,
       amount,
-      nodiceTitle,
-      nodiceRemark,
+      noticeTitle,
+      noticeRemark,
       autoPay,
       callback,
     });
@@ -43,9 +43,9 @@ Page({
       link: {
         noticeJumpUrl: `pages/webview/webview?webviewurl=${this.data.callback}&extend=`,
         options: {
-          title: this.data.nodiceTitle, // 模板消息-商品名称
+          title: this.data.noticeTitle, // 模板消息-商品名称
           name: this.data.payDescription, // 模板消息-服务信息名称
-          remark: this.data.nodiceRemark, // 模板消息-备注
+          remark: this.data.noticeRemark, // 模板消息-备注
         },
       },
     };
