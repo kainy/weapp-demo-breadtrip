@@ -14,8 +14,8 @@ Page({
     autoPay：是否页面加载后自动创建订单
   */
   onLoad(options) {
-    console.log(options);
-    const payDescription = options.title || '🍵 请作者喝碗茶。';
+    console.log('onload options:', options);
+    const payDescription = options.title || '微信公众号 Kainy';
     const noticeTitle = options.noticeTitle;
     const noticeRemark = options.noticeRemark;
     const amount = options.amount || 1;
