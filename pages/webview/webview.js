@@ -20,13 +20,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // console.log(options.q, 77, options.webviewurl);
+    console.log('options: ', options);
     const strUrl = options.q || options.webviewurl || 'https://kainy.cn/miniprograms/KSK/share.html';
 
     if (strUrl) {
       const str = decodeURI(decodeURIComponent(strUrl));
       const oUrl = util.urlParser(str);
-      console.log(oUrl);
+      console.log('oUrl: ', oUrl);
       const oParams = util.qs2o(oUrl.search.replace('?', '')); // 对应 webviewSDK.params
       // console.log(str, strQS, oParams);
       oParams.env = 'miniprogram'; // 增加参数用于网页判断小程序环境
@@ -100,8 +100,8 @@ Page({
     }
     const title = this.data.shareData.title || '';
     const extend = encodeURIComponent(this.data.shareData.extend || '');
-    // console.log(options.webviewurl, this.data.src);
-    const url = encodeURIComponent(this.data.shareData.webviewurl || options.webviewurl);
+    // console.log(options, this.data.src);
+    const url = encodeURIComponent(this.data.shareData.webviewurl || options.webViewUrl);
     const ret = {
       title,
       path: `/pages/webview/webview?webviewurl=${url}&extend=${extend}`,
