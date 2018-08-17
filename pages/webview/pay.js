@@ -41,7 +41,7 @@ Page({
       amount: Number(this.data.amount),
       payDescription: this.data.payDescription,
       link: {
-        noticeJumpUrl: `/pages/webview/webview?webviewurl=${this.data.callback}&extend=`,
+        noticeJumpUrl: `pages/webview/webview?webviewurl=${this.data.callback}&extend=`,
         options: {
           title: this.data.nodiceTitle, // 模板消息-商品名称
           name: this.data.payDescription, // 模板消息-服务信息名称

@@ -37,6 +37,7 @@ line-height:90rpx;
 }
 .cancel {
   color: #bbb;
+  padding: 18rpx;
 }
 .amount {
   color: red;
