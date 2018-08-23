@@ -65,8 +65,10 @@ Page({
           } else {
             this.icon = 'homenav';
           }
-        } else {
+        } else if (App.globalData.hasPassed) {
           this.icon = 'donate';
+        } else {
+          this.icon = '';
         }
         this.setData({
           icon: this.icon,
