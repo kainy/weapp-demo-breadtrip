@@ -19,7 +19,7 @@ Page({
   onLoad(options) {
     const self = this;
     util.showLoading();
-    WxSearch.init(this, 62, ['蜜月', '毕业', '跨年', '哈尔滨', '浪漫']);
+    WxSearch.init(this, 62, ['蜜月', '毕业', '跨年', '冲绳', '浪漫', '小清新']);
     WxSearch.initMindKeys(['香港', '澳门', '泰国', '德国', '北京', '英国', '法国', '哈尔滨', '三亚']);
     if (options.keyword) {
       this.wxSearchFn(null, decodeURIComponent(options.keyword));
@@ -29,6 +29,7 @@ Page({
         const dest = res.data;
         self.setData({
           elements: dest.elements,
+          searchFocus: true,
         });
         util.hideLoading();
       },

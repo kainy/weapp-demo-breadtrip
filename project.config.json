@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 14,
 			"list": [
 				{
 					"id": 0,
@@ -148,6 +148,11 @@
 					"pathName": "pages/webview/pay",
 					"query": "/pages/webview/pay?title=深圳 | 2018年8月17日 | 同日宝宝家庭聚会&feeItems=费用&amount=2&callback=https%3A%2F%2Fkainy.cn%2Fminiprograms%2Fbaby_party%2Fresult.html%3FpartyType%3D%25E7%2599%25BE%25E6%2597%25A5&noticeTitle=百日活动&noticeRemark=%E7%99%BE%E6%97%A5%20%7C%20%E5%AE%B6%E5%BA%AD%E8%81%9A%E4%BC%9A&autoPay=Y",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "explore",
+					"pathName": "pages/explore/explore"
 				}
 			]
 		}
