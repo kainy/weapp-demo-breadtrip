@@ -88,6 +88,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    hasPassed: +new Date() > +new Date('08/23/2018 20:08:08'), // 预估时间
   },
   loginOrSignup() {
     return AV.Promise.resolve(AV.User.current()).then(user =>

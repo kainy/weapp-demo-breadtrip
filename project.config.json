@@ -155,6 +155,11 @@
 					"pathName": "pages/webview/pay",
 					"query": "itle=Kainy公众号打赏&feeItems=费用&amount=100&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "explore",
+					"pathName": "pages/explore/explore"
 				}
 			]
 		}
