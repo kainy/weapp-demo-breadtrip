@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 14,
 			"list": [
 				{
 					"id": 0,
@@ -146,7 +146,14 @@
 					"id": 13,
 					"name": "paymentBaByParty",
 					"pathName": "pages/webview/pay",
-					"query": "/pages/webview/pay?title=深圳 | 2018年8月17日 | 同日宝宝家庭聚会&feeItems=费用&amount=2&callback=https%3A%2F%2Fkainy.cn%2Fminiprograms%2Fbaby_party%2Fresult.html%3FpartyType%3D%25E7%2599%25BE%25E6%2597%25A5&noticeTitle=百日活动&noticeRemark=%E7%99%BE%E6%97%A5%20%7C%20%E5%AE%B6%E5%BA%AD%E8%81%9A%E4%BC%9A&autoPay=Y",
+					"query": "title=%E6%B7%B1%E5%9C%B3+%7C+2018%E5%B9%B48%E6%9C%8825%E6%97%A5+%7C+%E5%90%8C%E6%97%A5%E5%AE%9D%E5%AE%9D%E5%AE%B6%E5%BA%AD%E8%81%9A%E4%BC%9A&package=%7B%22feeItems%22%3A%5B%7B%22name%22%3A%22%E6%8A%A5%E5%90%8D%E8%B4%B9%E7%94%A8%22%2C%22amount%22%3A%22260%22%7D%2C%7B%22name%22%3A%22%E5%AE%88%E6%97%B6%E9%87%91%22%2C%22amount%22%3A%2220%22%7D%5D%7D&amount=280&callback=http%3A%2F%2Flocalhost%3A9527%2Fh5%2Fresult.html%3FflowId%3D08623cfc-5ea9-4330-84d8-bd891e3789c6&noticeTitle=%E7%99%BE%E6%97%A5%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D&noticeRemark=%E7%99%BE%E6%97%A5+%7C+%E5%AE%B6%E5%BA%AD%E8%81%9A%E4%BC%9A&autoPay=Y",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "公众号打赏",
+					"pathName": "pages/webview/pay",
+					"query": "itle=Kainy公众号打赏&feeItems=费用&amount=100&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
 					"scene": "1011"
 				}
 			]

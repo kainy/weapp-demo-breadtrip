@@ -42,3 +42,13 @@ line-height:90rpx;
 .amount {
   color: red;
 }
+.fee-items {
+  padding-top: 30rpx;
+}
+.fee-item {
+  display: flex;
+  justify-content: space-between;
+  color: #aaa;
+  padding-top: 10rpx;
+  /* font-size: .8em; */
+}

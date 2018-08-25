@@ -15,14 +15,18 @@ Page({
   */
   onLoad(options) {
     console.log('onload options:', options);
-    const payDescription = options.title || '微信公众号 Kainy';
-    const noticeTitle = options.noticeTitle;
-    const noticeRemark = options.noticeRemark;
+    const payDescription = decodeURIComponent(options.title || '微信公众号 Kainy');
+    const noticeTitle = decodeURIComponent(options.noticeTitle || '');
+    const noticeRemark = decodeURIComponent(options.noticeRemark || '');
     const amount = options.amount || 1;
-    const callback = options.callback || '';
+    const callback = decodeURIComponent(options.callback || '');
+    let dataPackage = decodeURIComponent(options.package || '');
     const autoPay = options.autoPay === 'Y';
     if (!callback) {
       util.alert('缺少必要参数!', wx.navigateBack);
+    }
+    if (dataPackage) {
+      dataPackage = JSON.parse(dataPackage);
     }
     this.setData({
       payDescription,
@@ -31,6 +35,7 @@ Page({
       noticeRemark,
       autoPay,
       callback,
+      dataPackage,
     });
     if (autoPay) {
       this.donate();

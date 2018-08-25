@@ -3,6 +3,12 @@
   <view class="orders">
     <text class="hint">{{payDescription}}</text>
     <view class="form-wrap">
+      <view class="fee-items" wx:if="{{dataPackage.feeItems}}">
+        <view class="fee-item" wx:for="{{dataPackage.feeItems}}" wx:key="item">
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-amount">¥ {{item.amount}}</view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
