@@ -15,7 +15,7 @@ Page({
   */
   onLoad(options) {
     console.log('onload options:', options);
-    const payDescription = decodeURIComponent(options.title || '微信公众号 Kainy');
+    const payDescription = decodeURIComponent(options.title || '微信公众号 Kainy').replace(/\+/g, ' ');
     const noticeTitle = decodeURIComponent(options.noticeTitle || '');
     const noticeRemark = decodeURIComponent(options.noticeRemark || '');
     const amount = options.amount || 1;
@@ -46,7 +46,7 @@ Page({
       amount: Number(this.data.amount),
       payDescription: this.data.payDescription,
       link: {
-        noticeJumpUrl: `pages/webview/webview?webviewurl=${this.data.callback}&extend=`,
+        noticeJumpUrl: `pages/webview/webview?webviewurl=${encodeURIComponent(this.data.callback)}&extend=`,
         options: {
           title: this.data.noticeTitle, // 模板消息-商品名称
           name: this.data.payDescription, // 模板消息-服务信息名称
@@ -65,21 +65,21 @@ Page({
   requestPayment() {
     util.showLoading('正在创建订单', true);
     const succCB = (orderParams) => {
-      console.log(orderParams);
+      console.log('orderParams to requestPayment: ', orderParams);
       wx.showToast({
         title: '支付成功',
         icon: 'success',
         duration: 2500,
         complete: () => {
           wx.redirectTo({
-            url: `/pages/webview/webview?webviewurl=${this.data.callback}&extend=${encodeURIComponent(orderParams.package)}`,
+            url: `/pages/webview/webview?webviewurl=${encodeURIComponent(this.data.callback)}&extend=${encodeURIComponent((orderParams.package || '').replace('prepay_id=', ''))}`,
           });
         },
       });
     };
     // succCB(); return;
     Cloud.run('order', this.genOrderParams()).then((data) => {
-      console.log(data);
+      console.log('Cloud genOrderParams: ', data);
       const payOpt = data;
       payOpt.success = () => {
         succCB(data);
