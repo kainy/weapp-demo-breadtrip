@@ -69,7 +69,10 @@ Page({
   getShortUrl(url) {
     return new Promise((resolve, reject) => {
       wx.request({
-        url: 'https://kainy.cn/api/shorturl/submit',
+        url: 'https://kutt.it/api/url/submit',
+        header: {
+          'X-API-Key': 'Zis1AtjYXL9xOH9maaHk3vuuwcChmSO7PTxEZ~fS' // 默认值
+        },
         method: 'POST',
         data: {
           target: url,
