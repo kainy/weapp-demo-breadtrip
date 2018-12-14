@@ -69,18 +69,17 @@ Page({
   getShortUrl(url) {
     return new Promise((resolve, reject) => {
       wx.request({
-        url: 'https://kutt.it/api/url/submit',
-        header: {
-          'X-API-Key': 'Zis1AtjYXL9xOH9maaHk3vuuwcChmSO7PTxEZ~fS' // 默认值
-        },
+        url: 'https://t.kainy.cn/api/v2/action/shorten',
         method: 'POST',
         data: {
-          target: url,
-          reuse: true,
+          key: '580f1611c72478bc0a5e6a3a05eba9',
+          response_type: 'json',
+          url,
+          // custom_ending: 'weapp',
         },
         success(res) {
           // console.log(res);
-          resolve(`https://kainy.cn/t/${res.data.id}`);
+          resolve(res.data.result);
         },
         fail(res) {
           reject(res);
