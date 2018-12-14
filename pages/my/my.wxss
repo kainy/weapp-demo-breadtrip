@@ -121,3 +121,8 @@ contact-button {
   bottom:114rpx;
   border:solid 9rpx white;
 }
+
+.feedback {
+  margin:20rpx;
+  opacity:.8;
+}

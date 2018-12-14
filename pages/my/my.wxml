@@ -6,6 +6,14 @@
     <navigator url="../my-setting/setting" class="setting" hover-class="none">设置</navigator>
   </view>
 </view>
+<contact-button 
+  type="default-light" 
+  size="20"
+  session-from="weapp"
+>
+</contact-button>
+<button open-type="feedback" class="feedback">📞 意见反馈
+</button>
 <view class="flex-wrap header">
   <input
     placeholder="添加一个任务" 
@@ -14,12 +22,6 @@
     class="new-todo"/>
   <text style="display: {{draft ? 'inline': 'none'}}" class="add tappable" ontap="addTodo">添加</text>
 </view>
-<contact-button 
-  type="default-light" 
-  size="20"
-  session-from="weapp"
->
-</contact-button>
 <view class="todo-list">
 <block wx:for="{{todos}}" wx:for-item="todo" wx:key="objectId">
   <view class="flex-wrap todo">

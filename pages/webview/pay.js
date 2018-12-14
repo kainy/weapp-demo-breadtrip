@@ -71,7 +71,7 @@ Page({
         icon: 'success',
         duration: 2500,
         complete: () => {
-          wx.redirectTo({
+          wx.reLaunch({
             url: `/pages/webview/webview?webviewurl=${encodeURIComponent(this.data.callback)}&extend=${encodeURIComponent((orderParams.package || '').replace('prepay_id=', ''))}`,
           });
         },
