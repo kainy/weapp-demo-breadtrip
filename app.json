@@ -16,7 +16,8 @@
     "pages/trip/trip",
     "pages/webview/webview",
     "pages/webview/share",
-    "pages/webview/launchapp"
+    "pages/webview/launchapp",
+    "pages/webview/userinfo"
   ],
   "window": {
     "backgroundTextStyle": "dark",

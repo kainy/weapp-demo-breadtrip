@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 17,
 			"list": [
 				{
 					"id": 0,
@@ -168,6 +168,11 @@
 					"pathName": "pages/my/my",
 					"query": "title=Kainy公众号打赏&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "pages/webview/userinfo",
+					"pathName": "pages/webview/userinfo"
 				}
 			]
 		}
