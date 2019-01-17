@@ -40,13 +40,30 @@ Page({
       });
     }
   },
+  /**
+   * @param {*} post
+   * post.action           API 方法名称
+   * post.data             参数
+   */
   onMessage(e) {
     console.log('onMessage: ', e);
-    const shareData = e.detail.data.pop();
+    const post = e.detail.data.pop();
+    if (this[post.action]) {
+      this[post.action](post.data);
+    } else {
+      throw new Error(`${post.action} API未定义`);
+    }
+  },
+  share(shareData) {
     this.setData({
       shareData,
     });
   },
+  pay(payData) {
+
+  },
+  login() {},
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
