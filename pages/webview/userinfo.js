@@ -10,6 +10,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
   },
   onLoad() {
+    const that = this;
     // 查看是否授权
     wx.getSetting({
       success(res) {
@@ -20,7 +21,7 @@ Page({
             lang: true,
             success(res2) {
               console.log(res2.userInfo);
-              this.loginSuccessCB(res2.userInfo);
+              that.loginSuccessCB(res2.userInfo);
             },
           });
         }
@@ -32,6 +33,7 @@ Page({
   },
   loginWithPhoneNumber(e) {
     // console.log(e);
+    const that = this;
     if (e.detail.errMsg === 'getPhoneNumber:ok') {
       qcloud.request({
         url: `${base}/weapp/loginWithPhoneNumber`,
@@ -40,8 +42,11 @@ Page({
           iv: e.detail.iv,
           encryptedData: e.detail.encryptedData,
         },
-        success: this.loginSuccessCB,
-        fail: console.error,
+        success(res) {
+          console.log(res);
+          that.loginSuccessCB(res.data.data);
+        },
+        fail: this.loginFailCB,
       });
     } else {
       console.error(e.detail);
@@ -64,7 +69,7 @@ Page({
             userInfo: result,
             logged: true,
           });
-          that.this.loginSuccessCB(result);
+          that.loginSuccessCB(result);
         } else {
           // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
           qcloud.request({
@@ -76,27 +81,27 @@ Page({
                 userInfo: res.data.data,
                 logged: true,
               });
-              that.this.loginSuccessCB(res);
+              that.loginSuccessCB(res.data.data);
             },
 
-            fail(error) {
-              util.showModel('请求失败', error);
-              console.log('request fail', error);
-            },
+            fail: this.loginFailCB,
           });
         }
       },
 
-      fail(error) {
-        util.showModel('登录失败', error);
-        console.log('登录失败', error);
-      },
+      fail: this.loginFailCB,
     });
   },
-  loginSuccessCB(res) {
-    console.log(res);
-    wx.reLaunch({
-      url: `/pages/webview/webview?webviewurl=${encodeURIComponent(this.data.callback)}&extend=${JSON.stringify(res)}`,
-    });
+  loginSuccessCB(info) {
+    console.log(info);
+    util.alert(info.nickName);
+    // wx.reLaunch({
+    //   url: `/pages/webview/webview?webviewurl=${encodeURIComponent(this.data.callback)}&extend=${JSON.stringify(res)}`,
+    // });
+  },
+  loginFailCB(error) {
+    util.hideLoading();
+    util.alert('请求失败', error);
+    console.log('request fail', error);
   },
 });
