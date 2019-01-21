@@ -10,23 +10,43 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
   },
   onLoad() {
-    const that = this;
     // 查看是否授权
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            withCredentials: true,
-            lang: true,
-            success(res2) {
-              console.log(res2.userInfo);
-              that.loginSuccessCB(res2.userInfo);
-            },
-          });
-        }
-      },
-    });
+    // const that = this;
+    // wx.getSetting({
+    //   success(res) {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+    //       wx.getUserInfo({
+    //         withCredentials: true,
+    //         lang: true,
+    //         success(res2) {
+    //           console.log(res2.userInfo);
+    //           that.loginSuccessCB(res2.userInfo);
+    //         },
+    //       });
+    //     } else if (wx.openSetting) {
+    //       util.alert('请在后续弹窗中勾选“用户信息”', () => {
+    //         wx.openSetting({
+    //           // todo: BUG解决
+    //           success: (resOS) => {
+    //             if (resOS.authSetting['scope.userInfo']) {
+    //               wx.getUserInfo({
+    //                 withCredentials: true,
+    //                 lang: true,
+    //                 success(res2) {
+    //                   console.log(res2.userInfo);
+    //                   that.loginSuccessCB(res2.userInfo);
+    //                 },
+    //               });
+    //             } else {
+    //               util.alert('授权失败');
+    //             }
+    //           },
+    //         });
+    //       });
+    //     }
+    //   },
+    // });
   },
   bindGetUserInfo(e) {
     console.log(e.detail.userInfo);
@@ -43,7 +63,7 @@ Page({
           encryptedData: e.detail.encryptedData,
         },
         success(res) {
-          console.log(res);
+          console.log('loginWithPhoneNumber: ', res);
           that.loginSuccessCB(res.data.data);
         },
         fail: this.loginFailCB,
@@ -53,43 +73,39 @@ Page({
     }
   },
   // 用户登录示例
-  login() {
-    if (this.data.logged) return;
-
+  login(e) {
+    if (this.data.logged || e.detail.errMsg.indexOf('deny') > -1) return;
     util.showLoading('正在登录');
     const that = this;
-
     // 调用登录接口
     qcloud.login({
       success(result) {
-        console.log(result);
-        if (result) {
-          util.hideLoading('登录成功');
-          that.setData({
-            userInfo: result,
-            logged: true,
-          });
-          that.loginSuccessCB(result);
-        } else {
+        console.log('qcloud.login: ', result);
+        // if (result) {
+        //   util.hideLoading('登录成功');
+        //   that.setData({
+        //     userInfo: result,
+        //     logged: true,
+        //   });
+        //   that.loginSuccessCB(result);
+        // } else {
           // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
-          qcloud.request({
-            url: `${base}/weapp/user`,
-            login: true,
-            success(res) {
-              util.hideLoading('登录成功');
-              that.setData({
-                userInfo: res.data.data,
-                logged: true,
-              });
-              that.loginSuccessCB(res.data.data);
-            },
-
-            fail: this.loginFailCB,
-          });
-        }
+        qcloud.request({
+          url: `${base}/weapp/user`,
+          login: true,
+          success(res) {
+            util.hideLoading('登录成功');
+            that.setData({
+              userInfo: res.data.data,
+              logged: true,
+            });
+            that.loginSuccessCB(res.data.data);
+          },
+          fail: this.loginFailCB,
+        });
+        // }
       },
-
-      fail: this.loginFailCB,
+      fail: that.loginDenyHandler,
     });
   },
   loginSuccessCB(info) {
@@ -103,7 +119,28 @@ Page({
   },
   loginFailCB(error) {
     util.hideLoading();
-    util.alert('请求失败', error);
-    console.log('request fail', error);
+    util.alert('登录失败');
+    console.error('request fail', error);
+  },
+  loginDenyHandler(error) {
+    util.hideLoading();
+    if (error.type === 'ERR_WX_GET_USER_INFO') {
+      if (wx.openSetting) {
+        util.alert('请在后续弹窗中勾选“用户信息”', () => {
+          wx.openSetting({
+            // todo: BUG解决
+            success: (resOS) => {
+              if (resOS.authSetting['scope.userInfo']) {
+                util.alert('授权成功，请点击登录按钮');
+              } else {
+                util.alert('授权失败');
+              }
+            },
+          });
+        });
+      }
+    } else {
+      util.alert(`登录失败: ${error.type}`);
+    }
   },
 });

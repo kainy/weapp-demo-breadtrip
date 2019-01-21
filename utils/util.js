@@ -67,7 +67,7 @@ function alert(msg = '', cb) {
     content: msg,
     showCancel: false,
     success() {
-      if (cb) {
+      if (typeof cb === 'function') {
         cb();
       }
     },

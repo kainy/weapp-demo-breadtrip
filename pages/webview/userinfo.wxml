@@ -16,7 +16,12 @@
     手机号一键登录
   </button>
   <!-- 需要使用 button 来授权登录 -->
-  <button bindtap="login" type="primary">
+  <button
+    wx:if="{{canIUse}}"
+    open-type="getUserInfo"
+    bindgetuserinfo="login"
+    type="primary"
+  >
     微信账号登录
   </button>
 </view>

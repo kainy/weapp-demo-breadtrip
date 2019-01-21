@@ -9,7 +9,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.1",
+	"libVersion": "2.5.0",
 	"appid": "wxf8c8058dd4de52e5",
 	"projectname": "trip",
 	"condition": {
