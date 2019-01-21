@@ -47,24 +47,29 @@ Page({
       shareData,
     });
   },
-  onMessage2(e) {
-    console.log('onMessage: ', e);
-    const data = e.detail.data.pop();
-    if (data && data.action && data.option) {
-      if (!this[data.action]) {
-        throw new Error(`${data.action}: method not found`);
-      } else {
-        this[data.action](data.option);
-      }
-    } else {
-      throw new Error('data.action or data.option missing');
-    }
-  },
-  getUserInfo(option) {
-    wx.redirectTo({
-      url: `/pages/webview/userinfo?callback=${option.callback}`,
-    });
-  },
+  /**
+   * @param {*} post
+   * data.action           API 方法名称
+   * data.option             参数
+   */
+  // onMessage2(e) {
+  //   console.log('onMessage: ', e);
+  //   const data = e.detail.data.pop();
+  //   if (data && data.action && data.option) {
+  //     if (!this[data.action]) {
+  //       throw new Error(`${data.action}: method not found`);
+  //     } else {
+  //       this[data.action](data.option);
+  //     }
+  //   } else {
+  //     throw new Error('data.action or data.option missing');
+  //   }
+  // },
+  // getUserInfo(option) {
+  //   wx.redirectTo({
+  //     url: `/pages/webview/userinfo?callback=${option.callback}`,
+  //   });
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
