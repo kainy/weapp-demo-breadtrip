@@ -94,7 +94,9 @@ Page({
   },
   loginSuccessCB(info) {
     console.log(info);
-    util.alert(info.nickName);
+    // util.alert(info.nickName);
+    wx.setStorageSync('_webviewData', info);
+    wx.navigateBack();
     // wx.reLaunch({
     //   url: `/pages/webview/webview?webviewurl=${encodeURIComponent(this.data.callback)}&extend=${JSON.stringify(res)}`,
     // });

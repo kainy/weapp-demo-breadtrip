@@ -33,7 +33,10 @@ Page({
       oParams.scene = App.globalData.scene; // 增加参数用于网页判断小程序环境
       oParams.extend = decodeURIComponent(options.extend || ''); // 增加分享页参数
       oParams._ = +new Date(); // 避免缓存
-      const src = `${encodeURI(oUrl.url)}?${util.o2qs(oParams)}${oUrl.hash}`; // src 不能有汉字
+      let src = `${encodeURI(oUrl.url)}?${util.o2qs(oParams)}${oUrl.hash}`; // src 不能有汉字
+      if (App.systemInfo.platform === 'devtools') {
+        src = src.replace('https://kainy.cn/', 'http://localhost:8080/');
+      }
       console.log('src: ', src);
       this.setData({
         src,
@@ -47,24 +50,19 @@ Page({
       shareData,
     });
   },
-  onMessage2(e) {
-    console.log('onMessage: ', e);
-    const data = e.detail.data.pop();
-    if (data && data.action && data.option) {
-      if (!this[data.action]) {
-        throw new Error(`${data.action}: method not found`);
-      } else {
-        this[data.action](data.option);
-      }
-    } else {
-      throw new Error('data.action or data.option missing');
-    }
-  },
-  getUserInfo(option) {
-    wx.redirectTo({
-      url: `/pages/webview/userinfo?callback=${option.callback}`,
-    });
-  },
+  // onMessage2(e) {
+  //   console.log('onMessage: ', e);
+  //   const data = e.detail.data.pop();
+  //   if (data && data.action && data.option) {
+  //     if (!this[data.action]) {
+  //       throw new Error(`${data.action}: method not found`);
+  //     } else {
+  //       this[data.action](data.option);
+  //     }
+  //   } else {
+  //     throw new Error('data.action or data.option missing');
+  //   }
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -77,7 +75,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    const that = this;
+    const webviewData = wx.getStorageSync('_webviewData');
+    if (webviewData) {
+      const hash = encodeURIComponent(JSON.stringify(webviewData));
+      const src = `${this.data.src.split('#')[0]}#${hash}`;
+      this.setData({
+        src,
+      });
+      wx.removeStorageSync('_webviewData');
+      setTimeout(() => {
+        that.setData({
+          src: that.data.src.split('#')[0],
+        });
+      }, 999);
+    }
   },
 
   /**
