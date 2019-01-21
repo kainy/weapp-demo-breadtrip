@@ -40,30 +40,31 @@ Page({
       });
     }
   },
-  /**
-   * @param {*} post
-   * post.action           API 方法名称
-   * post.data             参数
-   */
   onMessage(e) {
     console.log('onMessage: ', e);
-    const post = e.detail.data.pop();
-    if (this[post.action]) {
-      this[post.action](post.data);
-    } else {
-      throw new Error(`${post.action} API未定义`);
-    }
-  },
-  share(shareData) {
+    const shareData = e.detail.data.pop();
     this.setData({
       shareData,
     });
   },
-  pay(payData) {
-
+  onMessage2(e) {
+    console.log('onMessage: ', e);
+    const data = e.detail.data.pop();
+    if (data && data.action && data.option) {
+      if (!this[data.action]) {
+        throw new Error(`${data.action}: method not found`);
+      } else {
+        this[data.action](data.option);
+      }
+    } else {
+      throw new Error('data.action or data.option missing');
+    }
   },
-  login() {},
-
+  getUserInfo(option) {
+    wx.redirectTo({
+      url: `/pages/webview/userinfo?callback=${option.callback}`,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

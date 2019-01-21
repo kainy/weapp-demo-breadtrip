@@ -1,18 +1,31 @@
 <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
-<open-data type="userAvatarUrl"></open-data>
-<open-data type="userGender" lang="zh_CN"></open-data>
-<button
-  open-type="getPhoneNumber"
-  bindgetphonenumber="getPhoneNumber"
->
-  手机号一键登录
-</button>
+<view class="userinfo">
+  <view class="avatar">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view class="nickname">
+    <open-data type="userNickName" lang="zh_CN"></open-data>
+  </view>
+</view>
+<view class="buttons">
+  <button
+    style="background:#fafafa;color:#666;"
+    open-type="getPhoneNumber"
+    bindgetphonenumber="loginWithPhoneNumber"
+  >
+    手机号一键登录
+  </button>
+  <!-- 需要使用 button 来授权登录 -->
+  <button bindtap="login" type="primary">
+    微信账号登录
+  </button>
+</view>
 <!-- 需要使用 button 来授权登录 -->
-<button
+<!-- <button
   wx:if="{{canIUse}}"
   open-type="getUserInfo"
   bindgetuserinfo="bindGetUserInfo"
 >
   微信账号登录
 </button>
-<view wx:else>请升级微信版本</view>
+<view wx:else>请升级微信版本</view>-->
