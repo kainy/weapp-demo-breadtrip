@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 18,
 			"list": [
 				{
 					"id": 0,
@@ -172,7 +172,22 @@
 				{
 					"id": -1,
 					"name": "pages/webview/userinfo",
-					"pathName": "pages/webview/userinfo"
+					"pathName": "pages/webview/userinfo",
+					"query": ""
+				},
+				{
+					"id": 18,
+					"name": "webview-zhuli.html(localhost)",
+					"pathName": "pages/webview/webview",
+					"query": "q=http%3A%2F%2Flocalhost%3A8080%2Fminiprograms%2FKSK%2Fzhuli.html%3Fowner%3D2a28d5ffa422fd620ec28baf69d72aeb",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "webview-zhuli.html",
+					"pathName": "pages/webview/webview",
+					"query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fzhuli.html%23cc93e3eee45ac93970b23b8ee2e7a0eb",
+					"scene": "1011"
 				}
 			]
 		}

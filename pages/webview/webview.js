@@ -75,20 +75,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    const that = this;
     const webviewData = wx.getStorageSync('_webviewData');
     if (webviewData) {
       const hash = encodeURIComponent(JSON.stringify(webviewData));
-      const src = `${this.data.src.split('#')[0]}#${hash}`;
       this.setData({
-        src,
+        hash,
+        flag: !this.data.flag,
       });
       wx.removeStorageSync('_webviewData');
-      setTimeout(() => {
-        that.setData({
-          src: that.data.src.split('#')[0],
-        });
-      }, 999);
     }
   },
 
