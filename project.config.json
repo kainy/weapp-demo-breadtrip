@@ -139,7 +139,7 @@
 					"id": 12,
 					"name": "payment",
 					"pathName": "pages/webview/pay",
-					"query": "title=Kainy公众号打赏&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
+					"query": "title=Kainy公众号打&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
 					"scene": "1011"
 				},
 				{
@@ -151,9 +151,9 @@
 				},
 				{
 					"id": -1,
-					"name": "公众号打赏",
+					"name": "公众号打",
 					"pathName": "pages/webview/pay",
-					"query": "itle=Kainy公众号打赏&feeItems=费用&amount=100&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
+					"query": "itle=Kainy公众号打&feeItems=费用&amount=100&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
 					"scene": "1011"
 				},
 				{
@@ -166,7 +166,7 @@
 					"id": -1,
 					"name": "my",
 					"pathName": "pages/my/my",
-					"query": "title=Kainy公众号打赏&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
+					"query": "title=Kainy公众号打&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
 					"scene": "1011"
 				},
 				{

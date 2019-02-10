@@ -10,7 +10,7 @@
   <navigator url="/pages/my-pay/pay" hover-class="g-active">
     <view class="home-nav">
       <image mode="scaleToFill" src="http://kaidn-cdn.stor.sinaapp.com/ksk/donate.svg"></image>
-      <text>打赏</text>
+      <text>喜欢</text>
     </view>
   </navigator>
 </template>
