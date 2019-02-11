@@ -8,45 +8,50 @@ qcloud.setLoginUrl(`${base}/weapp/login`);
 Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    showLoginWithPhone: false,
   },
   onLoad() {
     // 查看是否授权
-    // const that = this;
-    // wx.getSetting({
-    //   success(res) {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-    //       wx.getUserInfo({
-    //         withCredentials: true,
-    //         lang: true,
-    //         success(res2) {
-    //           console.log(res2.userInfo);
-    //           that.loginSuccessCB(res2.userInfo);
-    //         },
-    //       });
-    //     } else if (wx.openSetting) {
-    //       util.alert('请在后续弹窗中勾选“用户信息”', () => {
-    //         wx.openSetting({
-    //           // todo: BUG解决
-    //           success: (resOS) => {
-    //             if (resOS.authSetting['scope.userInfo']) {
-    //               wx.getUserInfo({
-    //                 withCredentials: true,
-    //                 lang: true,
-    //                 success(res2) {
-    //                   console.log(res2.userInfo);
-    //                   that.loginSuccessCB(res2.userInfo);
-    //                 },
-    //               });
-    //             } else {
-    //               util.alert('授权失败');
-    //             }
-    //           },
-    //         });
-    //       });
-    //     }
-    //   },
-    // });
+    const that = this;
+    wx.getSetting({
+      success(res) {
+        // console.log('wx.getSetting:', res);
+        if (res.authSetting['scope.userInfo']) {
+          that.setData({
+            showLoginWithPhone: true,
+          });
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          // wx.getUserInfo({
+          //   withCredentials: true,
+          //   lang: true,
+          //   success(res2) {
+          //     console.log(res2.userInfo);
+          //     that.loginSuccessCB(res2.userInfo);
+          //   },
+          // });
+        } else if (wx.openSetting) {
+          // util.alert('请在后续弹窗中勾选“用户信息”', () => {
+          //   wx.openSetting({
+          //     // todo: BUG解决
+          //     success: (resOS) => {
+          //       if (resOS.authSetting['scope.userInfo']) {
+          //         wx.getUserInfo({
+          //           withCredentials: true,
+          //           lang: true,
+          //           success(res2) {
+          //             console.log(res2.userInfo);
+          //             that.loginSuccessCB(res2.userInfo);
+          //           },
+          //         });
+          //       } else {
+          //         util.alert('授权失败');
+          //       }
+          //     },
+          //   });
+          // });
+        }
+      },
+    });
   },
   bindGetUserInfo(e) {
     console.log(e.detail.userInfo);

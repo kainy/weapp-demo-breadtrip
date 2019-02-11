@@ -9,6 +9,7 @@
 </view>
 <view class="buttons">
   <button
+    wx:if="{{showLoginWithPhone}}"
     style="background:#fafafa;color:#666;"
     open-type="getPhoneNumber"
     bindgetphonenumber="loginWithPhoneNumber"
