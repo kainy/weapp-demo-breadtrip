@@ -77,12 +77,18 @@ Page({
   onShow() {
     const webviewData = wx.getStorageSync('_webviewData');
     if (webviewData) {
+      const that = this;
       const hash = encodeURIComponent(JSON.stringify(webviewData));
       this.setData({
         hash,
         flag: !this.data.flag,
       });
-      wx.removeStorageSync('_webviewData');
+      setTimeout(() =>  {
+        that.setData({
+          hash: '',
+        });
+        wx.removeStorageSync('_webviewData');
+      }, 1000);
     }
   },
 

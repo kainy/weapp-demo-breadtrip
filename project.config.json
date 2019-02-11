@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 19,
 			"list": [
 				{
 					"id": 0,
@@ -183,10 +183,10 @@
 					"scene": "1011"
 				},
 				{
-					"id": -1,
+					"id": 19,
 					"name": "webview-zhuli.html",
 					"pathName": "pages/webview/webview",
-					"query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fzhuli.html%23cc93e3eee45ac93970b23b8ee2e7a0eb",
+					"query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fzhuli.html",
 					"scene": "1011"
 				}
 			]
