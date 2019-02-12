@@ -6,7 +6,8 @@
   </view>
   <view class="buttons">
     <button open-type="share">转发到会话</button>
-    <button bindtap="shareToMoment" type="primary">朋友圈分享</button>
+    <button bindtap="shareToMoment" type="primary" class="revert-text" wx:if="{{hasPassed}}">朋<span>友</span>圈分享</button>
+    <button bindtap="shareToMoment" type="primary" class="revert-text" wx:else>生成海报</button>
   </view>
 
   <!-- <view class="pop-tips">长按可以转发给好友</view> -->

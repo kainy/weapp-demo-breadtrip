@@ -34,6 +34,7 @@ Page({
     widthCanvas: 750 / suofang,
     heightCanvas: 1334 / suofang,
     ratio: 750 / App.systemInfo.screenWidth,
+    hasPassed: App.globalData.hasPassed,
   },
   onLoad(options) {
     if (!options.webviewurl) {
@@ -43,6 +44,7 @@ Page({
     const optionsData = {
       title: options.title || '精彩内容',
       webviewurl: options.webviewurl.replace(encodeURIComponent('env=miniprogram'), ''),
+      openInWeapp: !!options.openInWeapp,
     };
     this.setData({
       optionsData,
@@ -136,7 +138,11 @@ Page({
     const titleFontsize = 28 / suofang;
     // const widthAvatar = 47;
     // const widthAvatarBorder = widthAvatar + 9;
-    this.getShortUrl(decodeURIComponent(url)).then((shortUrl) => {
+    this.getShortUrl(decodeURIComponent(url)).then((shortenUrl) => {
+      let shortUrl = shortenUrl;
+      if (this.data.optionsData.openInWeapp) {
+        shortUrl = shortenUrl.replace('/t.kainy.cn/', '/kainy.cn/t/');
+      }
       console.log(shortUrl);
       const ctx = wx.createCanvasContext('previewcanvas');
       // 这里是绘制灰色背景
@@ -198,7 +204,7 @@ Page({
       filePath: tempFilePath,
       success(result) {
         console.log('saveImageToPhotosAlbum', result);
-        util.alert('已为您成功保存图片到手机相册，可以去发布朋友圈分享啦～', wx.navigateBack);
+        util.alert('已为您成功保存图片到手机相册，可以去发布分享啦～', wx.navigateBack);
       },
       fail(res2) {
         if (res2.errMsg === 'saveImageToPhotosAlbum:fail auth deny') {
