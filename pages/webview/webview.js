@@ -70,6 +70,12 @@ Page({
   onReady() {
 
   },
+  onWebviewLoad(e) {
+    console.log(e.detail.src);
+    this.setData({
+      hash: '',
+    });
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -77,16 +83,16 @@ Page({
   onShow() {
     const webviewData = wx.getStorageSync('_webviewData');
     if (webviewData) {
-      const that = this;
+      // const that = this;
       const hash = encodeURIComponent(JSON.stringify(webviewData));
       this.setData({
         hash,
         flag: !this.data.flag,
       });
-      setTimeout(() =>  {
-        that.setData({
-          hash: '',
-        });
+      setTimeout(() => {
+        // that.setData({
+        //   hash: '',
+        // });
         wx.removeStorageSync('_webviewData');
       }, 1000);
     }
