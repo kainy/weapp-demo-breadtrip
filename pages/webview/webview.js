@@ -71,10 +71,14 @@ Page({
 
   },
   onWebviewLoad(e) {
-    console.log(e.detail.src);
-    this.setData({
-      hash: '',
+    const that = this;
+    // setTimeout(() => {
+    console.log('onWebviewLoad:', e.detail.src);
+    that.setData({
+      hash: 'shouldback',
+      src: e.detail.src,
     });
+    // }, 2222);
   },
 
   /**
@@ -83,16 +87,16 @@ Page({
   onShow() {
     const webviewData = wx.getStorageSync('_webviewData');
     if (webviewData) {
-      // const that = this;
+      const that = this;
       const hash = encodeURIComponent(JSON.stringify(webviewData));
       this.setData({
         hash,
         flag: !this.data.flag,
       });
       setTimeout(() => {
-        // that.setData({
-        //   hash: '',
-        // });
+        that.setData({
+          hash: 'shouldback',
+        });
         wx.removeStorageSync('_webviewData');
       }, 1000);
     }
