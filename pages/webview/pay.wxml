@@ -6,7 +6,7 @@
       <view class="fee-items" wx:if="{{dataPackage.feeItems}}">
         <view class="fee-item" wx:for="{{dataPackage.feeItems}}" wx:key="item">
           <view class="item-name">{{item.name}}</view>
-          <view class="item-amount">¥ {{item.amount}}</view>
+          <view class="item-amount">¥ {{item.amount/100}}</view>
         </view>
       </view>
     </view>
