@@ -3,7 +3,7 @@
 <scroll-view style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscroll="bindscroll" enable-back-to-top="true">
 <view wx:if="{{ bgMusic }}" bindtap="audioCtrl" class="audioCtrl">
   <audio src="{{bgMusic}}" id="myAudio" loop style="display:none"></audio>
-  <image class="{{ bgPlaying ? 'playing' : '' }}" style="width:94rpx;height:94rpx;" mode="scaleToFill" src="http://kaidn-cdn.stor.sinaapp.com/ksk/music.svg"></image>
+  <image class="{{ bgPlaying ? 'playing' : '' }}" style="width:94rpx;height:94rpx;" mode="scaleToFill" src="https://a.kainy.cn/2019/weapp-ksk/music.svg"></image>
 </view>
 <view class="trip">
   <view class="trip-top" wx:if="{{ trip.id }}">

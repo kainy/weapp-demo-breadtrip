@@ -9,7 +9,7 @@ page{
 }
 .waypoint .photo-ctn{
   position: relative;
-  background: #e7ddc6 url(http://kaidn-cdn.stor.sinaapp.com/ksk/placeholder.png) no-repeat center;
+  background: #e7ddc6 url(https://a.kainy.cn/2019/weapp-ksk/placeholder.png) no-repeat center;
 }
 .waypoint .cover{
   vertical-align: bottom;
