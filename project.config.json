@@ -1,195 +1,232 @@
 {
-	"description": "项目配置文件。",
-	"qcloudRoot": "server/",
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.5.0",
-	"appid": "wxf8c8058dd4de52e5",
-	"projectname": "trip",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": [
-				{
-					"name": "test",
-					"pathName": "",
-					"title": "",
-					"cacheKey": ""
-				}
-			]
-		},
-		"conversation": {
-			"current": 0,
-			"list": [
-				{
-					"name": "test",
-					"query": "",
-					"boxQI": "",
-					"service": {}
-				}
-			]
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 19,
-			"list": [
-				{
-					"id": 0,
-					"name": "trip",
-					"pathName": "pages/trip/trip",
-					"query": "id=2387216722&name=呈坎,唐模，写生季！",
-					"scene": 1044,
-					"shareInfo": {}
-				},
-				{
-					"id": -1,
-					"name": "destination",
-					"pathName": "pages/destination/destination",
-					"query": "type=3&id=26772&name=小樽市",
-					"scene": 1044,
-					"shareInfo": {}
-				},
-				{
-					"id": -1,
-					"name": "waypoint卡片详情",
-					"pathName": "pages/waypoint/waypoint",
-					"query": "waypointId=2362993232&tripId=2387216722"
-				},
-				{
-					"id": -1,
-					"name": "支付",
-					"pathName": "pages/my-pay/pay",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "launchApp",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": "1036",
-					"referrerInfo": {
-						"appId": "wx2604a227cbdfc489"
-					}
-				},
-				{
-					"id": -1,
-					"name": "destination",
-					"pathName": "pages/destination/destination",
-					"query": "type=3&id=65012&name=厦门",
-					"scene": "1036",
-					"referrerInfo": {
-						"appId": "wx2604a227cbdfc489"
-					}
-				},
-				{
-					"id": 6,
-					"name": "webview-share.html",
-					"pathName": "pages/webview/webview",
-					"query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html?Kjs",
-					"scene": "1011"
-				},
-				{
-					"id": 7,
-					"name": "webview-blogs.html",
-					"pathName": "pages/webview/webview",
-					"query": "q=https%3A%2F%2Fblogs.kainy.cn/&extend=kl34 f开机键j2l3",
-					"scene": "1011"
-				},
-				{
-					"id": 8,
-					"name": "webview-share2.html",
-					"pathName": "pages/webview/webview",
-					"query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html%3Fenv%3Dminiprogram%26input%3D&extend=%E7%BB%9F%E4%B8%80",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "share",
-					"pathName": "pages/webview/share",
-					"query": ""
-				},
-				{
-					"id": 10,
-					"name": "share1",
-					"pathName": "pages/webview/share",
-					"query": "webviewurl=https%3A%2F%2Fblogs.kainy.cn%2F2018%2F03%2F180328%25E6%2580%25BB%25E5%259C%25A8%25E6%25B7%25B1%25E5%25A4%259C%25E6%2594%25BE%25E5%25A4%25A7%25E6%258B%259B%25EF%25BC%258C%25E5%25B0%258F%25E7%25A8%258B%25E5%25BA%258F%25E5%25AE%2598%25E6%2596%25B9%25E5%259B%25A2%25E9%2598%259F%25E7%259C%259F%25E7%259A%2584%25E6%25B2%25A1%25E6%259C%2589X%25E7%2594%259F%25E6%25B4%25BB%25EF%25BC%259F%2F&title=总在深夜放大招，小程序官方团队真的没有性生活?",
-					"scene": "1011"
-				},
-				{
-					"id": 12,
-					"name": "webview-短地址.html",
-					"pathName": "pages/webview/webview",
-					"query": "q=https://kainy.cn/t/MVJCC5",
-					"scene": "1011"
-				},
-				{
-					"id": 12,
-					"name": "payment",
-					"pathName": "pages/webview/pay",
-					"query": "title=Kainy公众号打&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
-					"scene": "1011"
-				},
-				{
-					"id": 13,
-					"name": "paymentBaByParty",
-					"pathName": "pages/webview/pay",
-					"query": "title=%E6%B7%B1%E5%9C%B3+%7C+2018%E5%B9%B48%E6%9C%8825%E6%97%A5+%7C+%E5%90%8C%E6%97%A5%E5%AE%9D%E5%AE%9D%E5%AE%B6%E5%BA%AD%E8%81%9A%E4%BC%9A&package=%7B%22feeItems%22%3A%5B%7B%22name%22%3A%22%E6%8A%A5%E5%90%8D%E8%B4%B9%E7%94%A8%22%2C%22amount%22%3A%22260%22%7D%2C%7B%22name%22%3A%22%E5%AE%88%E6%97%B6%E9%87%91%22%2C%22amount%22%3A%2220%22%7D%5D%7D&amount=280&callback=http%3A%2F%2Flocalhost%3A9527%2Fh5%2Fresult.html%3FflowId%3D08623cfc-5ea9-4330-84d8-bd891e3789c6&noticeTitle=%E7%99%BE%E6%97%A5%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D&noticeRemark=%E7%99%BE%E6%97%A5+%7C+%E5%AE%B6%E5%BA%AD%E8%81%9A%E4%BC%9A&autoPay=Y",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "公众号打",
-					"pathName": "pages/webview/pay",
-					"query": "itle=Kainy公众号打&feeItems=费用&amount=100&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "explore",
-					"pathName": "pages/explore/explore",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "my",
-					"pathName": "pages/my/my",
-					"query": "title=Kainy公众号打&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "pages/webview/userinfo",
-					"pathName": "pages/webview/userinfo",
-					"query": ""
-				},
-				{
-					"id": 18,
-					"name": "webview-zhuli.html(localhost)",
-					"pathName": "pages/webview/webview",
-					"query": "q=http%3A%2F%2Flocalhost%3A8080%2Fminiprograms%2FKSK%2Fzhuli.html%3Fowner%3D2a28d5ffa422fd620ec28baf69d72aeb",
-					"scene": "1011"
-				},
-				{
-					"id": 19,
-					"name": "webview-zhuli.html",
-					"pathName": "pages/webview/webview",
-					"query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fzhuli.html%3Fowner%3D99df94894d31135d9ad85ffa9b172c8d",
-					"scene": "1011"
-				}
-			]
-		}
-	}
+  "description": "项目配置文件。",
+  "qcloudRoot": "server/",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": []
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.5.0",
+  "appid": "wxf8c8058dd4de52e5",
+  "projectname": "trip",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": [
+        {
+          "name": "test",
+          "pathName": "",
+          "title": "",
+          "cacheKey": ""
+        }
+      ]
+    },
+    "conversation": {
+      "current": 0,
+      "list": [
+        {
+          "name": "test",
+          "query": "",
+          "boxQI": "",
+          "service": {}
+        }
+      ]
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": [
+        {
+          "id": 0,
+          "name": "trip",
+          "pathName": "pages/trip/trip",
+          "query": "id=2387216722&name=呈坎,唐模，写生季！",
+          "scene": 1044,
+          "shareInfo": {}
+        },
+        {
+          "id": -1,
+          "name": "destination",
+          "pathName": "pages/destination/destination",
+          "query": "type=3&id=26772&name=小樽市",
+          "scene": 1044,
+          "shareInfo": {}
+        },
+        {
+          "id": -1,
+          "name": "waypoint卡片详情",
+          "pathName": "pages/waypoint/waypoint",
+          "query": "waypointId=2362993232&tripId=2387216722"
+        },
+        {
+          "id": -1,
+          "name": "支付",
+          "pathName": "pages/my-pay/pay",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "launchApp",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": "1036",
+          "referrerInfo": {
+            "appId": "wx2604a227cbdfc489"
+          }
+        },
+        {
+          "id": -1,
+          "name": "destination",
+          "pathName": "pages/destination/destination",
+          "query": "type=3&id=65012&name=厦门",
+          "scene": "1036",
+          "referrerInfo": {
+            "appId": "wx2604a227cbdfc489"
+          }
+        },
+        {
+          "id": 6,
+          "name": "webview-share.html",
+          "pathName": "pages/webview/webview",
+          "query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html?Kjs",
+          "scene": "1011"
+        },
+        {
+          "id": 7,
+          "name": "webview-blogs.html",
+          "pathName": "pages/webview/webview",
+          "query": "q=https%3A%2F%2Fblogs.kainy.cn/&extend=kl34 f开机键j2l3",
+          "scene": "1011"
+        },
+        {
+          "id": 8,
+          "name": "webview-share2.html",
+          "pathName": "pages/webview/webview",
+          "query": "webviewurl=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fshare.html%3Fenv%3Dminiprogram%26input%3D&extend=%E7%BB%9F%E4%B8%80",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "share",
+          "pathName": "pages/webview/share",
+          "query": ""
+        },
+        {
+          "id": 10,
+          "name": "share1",
+          "pathName": "pages/webview/share",
+          "query": "webviewurl=https%3A%2F%2Fblogs.kainy.cn%2F2018%2F03%2F180328%25E6%2580%25BB%25E5%259C%25A8%25E6%25B7%25B1%25E5%25A4%259C%25E6%2594%25BE%25E5%25A4%25A7%25E6%258B%259B%25EF%25BC%258C%25E5%25B0%258F%25E7%25A8%258B%25E5%25BA%258F%25E5%25AE%2598%25E6%2596%25B9%25E5%259B%25A2%25E9%2598%259F%25E7%259C%259F%25E7%259A%2584%25E6%25B2%25A1%25E6%259C%2589X%25E7%2594%259F%25E6%25B4%25BB%25EF%25BC%259F%2F&title=总在深夜放大招，小程序官方团队真的没有性生活?",
+          "scene": "1011"
+        },
+        {
+          "id": 12,
+          "name": "webview-短地址.html",
+          "pathName": "pages/webview/webview",
+          "query": "q=https://kainy.cn/t/MVJCC5",
+          "scene": "1011"
+        },
+        {
+          "id": 12,
+          "name": "payment",
+          "pathName": "pages/webview/pay",
+          "query": "title=Kainy公众号打&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
+          "scene": "1011"
+        },
+        {
+          "id": 13,
+          "name": "paymentBaByParty",
+          "pathName": "pages/webview/pay",
+          "query": "title=%E6%B7%B1%E5%9C%B3+%7C+2018%E5%B9%B48%E6%9C%8825%E6%97%A5+%7C+%E5%90%8C%E6%97%A5%E5%AE%9D%E5%AE%9D%E5%AE%B6%E5%BA%AD%E8%81%9A%E4%BC%9A&package=%7B%22feeItems%22%3A%5B%7B%22name%22%3A%22%E6%8A%A5%E5%90%8D%E8%B4%B9%E7%94%A8%22%2C%22amount%22%3A%22260%22%7D%2C%7B%22name%22%3A%22%E5%AE%88%E6%97%B6%E9%87%91%22%2C%22amount%22%3A%2220%22%7D%5D%7D&amount=280&callback=http%3A%2F%2Flocalhost%3A9527%2Fh5%2Fresult.html%3FflowId%3D08623cfc-5ea9-4330-84d8-bd891e3789c6&noticeTitle=%E7%99%BE%E6%97%A5%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D&noticeRemark=%E7%99%BE%E6%97%A5+%7C+%E5%AE%B6%E5%BA%AD%E8%81%9A%E4%BC%9A&autoPay=Y",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "公众号打",
+          "pathName": "pages/webview/pay",
+          "query": "itle=Kainy公众号打&feeItems=费用&amount=100&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "explore",
+          "pathName": "pages/explore/explore",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "my",
+          "pathName": "pages/my/my",
+          "query": "title=Kainy公众号打&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "pages/webview/userinfo",
+          "pathName": "pages/webview/userinfo",
+          "query": ""
+        },
+        {
+          "id": 18,
+          "name": "wedding.html(localhost)",
+          "pathName": "pages/webview/webview",
+          "query": "q=http%3A%2F%2Flocalhost%3A8080%2Fminiprograms%2Fwedding%2Findex.html%3Fa%3Db",
+          "scene": "1011"
+        },
+        {
+          "id": 19,
+          "name": "webview-zhuli.html",
+          "pathName": "pages/webview/webview",
+          "query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fzhuli.html%3Fowner%3D99df94894d31135d9ad85ffa9b172c8d",
+          "scene": "1011"
+        },
+        {
+          "id": 20,
+          "name": "wedding(kainy.cn)",
+          "pathName": "pages/webview/webview",
+          "query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2Fwedding%2Findex.html%3Fa%3Db",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
