@@ -28,20 +28,34 @@ Page({
       const oUrl = util.urlParser(str);
       console.log('oUrl: ', oUrl);
       const oParams = util.qs2o(oUrl.search.replace('?', '')); // 对应 webviewSDK.params
+      if (oParams.bgColor) { // && /#.{6}/ig.test(oParams.bgColor)
+        wx.setNavigationBarColor({
+          frontColor: '#ffffff',
+          backgroundColor: `#${oParams.bgColor}`,
+          animation: {
+            duration: 400,
+            timingFunc: 'easeIn',
+          },
+        });
+      }
       // console.log(str, strQS, oParams);
       oParams.env = 'miniprogram'; // 增加参数用于网页判断小程序环境
       oParams.scene = App.globalData.scene; // 增加参数用于网页判断小程序环境
       oParams.extend = decodeURIComponent(options.extend || ''); // 增加分享页参数
       oParams._ = +new Date(); // 避免缓存
-      let src = `${encodeURI(oUrl.url)}?${util.o2qs(oParams)}${oUrl.hash}`; // src 不能有汉字
+      const src = `${encodeURI(oUrl.url)}?${util.o2qs(oParams)}${oUrl.hash}`; // src 不能有汉字
       if (App.systemInfo.platform === 'devtools') {
-        src = src.replace('https://kainy.cn/', 'http://localhost:8080/');
+        // src = src.replace('https://kainy.cn/', 'http://localhost:8080/');
       }
       console.log('src: ', src);
       this.setData({
         src,
       });
     }
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline'],
+    });
   },
   onMessage(e) {
     console.log('onMessage: ', e);
@@ -148,5 +162,15 @@ Page({
     };
     console.log('onShareAppMessage: ', ret);
     return ret;
+  },
+  onShareTimeline() {
+    const extend = encodeURIComponent(this.data.shareData.extend || '');
+    // console.log(options, this.data.src);
+    const url = encodeURIComponent(this.data.shareData.webviewurl);
+    return {
+      title: this.data.shareData.title || '',
+      query: `?webviewurl=${url}&extend=${extend}`,
+      // imageUrl: ''
+    };
   },
 });

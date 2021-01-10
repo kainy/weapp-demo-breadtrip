@@ -29,52 +29,29 @@
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
-    "packNpmRelationList": []
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "bundle": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.5.0",
+  "libVersion": "2.14.0",
   "appid": "wxf8c8058dd4de52e5",
   "projectname": "trip",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "current": -1,
-      "list": [
-        {
-          "name": "test",
-          "pathName": "",
-          "title": "",
-          "cacheKey": ""
-        }
-      ]
-    },
-    "conversation": {
-      "current": 0,
-      "list": [
-        {
-          "name": "test",
-          "query": "",
-          "boxQI": "",
-          "service": {}
-        }
-      ]
-    },
     "plugin": {
-      "current": -1,
       "list": []
     },
     "game": {
-      "current": -1,
       "list": []
     },
     "gamePlugin": {
-      "current": -1,
       "list": []
     },
     "miniprogram": {
-      "current": -1,
       "list": [
         {
           "id": 0,
@@ -213,17 +190,22 @@
           "scene": "1011"
         },
         {
-          "id": 19,
           "name": "webview-zhuli.html",
           "pathName": "pages/webview/webview",
-          "query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fzhuli.html%3Fowner%3D99df94894d31135d9ad85ffa9b172c8d",
-          "scene": "1011"
+          "query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2FKSK%2Fzhuli.html%3Fowner%3D99df94894d31135d9ad85ffa9b172c8d%26bgColor%3Dccc",
+          "scene": 1011
         },
         {
           "id": 20,
           "name": "wedding(kainy.cn)",
           "pathName": "pages/webview/webview",
           "query": "q=https%3A%2F%2Fkainy.cn%2Fminiprograms%2Fwedding%2Findex.html%3Fa%3Db",
+          "scene": null
+        },
+        {
+          "name": "ning.html",
+          "pathName": "pages/webview/webview",
+          "query": "q=https%3A%2F%2Fkainy.cn%2Ftool%2Fning.html%3FbgColor%3Dbb2220%23bg%3Dhttps%3A%2F%2Ft.kainy.cn%2F2021pic%3F",
           "scene": null
         }
       ]

@@ -24,6 +24,10 @@ Page({
     });
   },
   onLoad(options) {
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline'],
+    });
     const self = this;
     const id = options.id;
     this.arrShow = [];
@@ -206,6 +210,14 @@ Page({
     };
     console.log(opt);
     return opt;
+  },
+  onShareTimeline() {
+    console.log(222);
+    return {
+      title: `「${this.data.name}」`,
+      query: `?id=${this.data.id}&name=${this.data.name}`,
+      // imageUrl: ''
+    };
   },
   viewWaypoint(e) {
     const self = this;
