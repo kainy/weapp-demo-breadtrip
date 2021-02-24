@@ -36,6 +36,7 @@ Page({
       autoPay,
       callback,
       dataPackage,
+      options,
     });
     if (autoPay) {
       this.donate();
@@ -106,6 +107,33 @@ Page({
         url: '/pages/index/index',
       });
     }
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage(options) {
+    if (options.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(options.target);
+    }
+    const title = '老铁，帮忙买个单呗 😁';
+    // console.log(options, this.data.src);
+    const ret = {
+      title,
+      path: `pages/webview/pay?${util.o2qs(this.data.options)}`,
+    };
+    console.log('onShareAppMessage: ', ret);
+    return ret;
+  },
+  onShareTimeline() {
+    const title = '江湖救及，求代付～';
+    // console.log(options, this.data.src);
+    const ret = {
+      title,
+      path: `pages/webview/pay?${util.o2qs(this.data.options)}`,
+    };
+    console.log('onShareAppMessage: ', ret);
+    return ret;
   },
   // onShareAppMessage() {
   //   const opt = {
