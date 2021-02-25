@@ -20,7 +20,7 @@ Page({
       pageLength: getCurrentPages().length,
       payDescription,
     });
-    return this.refreshOrders().then(this.donate);
+    return this.refreshOrders();// .then(this.donate);
   },
   onPullDownRefresh() {
     return this.refreshOrders().then(wx.stopPullDownRefresh);
