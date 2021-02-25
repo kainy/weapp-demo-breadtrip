@@ -20,7 +20,7 @@ Page({
     const noticeRemark = decodeURIComponent(options.noticeRemark || '');
     const amount = options.amount || 1;
     const callback = decodeURIComponent(options.callback || '');
-    let dataPackage = decodeURIComponent(options.package || '');
+    let dataPackage = this.handleDataPackage(options.package || '');
     const autoPay = options.autoPay === 'Y';
     if (!callback) {
       util.alert('缺少必要参数!', wx.navigateBack);
@@ -41,6 +41,17 @@ Page({
     if (autoPay) {
       this.donate();
     }
+  },
+  handleDataPackage(str) {
+    let ret = '{}';
+    if (str.indexOf('%7B%22') === 0) {
+      ret = decodeURIComponent(str);
+    } else if (str.indexOf('%257B%2522') === 0) {
+      ret = decodeURIComponent(decodeURIComponent(str));
+    } else if (str.indexOf('%25257B%252522') === 0) {
+      ret = decodeURIComponent(decodeURIComponent(decodeURIComponent(str)));
+    }
+    return ret;
   },
   genOrderParams() {
     const ret = {
