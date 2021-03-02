@@ -73,8 +73,8 @@ function alert(msg = '', cb) {
     },
   });
 }
-function o2qs(o) {
-  const ret = Object.keys(o).map(i => `${i}=${encodeURIComponent(o[i])}`).join('&');
+function o2qs(o, isEncodeNeeded = true) {
+  const ret = Object.keys(o).map(i => `${i}=${isEncodeNeeded ? encodeURIComponent(o[i]) : o[i]}`).join('&');
   // console.log(ret);
   return ret;
 }

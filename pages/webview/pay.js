@@ -131,7 +131,7 @@ Page({
     // console.log(options, this.data.src);
     const ret = {
       title,
-      path: `pages/webview/pay?${util.o2qs(this.data.options)}`,
+      path: `pages/webview/pay?${util.o2qs(this.data.options, false)}`,
     };
     console.log('onShareAppMessage: ', ret);
     return ret;
@@ -141,7 +141,7 @@ Page({
     // console.log(options, this.data.src);
     const ret = {
       title,
-      path: `pages/webview/pay?${util.o2qs(this.data.options)}`,
+      path: `pages/webview/pay?${util.o2qs(this.data.options, false)}`,
     };
     console.log('onShareAppMessage: ', ret);
     return ret;
