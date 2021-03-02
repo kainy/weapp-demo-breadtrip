@@ -25,7 +25,7 @@ Page({
   },
   onLoad(options) {
     wx.showShareMenu({
-      withShareTicket: true,
+      withShareTicket: false,
       menus: ['shareAppMessage', 'shareTimeline'],
     });
     const self = this;
