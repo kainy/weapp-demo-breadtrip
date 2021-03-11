@@ -89,6 +89,12 @@ Page({
           }
         },
       });
+      app.log.aLog('payment', {
+        e_c: 'TE',
+        e_a: 'payment',
+        e_n: 'my',
+        e_v: 100,
+      });
       setTimeout(this.refreshOrders.bind(this), 1500);
     };
     // succCB(); return;

@@ -22,6 +22,6 @@
 </view>
 <view class="container footer">
   <text wx:if="{{error}}" class="error">{{error}}</text>
-  <button type="primary" bindtap="donate">支付 ￥1</button>
+  <button type="primary" bindtap="donate">投喂 ￥1</button>
   <text class="hint description">{{payDescription}}</text>
 </view>

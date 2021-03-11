@@ -1,6 +1,7 @@
 // require('./libs/ald-stat.js');
 const AV = require('./libs/av-weapp.js');
 const util = require('./utils/util.js');
+const log = require('./utils/log.js');
 
 AV.init({
   appId: '8RLDamMl5A27EOhFH2fU7AN0-gzGzoHsz', // {{appid}}
@@ -10,7 +11,21 @@ AV.init({
 App({
   systemInfo: wx.getSystemInfoSync(),
   AV,
+  log,
   onLaunch(options) {
+    if (!wx.cloud) {
+      console.error('请使用 2.2.3 或以上的基础库以使用云能力');
+    } else {
+      wx.cloud.init({
+        // env 参数说明：
+        //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
+        //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
+        //   如不填则使用默认环境（第一个创建的环境）
+        // env: 'my-env-id',
+        traceUser: true,
+      });
+    }
+
     const self = this;
     this.getNetworkType();
     if (wx.onNetworkStatusChange) {
@@ -20,14 +35,14 @@ App({
     } else {
       setInterval(this.getNetworkType, 7777);
     }
-    console.log('onLaunch: ', options);
+    // log.event('app onLaunch: ', options);
   },
   onShow(options) {
     if (options.scene) {
       this.globalData.scene = options.scene;
       // util.alert(`scene:${options.scene}`);
     }
-    console.log('onShow:', options);
+    console.log('app onShow:', options);
   },
   getNetworkType() {
     const self = this;
@@ -152,6 +167,21 @@ App({
         },
       });
     });
+  },
+  async getOpenID() {
+    if (this.globalData.openid) {
+      return this.globalData.openid;
+    }
+
+    const { result } = await wx.cloud.callFunction({
+      name: 'login',
+    });
+    this.globalData.openid = result.openid;
+    if (result.userInfo) {
+      this.globalData.userInfo = result.userInfo;
+    }
+    console.log('[getOpenID] 调用成功：', result);
+    return result.openid;
   },
 });
 

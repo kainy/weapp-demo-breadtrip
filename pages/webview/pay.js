@@ -78,6 +78,12 @@ Page({
     util.showLoading('正在创建订单', true);
     const succCB = (orderParams) => {
       console.log('orderParams to requestPayment: ', orderParams);
+      app.log.aLog('payment', {
+        e_c: 'TE',
+        e_a: 'payment',
+        e_n: 'webview',
+        e_v: this.data.amount,
+      });
       wx.showToast({
         title: '支付成功',
         icon: 'success',

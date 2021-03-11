@@ -144,11 +144,10 @@
           "scene": "1011"
         },
         {
-          "id": 12,
-          "name": "payment",
+          "name": "webview-pay",
           "pathName": "pages/webview/pay",
           "query": "title=Kainy公众号打&feeItems=费用&amount=10&callback=https://blogs.kainy.cn/&noticeTitle=公众号赞赏&noticeRemark=谢谢支持~&autoPay=Y",
-          "scene": "1011"
+          "scene": 1011
         },
         {
           "id": 13,
