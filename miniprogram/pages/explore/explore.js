@@ -111,7 +111,7 @@ Page({
             trips_more: res.data.data.trips_more,
           });
         } else {
-          util.alert('未找到相关内容，换个关键词试试 ？');
+          util.alert('未找到相关内容，换个关键词试试吧');
         }
         self.fetching = false;
         self.setData({
