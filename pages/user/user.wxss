@@ -55,7 +55,7 @@ page{
   border-radius: 144rpx;
   vertical-align: bottom;
   box-shadow:0 0 14rpx gray;
-  background: no-repeat center/77% #e7ddc6 url(https://a.kainy.cn/2019/weapp-ksk/climber.svg);
+  background: no-repeat center/77% #e7ddc6 url(/images/svg/climber.svg);
 }
 .header .name{
   margin-top: 4.1%;

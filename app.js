@@ -35,7 +35,7 @@ App({
     } else {
       setInterval(this.getNetworkType, 7777);
     }
-    // log.event('app onLaunch: ', options);
+    log.event('app onLaunch: ', options);
   },
   onShow(options) {
     if (options.scene) {
