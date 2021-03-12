@@ -121,6 +121,17 @@ Page({
       },
     });
     WxSearch.wxSearchAddHisKey(self);
+
+    wx.cloud.callFunction({
+      name: 'openapi',
+      data: {
+        action: 'search',
+        keyword: kw
+      },
+      success: res => {
+        console.warn(res, 88)
+      }
+    })
   },
   clearInput() {
     const temData = this.data.wxSearchData;

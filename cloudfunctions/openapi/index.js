@@ -19,10 +19,23 @@ exports.main = async (event, context) => {
     case 'getOpenData': {
       return getOpenData(event)
     }
+    case 'search': {
+      return getSearchData(event)
+    }
     default: {
       return
     }
   }
+}
+
+async function getSearchData(event) {
+  const {keyword, nextPageInfo} = event
+  const ret = await cloud.openapi.search.siteSearch({
+    keyword,
+    nextPageInfo
+  })
+  console.log(keyword, nextPageInfo, ret)
+  return ret
 }
 
 async function requestSubscribeMessage(event) {

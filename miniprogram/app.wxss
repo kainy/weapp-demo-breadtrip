@@ -48,7 +48,7 @@ page{
   vertical-align: middle;
   -webkit-animation: weuiLoading 1s steps(12, end) infinite;
   animation: weuiLoading 1s steps(12, end) infinite;
-  background: transparent center/cover url(/images/svg/loading.svg) no-repeat;
+  background: transparent center/cover url(https://a.kainy.cn/2019/weapp-ksk/loading.svg) no-repeat;
 }
 .g-active {
   display: none;

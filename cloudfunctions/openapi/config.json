@@ -2,6 +2,7 @@
   "permissions": {
     "openapi": [
       "wxacode.get",
+      "search.siteSearch",
       "subscribeMessage.send",
       "subscribeMessage.addTemplate",
       "templateMessage.send",
