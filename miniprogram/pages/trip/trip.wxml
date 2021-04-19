@@ -20,6 +20,7 @@
         <view class="wp-sep clear-both"></view>
         <view class="day-content">
           <block wx:for="{{ day.waypoints }}" wx:for-item="wp" wx:key="wp.id">
+            <ad wx-if="{{wp.idx === 3 || wp.idx === 13}}" unit-id="adunit-f9a0f35577fb66f6"></ad>
             <block wx:if="{{ wp.photo || wp.text }}">
               <view class="waypoint" bindtap="viewWaypoint" data-waypoint="{{ wp.id }}">
                 <block wx:if="{{ wp.photo }}">
