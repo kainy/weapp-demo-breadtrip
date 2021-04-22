@@ -37,7 +37,12 @@
         "selectedIconPath": "images/index_pressed.png",
         "text": "推荐"
       },
-      
+      {
+        "pagePath": "pages/explore/explore",
+        "iconPath": "images/explore_normal.png",
+        "selectedIconPath": "images/explore_pressed.png",
+        "text": "发现"
+      },
       {
         "pagePath": "pages/my/my",
         "iconPath": "images/my_normal.png",

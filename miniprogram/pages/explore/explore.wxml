@@ -15,7 +15,7 @@
   <template is="wxSearch" data="{{wxSearchData}}"/>
 </view>
 <view wx:if="{{!searching}}">
-  <view class="search-result" wx:if="{{searchResult.trips.length}}">
+  <!-- <view class="search-result" wx:if="{{searchResult.trips.length}}">
     <block wx:for="{{ searchResult.trips }}" wx:for-item="trip" wx:key="trip.id">
       <template is="m-trip" wx:if="{{ trip.version === 1 }}" data="{{trip: trip, mode: 3}}" />
     </block>
@@ -23,7 +23,26 @@
       <icon></icon>
       <text>正在加载</text>
     </view>
-    <!-- <image src="/images/loading.gif" class="loading-gif"></image> -->  
+  </view> -->
+  <view class="search-result" wx:if="{{wxOpenSearch.trips.length}}">
+    <block wx:for="{{ wxOpenSearch.trips }}" wx:for-item="trip" wx:for-index="idx" wx:key="trip.path">
+      <view class="m-trip-s" bindtap="viewPath" data-path="{{ trip.path }}" data-idx="{{idx}}">
+        <view class="mask"></view>
+        <image class="cover" src="{{ trip.image }}" mode="aspectFill"></image>
+        <view class="info">
+          <view class="title">{{ trip.title }}</view>
+          <view class="detail"><view><text>时长</text></view><view><text>{{ trip.day_count }}天</text></view></view>
+        </view>
+        <view class="stat"><view><text>{{ trip.waypoints }}</text>足迹</view><view><text>{{ trip.recommendations }}</text>收藏</view></view>
+      </view>
+      <view class="m-trip-s" wx:if="{{idx === 2 || (idx+1)%9 === 0}}" data-idx="{{idx}}">
+        <ad unit-id="adunit-0d7b7d3702efdc4e"></ad>
+      </view>
+    </block>
+    <view class="loading" wx:if="{{trips_more}}">
+      <icon></icon>
+      <text>正在加载</text>
+    </view>
   </view>
   <view class="destination" wx:else>
     <block wx:for="{{ elements }}" wx:for-item="e" wx:key="e.index" wx:if="{{e.title!=='周末去哪儿'}}">
