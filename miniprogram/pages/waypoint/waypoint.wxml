@@ -1,5 +1,5 @@
 <view class="waypoint" wx:if="{{ waypoint }}">
-  <view class="breadcrumb flat" wx:if="{{ pageLength === 1 }}">
+  <view class="breadcrumb flat" wx:if="{{ pageLength === 1 || showBread }}">
     <navigator class="a" open-type="switchTab" url="/pages/index/index" hover-class="active">首页</navigator>
     <navigator class="a" url="/pages/trip/trip?id={{waypoint.trip_id}}&name={{waypoint.trip_name}}" hover-class="active">{{waypoint.trip_name}}</navigator>
   </view>

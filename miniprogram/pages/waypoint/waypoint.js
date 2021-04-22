@@ -15,6 +15,7 @@ Page({
     title: '',
     windowWidth: 0,
     pageLength: 0, //页面层级，用于判断是否展示面包屑
+    showBread: 0
   },
   onReady() {
     const self = this;
@@ -28,6 +29,7 @@ Page({
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
       pageLength: getCurrentPages().length,
+      showBread: options.showBread
     });
     this.getWaypointDetail(tripId, waypointId);
   },

@@ -22,7 +22,7 @@ Page({
     searchFocus: false,
   },
   getKW() {
-    return arrKeyword[Math.round(arrKeyword.length * Math.random())]
+    return arrKeyword[Math.floor(arrKeyword.length * Math.random())]
   },
   onLoad(options) {
     const self = this;
@@ -73,7 +73,7 @@ Page({
   },
   viewPath(e) {
     const ds = e.currentTarget.dataset;
-    const url = '/' + ds.path.replace('.html', '')
+    const url = '/' + ds.path.replace('.html', '') + '&showBread=1'
     console.log('url:', url)
     wx.navigateTo({
       url

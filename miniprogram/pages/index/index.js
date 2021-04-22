@@ -70,7 +70,7 @@ Page({
         newList.map((trip) => {
           const item = trip;
           item.data[0].date_added = formatTime(new Date(item.data[0].date_added * 1000), 1);
-          const idx = Math.round(Math.random() * arr.length)
+          const idx = Math.floor(Math.random() * arr.length)
           console.log(idx)
           item.data[0].id = arr[idx];
           return item;
