@@ -3,6 +3,32 @@ const api = require('../../utils/api.js');
 const util = require('../../utils/util.js');
 
 const formatTime = util.formatTime;
+const arr = [
+  2387116722,
+  2387216722,
+  2387216724,
+  2387216726,
+  2387216731,
+  2387262456,
+  2387270456,
+  2387270456,
+  2387270459,
+  2387270460,
+  2387270462,
+  2387270464,
+  2387270469,
+  // 2387270471,
+  2387270473,
+  2387270474,
+  2387270476,
+  2387270480,
+  2387270481,
+  2387270483,
+  2387270487,
+  2387270488,
+  2387270489,
+  2387270468
+]
 
 Page({
   data: {
@@ -44,6 +70,9 @@ Page({
         newList.map((trip) => {
           const item = trip;
           item.data[0].date_added = formatTime(new Date(item.data[0].date_added * 1000), 1);
+          const idx = Math.round(Math.random() * arr.length)
+          console.log(idx)
+          item.data[0].id = arr[idx];
           return item;
         });
         if (needRefresh) {
